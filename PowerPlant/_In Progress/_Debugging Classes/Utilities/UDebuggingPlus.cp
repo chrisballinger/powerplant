@@ -54,10 +54,10 @@
 //
 //		To turn off the warnings, put
 //			#define PP_Suppress_Notes_225	1
-//		in your prefix file or edit the !PP_Notes_225.doc file
+//		in your prefix file or edit the !PP_Notes_225.txt file
 
 #if !PP_Suppress_Notes_225
-	#include "!PP_Notes_225.doc"
+	#include "!PP_Notes_225.txt"
 #endif
 
 
