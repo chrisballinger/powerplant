@@ -1,0 +1,26 @@
+// Copyright ©2005, 2006 Freescale Semiconductor, Inc.
+// Please see the License for the specific language governing rights and
+// limitations under the License.
+// ===========================================================================
+//	Constr-MacOS-Mach-O-Debug.pch	© 2001 Metrowerks Inc. All rights reserved.
+// ===========================================================================
+//	Prefix file for MacOS Carbon targeted debug version of Constructor.
+
+
+#define Constructor_Debug		1			// enable debug build
+#define Constructor_ForMacOS	1			// enable MacOS target
+#define Constructor_Carbon		1			// enable Carbon target
+
+
+	// Standard includes
+
+#include "Constructor.h"
+
+
+	// Generate PCH file
+
+#if defined(powerc)
+	#pragma precompile_target "Constr-Mach-O-Debug"
+#else
+	#error Carbon requires PowerPC
+#endif

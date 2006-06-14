@@ -1,0 +1,41 @@
+------------------------------------------------------------------------------
+Pro 8 Build Instructions for Constructor
+
+Josef W. Wankerl <jwankerl@metrowerks.com>
+September 3, 2003
+
+Environment:	CodeWarrior Pro 9
+Version:		2.5.6
+------------------------------------------------------------------------------
+
+* Toolset
+
+	Pro 9 Mac Tools
+
+------------------------------------------------------------------------------
+Build Instructions for Constructor
+------------------------------------------------------------------------------
+
+	Open the project named:
+
+		{$}Constructor_Pro:Constructor:Constructor.mcp
+
+	Update "Version.r" if necessary
+	Select Targets page in Project window
+	Select Target "Constructor Final"
+	Choose "Make"
+
+	This will produce "Constructor" in the Output folder
+
+------------------------------------------------------------------------------
+Modification History
+------------------------------------------------------------------------------
+
+	02/01/00 	JWW	Instructions created
+	06/12/00 	JWW	Updated to build with Pro 6 tools
+	01/25/01	icw Changed version to 2.5.1 and modified the tool set
+	06/19/01 	JWW	Updated to build with Pro 7 tools (killed 68K targets)
+	08/12/01	JWW Killed PPC targets - we're all Carbon from here on out
+	02/21/02	icw Changed version to 2.5.5 and modified the tool set to 7.3
+	04/02/02	icw Updated to build with Pro 8 tools
+	09/02/03	JWW Updated to build with Pro 9 tools

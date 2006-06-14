@@ -1,0 +1,30 @@
+===============================================================================
+Metrowerks CodeWarrior Constructor Release Notes
+===============================================================================
+
+Version: 2.5.8
+Date:    March 30, 2005
+Author:  Josef W. Wankerl, Isaac Wankerl, John H. Dean III
+===============================================================================
+
+Constructor has been updated to work with Carbon and OS X.
+
+
+===============================================================================
+New Features in this Version
+===============================================================================
+
+*   None
+
+
+===============================================================================
+Bugs Fixed in this Version
+===============================================================================
+
+*   Double-clicking on the drawing tool buttons for a bitmap editor now peforms
+	secondary functions (feature was lost during carbonization effort).
+
+
+===============================================================================
+
+Metrowerks Corporation
