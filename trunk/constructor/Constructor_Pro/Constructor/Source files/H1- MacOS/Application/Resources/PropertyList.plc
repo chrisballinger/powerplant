@@ -1,0 +1,83 @@
+// Copyright ©2005, 2006 Freescale Semiconductor, Inc.
+// Please see the License for the specific language governing rights and
+// limitations under the License.
+/*
+ *	File Name:			PropertyList.plc
+ *	File Purpose:		Create the 'plst' resource using the Proerty List Compiler for Mac OS X
+ *
+ *	Author:				Josef W. Wankerl
+ *	Last Revision:		04/14/02
+ *
+ *  Copyright © 2001-2002 Metrowerks Corporation.  All rights reserved.
+ */
+
+#include "Version.h"
+
+#define kBundleIdentifier "com.metrowerks.Constructor"
+
+#define kBundleShortVersion __OUTPUT_FILENAME__ " version " VERSION_STRING
+
+plist
+{
+	dictionary
+	{
+		key "CFBundleIdentifier" value string kBundleIdentifier
+		
+		key "CFBundleName" value string __OUTPUT_FILENAME__
+		key "CFBundleGetInfoString" value string GET_INFO_STRING
+		key "CFBundleShortVersionString" value string kBundleShortVersion
+		
+		key "CFBundlePackageType" value string __OUTPUT_TYPE__
+		key "CFBundleSignature" value string __OUTPUT_CREATOR__
+		key "CFBundleExecutable" value string __OUTPUT_FILENAME__
+		key "CFBundleVersion" value string VERSION_STRING
+		
+		key "CFBundleDevelopmentRegion" value string "English"
+		key "CFBundleInfoDictionaryVersion" value string "6.0"
+		key "LSPrefersCarbon" value boolean true
+		
+		key "CFBundleIconFile" value string "128"
+		key "CFBundleDocumentTypes" value array
+		[
+			dictionary
+			{
+				key "CFBundleTypeName" value string "Constructor project"
+				key "CFBundleTypeIconFile" value string "129"
+				key "CFBundleTypeRole" value string "Editor"
+				key "CFBundleTypeOSTypes" value array
+				[
+					string "rsrc"
+					string "RSRC"
+				]
+				key "CFBundleTypeExtensions" value array
+				[
+					string "ppob"
+					string "rsrc"
+					string "ctyp"
+				]
+			}
+			
+			dictionary
+			{
+				key "CFBundleTypeRole" value string "Editor"
+				key "CFBundleTypeOSTypes" value array
+				[
+					string "APPL"
+					string "APPC"
+					string "APPE"
+				]
+			}
+			
+			dictionary
+			{
+				key "CFBundleTypeName" value string "Constructor preferences"
+				key "CFBundleTypeIconFile" value string "130"
+				key "CFBundleTypeRole" value string "None"
+				key "CFBundleTypeOSTypes" value array
+				[
+					string "pref"
+				]
+			}
+		]
+	}
+}

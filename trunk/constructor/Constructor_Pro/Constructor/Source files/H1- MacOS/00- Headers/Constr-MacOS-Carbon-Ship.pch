@@ -1,0 +1,20 @@
+// Copyright ©2005, 2006 Freescale Semiconductor, Inc.
+// Please see the License for the specific language governing rights and
+// limitations under the License.
+// ===========================================================================
+//	Constructor-MacOS-Carbon-Ship.pch	© 2000 Metrowerks Inc. All rights reserved.
+// ===========================================================================
+//	Prefix file for MacOS targeted shipping version of Constructor.
+
+
+#define Constructor_Debug		0			// disable debug build
+#define Constructor_ForMacOS	1			// enable MacOS target
+#define Constructor_Carbon		1			// enable Carbon target
+
+#include "Constructor.h"
+
+#if defined(powerc)
+	#pragma precompile_target "Constr-Carbon-MacOS-Ship"
+#else
+	#error Carbon requires PowerPC
+#endif
