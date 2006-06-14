@@ -38,7 +38,7 @@
 #endif
 
 
-#ifndef __GNUC__
+#ifdef __MWERKS__
 // turn off profiling in this module
 #pragma profile off
 #endif

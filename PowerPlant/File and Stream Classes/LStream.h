@@ -186,6 +186,10 @@ public:
 
 	LStream&		operator << (bool inBool)
 						{
+							// The 'bool' type changes depending which compiler and compiler settings you use.
+							// The code below assumes that 'bool' is 32bit, this assert checks.
+							Assert_(sizeof(inBool) == 4);
+							
 							UInt32 boolValue;
 							boolValue = CFSwapInt32HostToBig(inBool);
 							WriteBlock(&boolValue, sizeof(boolValue));
@@ -326,6 +330,10 @@ public:
 
 	LStream&		operator >> (bool &outBool)
 						{
+							// The 'bool' type changes depending which compiler and compiler settings you use.
+							// The code below assumes that 'bool' is 32bit, this assert checks.
+							Assert_(sizeof(outBool) == 4);
+							
 							UInt32 boolValue;
 							ReadBlock(&boolValue, sizeof(boolValue));
 							outBool = CFSwapInt32BigToHost(boolValue);

@@ -37,7 +37,7 @@
 //	from the profiler, and should therefore not be profiled.
 // ===========================================================================
 
-#ifndef __GNUC__
+#ifdef __MWERKS__
 #pragma profile off
 #endif
 

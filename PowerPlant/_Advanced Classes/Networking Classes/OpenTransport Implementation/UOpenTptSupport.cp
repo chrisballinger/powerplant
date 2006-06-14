@@ -206,7 +206,7 @@ StOpenTptOperation::~StOpenTptOperation()
 // ---------------------------------------------------------------------------
 //	Time Manager completion routine for timeout simulation in OT
 
-#ifndef __GNUC__
+#ifdef __MWERKS__
 #pragma profile off
 #endif
 
@@ -224,7 +224,7 @@ StOpenTptOperation::Int_TimerProc(TMTaskPtr tmTaskPtr
 	theOperation->Int_AsyncResume(Timeout_Error);
 }
 
-#ifndef __GNUC__
+#ifdef __MWERKS__
 #pragma profile reset
 #endif
 

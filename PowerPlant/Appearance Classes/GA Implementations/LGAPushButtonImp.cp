@@ -183,7 +183,7 @@ LGAPushButtonImp::CalcTitleRect(
 	}
 	::MacInsetRect ( &outRect, horizInset, bevelWidth );
 
-									// Figure out the width and height of the rect
+									// Figure out the height of the rect
 	SInt16		height = UGraphicUtils::RectHeight ( outRect );
 
 									// Adjust the title rect to match the height of
