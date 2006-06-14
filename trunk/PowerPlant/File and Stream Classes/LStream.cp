@@ -487,7 +487,7 @@ LStream&
 LStream::operator << (double inNum)
 {
 #if TARGET_CPU_PPC || TARGET_CPU_X86
-	// PowerPC and Intel doubles -- they're 8 bytes already, so just  swap
+	// PowerPC and Intel doubles -- they're 8 bytes already, so just swap
 	// if necessary and write.
 	 
 	Assert_(sizeof(inNum) == 8);
@@ -532,7 +532,7 @@ LStream&
 LStream::operator >> (double& outNum)
 {
 #if TARGET_CPU_PPC || TARGET_CPU_X86
-	// PowerPC and Intel doubles -- they're 8 bytes already, so just  read
+	// PowerPC and Intel doubles -- they're 8 bytes already, so just read
 	// and swap if necessary.
 	 
 	Assert_(sizeof(outNum) == 8); 
@@ -564,7 +564,7 @@ LStream::operator >> (double& outNum)
 			// was written from another platform with a different size
 			// double, this won't work right.
 
-		ReadBlock(&sd, sizeof(sd));
+		ReadBlock(&outNum, sizeof(outNum));
 #endif
 
 	return (*this);
