@@ -22,7 +22,7 @@
 #include <SysCGColorSpace.h>
 #include <SysCGDataProvider.h>
 
-#include <CoreGraphics/CoreGraphics.h>
+#include <ApplicationServices/ApplicationServices.h>
 
 namespace PPx {
 
