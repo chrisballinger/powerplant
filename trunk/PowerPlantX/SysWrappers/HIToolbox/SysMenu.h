@@ -21,7 +21,7 @@
 #include <PPxConstants.h>
 #include <PPxExceptions.h>
 
-#include <HIToolbox/Menus.h>
+#include <ApplicationServices/ApplicationServices.h>
 
 namespace PPx {
 

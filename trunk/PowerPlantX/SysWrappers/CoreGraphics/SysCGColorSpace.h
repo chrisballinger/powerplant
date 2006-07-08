@@ -20,7 +20,7 @@
 
 #include <SysCFObject.h>
 
-#include <CoreGraphics/CoreGraphics.h>
+#include <ApplicationServices/ApplicationServices.h>
 
 namespace PPx {
 
