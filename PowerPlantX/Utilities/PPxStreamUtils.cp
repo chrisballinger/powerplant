@@ -159,7 +159,7 @@ namespace StreamUtils {
 	exceed the buffer capacity, resulting in lost characters.				*/
 
 void
-StreamUtils::WriteLinesOfText(
+WriteLinesOfText(
 	std::ostream&		inOutputStream,
 	const char*			inTextPtr,
 	long				inTextLength,
