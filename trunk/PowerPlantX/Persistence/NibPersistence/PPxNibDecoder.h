@@ -58,7 +58,7 @@ namespace NibDecoder {
 
 template <typename TWindow>
 TWindow*
-NibDecoder::CreateWindowFromNib(
+CreateWindowFromNib(
 	CFStringRef	inNibName,
 	CFStringRef	inWindowName)
 {
