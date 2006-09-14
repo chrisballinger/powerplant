@@ -488,7 +488,7 @@ class	ControlEnabledStateChangedDoer : public SpecificEventDoer<
 													kEventClassControl,
 													kEventControlEnabledStateChanged> {
 protected:
-	virtual OSStatus	DoControlEnbaledStateChanged(
+	virtual OSStatus	DoControlEnabledStateChanged(
 								SysCarbonEvent&	ioEvent,
 								ControlRef		inControl) = 0;
 
