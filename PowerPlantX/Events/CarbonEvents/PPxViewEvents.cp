@@ -598,7 +598,7 @@ ControlEnabledStateChangedDoer::DoEvent(
 	
 	SysEventParam::Get(ioEvent, kEventParamDirectObject, control);
 
-	return DoControlEnbaledStateChanged(ioEvent, control);
+	return DoControlEnabledStateChanged(ioEvent, control);
 }
 
 
