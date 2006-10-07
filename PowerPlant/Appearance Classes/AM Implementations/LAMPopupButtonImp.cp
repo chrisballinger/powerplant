@@ -28,6 +28,7 @@ LAMPopupButtonImp::LAMPopupButtonImp(
 
 	: LAMControlImp(inStream)
 {
+#if not PP_Uses_Carbon_Events
 		// This class requires the special empty MENU resource in order
 		// to prevent the Toolbox from mucking with the real MenuHandle.
 		// Signal and throw if we can't find this menu.
@@ -39,6 +40,7 @@ LAMPopupButtonImp::LAMPopupButtonImp(
 							 "Add EmptyMenu.rsrc to your project.");
 		Throw_(resNotFound);
 	}
+#endif
 
 	mMenuHandleTag = kControlPopupButtonMenuHandleTag;
 }
@@ -102,7 +104,9 @@ LAMPopupButtonImp::TrackHotSpot(
 	Point		inPoint,
 	SInt16		inModifiers)
 {
+#if not PP_Uses_Carbon_Events
 	StPopupMenuSetter	setMenu(mControlPane, GetMacMenuH());
+#endif
 
 	return LAMControlImp::TrackHotSpot(inHotSpot, inPoint, inModifiers);
 }
@@ -115,13 +119,16 @@ LAMPopupButtonImp::TrackHotSpot(
 void
 LAMPopupButtonImp::DrawSelf()
 {
+#if not PP_Uses_Carbon_Events
 	StPopupMenuSetter	setMenu(mControlPane, GetMacMenuH());
+#endif
 
 	LAMControlImp::DrawSelf();
 }
 
 #pragma mark -
 
+#if not PP_Uses_Carbon_Events
 // ---------------------------------------------------------------------------
 //	¥ PostSetValue													  [public]
 // ---------------------------------------------------------------------------
@@ -142,6 +149,7 @@ LAMPopupButtonImp::PostSetValue()
 		mControlPane->Draw(nil);
 	}
 }
+#endif
 
 
 // ---------------------------------------------------------------------------
@@ -159,6 +167,7 @@ LAMPopupButtonImp::SetDataTag(
 
 		MenuHandle	menuH = *(MenuHandle*) inDataPtr;
 
+#if PP_Uses_Carbon_Events
 			// AM version 1.0.2 and earlier don't support setting the
 			// MenuHandle to nil via the data tag. As a workaround, we
 			// install a special menu that has no items.
@@ -166,13 +175,14 @@ LAMPopupButtonImp::SetDataTag(
 		if (menuH == nil) {
 			menuH = LMenuController::GetEmptyMenuH();
 		}
-
+#endif
 		::SetControlData(mMacControlH, kControlNoPart, inTag,
 							inDataSize, (Ptr) &menuH);
 	}
 }
 
 
+#if not PP_Uses_Carbon_Events
 // ---------------------------------------------------------------------------
 //	¥ GetMacMenuH												   [protected]
 // ---------------------------------------------------------------------------
@@ -190,6 +200,7 @@ LAMPopupButtonImp::GetMacMenuH() const
 
 	return menuH;
 }
+#endif
 
 
 // ---------------------------------------------------------------------------

@@ -15,6 +15,10 @@
 	#pragma import on
 #endif
 
+#ifndef PP_Uses_Carbon_Events
+	#define	PP_Uses_Carbon_Events		0
+#endif
+
 PP_Begin_Namespace_PowerPlant
 
 // ---------------------------------------------------------------------------
@@ -37,7 +41,9 @@ public:
 
 	virtual void		SetDescriptor( ConstStringPtr inDescriptor );
 	
+#if not PP_Uses_Carbon_Events
 	virtual void		PostSetValue();
+#endif
 	
 	virtual OSStatus	GetStructureOffsets( Rect& outOffsets ) const;
 
@@ -51,7 +57,9 @@ public:
 protected:
 	virtual void		AdjustControlBounds( Rect& ioBounds );
 
+#if not PP_Uses_Carbon_Events
 	virtual MenuHandle	GetMacMenuH() const;
+#endif
 	
 protected:
 	bool			mIsPrimary;

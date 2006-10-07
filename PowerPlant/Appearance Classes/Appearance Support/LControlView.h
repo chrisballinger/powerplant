@@ -18,6 +18,10 @@
 	#pragma import on
 #endif
 
+#if PP_Uses_Carbon_Events
+	#include	<TEventHandler.h>
+#endif
+
 PP_Begin_Namespace_PowerPlant
 
 // ---------------------------------------------------------------------------
@@ -207,6 +211,14 @@ protected:
 	
 protected:
 	LControlSubPane*	mControlSubPane;
+
+#if PP_Uses_Carbon_Events
+	TEventHandler<LControlView>	mDrawEvent;
+	
+	OSStatus			DoDrawEvent (
+								EventHandlerCallRef	inCallRef,
+								EventRef			inEventRef );
+#endif
 };
 
 PP_End_Namespace_PowerPlant

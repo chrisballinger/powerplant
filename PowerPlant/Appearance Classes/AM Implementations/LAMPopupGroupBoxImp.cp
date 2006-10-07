@@ -117,7 +117,9 @@ LAMPopupGroupBoxImp::DrawSelf()
 	::SetControlBounds(mMacControlH, &bounds);
 	
 									// Draw the popup button control
+#if not PP_Uses_Carbon_Events
 	StPopupMenuSetter	setMenu(mControlPane, GetMacMenuH());
+#endif
 	LAMControlImp::DrawSelf();
 
 		// Set clipping region to exclude the area covered by
@@ -190,6 +192,7 @@ LAMPopupGroupBoxImp::SetDescriptor(
 }
 
 
+#if not PP_Uses_Carbon_Events
 // ---------------------------------------------------------------------------
 //	¥ PostSetValue													  [public]
 // ---------------------------------------------------------------------------
@@ -220,6 +223,7 @@ LAMPopupGroupBoxImp::PostSetValue()
 		mControlPane->Draw(drawRgn);
 	}
 }
+#endif
 
 
 // ---------------------------------------------------------------------------
@@ -283,7 +287,9 @@ void
 LAMPopupGroupBoxImp::AdjustControlBounds(
 	Rect&	ioBounds)
 {
+#if not PP_Uses_Carbon_Events
 	StPopupMenuSetter	setMenu(mControlPane, GetMacMenuH());
+#endif
 	
 		// We set the control bounds to the frame, then ask the
 		// PopupButton control to calculate its "best" bounds, which is
@@ -316,6 +322,7 @@ LAMPopupGroupBoxImp::AdjustControlBounds(
 }
 
 
+#if not PP_Uses_Carbon_Events
 // ---------------------------------------------------------------------------
 //	¥ GetMacMenuH												   [protected]
 // ---------------------------------------------------------------------------
@@ -334,6 +341,6 @@ LAMPopupGroupBoxImp::GetMacMenuH() const
 
 	return menuH;
 }
-
+#endif
 
 PP_End_Namespace_PowerPlant

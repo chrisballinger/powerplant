@@ -274,6 +274,14 @@ LControlView::FinishCreateSelf()
 		// control draws outside its Frame.
 		
 	CalcRevealedRect();
+
+#if PP_Uses_Carbon_Events
+	if (mControlSubPane != nil) {
+		ControlRef		ctlRef = mControlSubPane->GetControlImp()->GetMacControl();
+		EventTargetRef	tgtRef = ::GetControlEventTarget(ctlRef);
+		mDrawEvent.Install(tgtRef, kEventClassControl, kEventControlDraw, this, &LControlView::DoDrawEvent);
+	}
+#endif
 }
 
 
@@ -631,5 +639,31 @@ LControlView::HotSpotResult(
 {
 }
 
+
+#if PP_Uses_Carbon_Events
+// ---------------------------------------------------------------------------
+// ¥ DoDrawEvent
+// ---------------------------------------------------------------------------
+// The subPane's implementation class has received a draw event. Do it. Then
+// explicitly draw all of this object's subpanes (excluding the control subpane
+// which has just been drawn).
+
+OSStatus
+LControlView::DoDrawEvent (
+	EventHandlerCallRef				inCallRef,
+	EventRef						inEventRef ) 
+{
+	OSStatus						status = ::CallNextEventHandler(inCallRef, inEventRef);
+	
+	TArrayIterator<LPane*>			iter(mSubPanes);
+	LPane *							theSub;
+	while (iter.Next(theSub)) {
+		if (theSub != mControlSubPane) {
+			theSub->Draw(nil);
+		}		
+	}
+	return status;
+}
+#endif
 
 PP_End_Namespace_PowerPlant

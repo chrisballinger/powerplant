@@ -68,6 +68,8 @@ const MessageT	cmd_SaveCopyAs		= 18;	// nil
 const MessageT	cmd_ShowClipboard	= 19;	// nil
 const MessageT	cmd_Preferences		= 27;	// nil
 
+const MessageT	cmd_Help			= 28;	// nil
+
 					// Undo/Redo Editing Actions
 const CommandT	cmd_ActionDeleted	= 20;	// LAction*
 const CommandT	cmd_ActionDone		= 21;	// LAction*
@@ -131,6 +133,7 @@ const MessageT	msg_KeyPress		= 814;	// EventRecord* (KeyDown or AutoKey event)
 const MessageT	msg_CommandStatus	= 815;	// SCommandStatus*
 const MessageT	msg_PostAction		= 816;	// LAction*
 const MessageT	msg_FinishCreate	= 817;	// LPane*
+const MessageT	msg_ContextClick	= 818;	// Point* (global mouse point)
 
 const MessageT	msg_OK				= 900;	// nil
 const MessageT	msg_Cancel			= 901;	// nil

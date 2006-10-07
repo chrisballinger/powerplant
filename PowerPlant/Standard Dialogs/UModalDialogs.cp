@@ -1,6 +1,3 @@
-// Copyright ©2005, 2006 Freescale Semiconductor, Inc.
-// Please see the License for the specific language governing rights and
-// limitations under the License.
 // ===========================================================================
 //	UModalDialogs.cp			PowerPlant 2.2.2	©1995-2005 Metrowerks Inc.
 // ===========================================================================
@@ -105,6 +102,10 @@ StDialogHandler::InitDialogHandler()
 		delete theUndoer;
 	}
 
+#if PP_Uses_Carbon_Events
+	mFirstTime = true;
+#endif
+
 	mMessage   = msg_Nothing;
 	mSleepTime = 6;
 }
@@ -139,6 +140,13 @@ StDialogHandler::DoDialog()
 		UEventMgr::GetMouseAndModifiers(macEvent);
 		AdjustCursor(macEvent);
 	}
+
+#if PP_Uses_Carbon_Events
+	if (mFirstTime) {
+		UpdateMenus();
+		mFirstTime = false;
+	}
+#endif
 
 	SetUpdateCommandStatus(false);
 	mMessage = msg_Nothing;
@@ -231,6 +239,7 @@ StDialogHandler::ListenToMessage(
 	mMessage = inMessage;		// Store message. DoDialog() will return
 								//   this value.
 }
+
 
 #pragma mark -
 

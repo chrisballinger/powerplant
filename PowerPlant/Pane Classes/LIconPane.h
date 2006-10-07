@@ -36,6 +36,9 @@ public:
 	virtual				~LIconPane();
 
 	void				SetIconID( ResIDT inIconID );
+	
+	ResIDT				GetIconID( void ) const	
+								{ return mIconID; }
 
 	virtual void		DrawSelf();
 

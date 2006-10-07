@@ -16,6 +16,10 @@
 	#pragma import on
 #endif
 
+#ifndef PP_Uses_Carbon_Events
+	#define	PP_Uses_Carbon_Events		0
+#endif
+
 PP_Begin_Namespace_PowerPlant
 
 // ---------------------------------------------------------------------------
@@ -44,6 +48,12 @@ public:
 								ClassIDT		inImpID = imp_class_ID);
 
 	virtual				~LPopupButton();
+
+#if PP_Uses_Carbon_Events
+	virtual void		SetMacMenuH(
+								MenuHandle		inMenuH,
+								bool			inOwnsMenu = true);
+#endif
 
 	virtual void		SetDataTag(
 								SInt16			inPartCode,
