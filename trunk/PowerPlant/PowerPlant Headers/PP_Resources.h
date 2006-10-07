@@ -51,6 +51,7 @@ const SInt16	str_ProgramName				= 1;
 const SInt16	str_SaveAs					= 2;
 const SInt16	str_OpenDialogTitle			= 3;
 const SInt16	str_SaveDialogTitle			= 4;
+const SInt16	str_HelpMenuTitle			= 5;
 									// End "PP Copy & Customize.rsrc"
 
 									// ¥ In "PP Action Strings.rsrc"

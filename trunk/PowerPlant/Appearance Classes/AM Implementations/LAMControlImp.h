@@ -15,6 +15,10 @@
 	#pragma import on
 #endif
 
+#if PP_Uses_Carbon_Events
+	#include	<TEventHandler.h>
+#endif
+
 PP_Begin_Namespace_PowerPlant
 
 // ---------------------------------------------------------------------------
@@ -98,6 +102,16 @@ protected:
 								SInt32			inRefCon);
 
 	virtual void		RefreshControlPane();
+
+#if PP_Uses_Carbon_Events
+	virtual void		FinishCreateSelf();
+
+	TEventHandler<LAMControlImp>	mDrawEvent;
+	
+	OSStatus			DoDrawEvent (
+								EventHandlerCallRef	inCallRef,
+								EventRef			inEventRef );
+#endif
 };
 
 PP_End_Namespace_PowerPlant

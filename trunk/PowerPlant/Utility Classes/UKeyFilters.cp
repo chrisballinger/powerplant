@@ -1,6 +1,3 @@
-// Copyright ©2005, 2006 Freescale Semiconductor, Inc.
-// Please see the License for the specific language governing rights and
-// limitations under the License.
 // ===========================================================================
 //	UKeyFilters.cp				PowerPlant 2.2.2	©1993-2005 Metrowerks Inc.
 // ===========================================================================
@@ -557,6 +554,24 @@ UKeyFilters::IsCmdPeriod(
 {
 	return ( (inKeyEvent.modifiers & cmdKey)  &&
 			 ::IsCmdChar(&inKeyEvent, char_Period) );
+}
+
+
+// ---------------------------------------------------------------------------
+//	¥ IsHelpKey
+// ---------------------------------------------------------------------------
+//	Return whether a keystroke event is a command-? or help key
+//
+//	This routine supports international keyboards by using a
+//	combination of the techniques described in TechNote Text-23
+//	and IM:Text page C-24.
+
+bool
+UKeyFilters::IsHelpKey(
+	const EventRecord&	inKeyEvent)
+{
+	return ( ((inKeyEvent.message & charCodeMask) == char_Help) ||
+			 ((inKeyEvent.modifiers & cmdKey)  && ::IsCmdChar(&inKeyEvent, '?')) );
 }
 
 

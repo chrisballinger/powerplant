@@ -16,6 +16,10 @@
 	#pragma import on
 #endif
 
+#ifndef PP_Uses_Carbon_Events
+	#define	PP_Uses_Carbon_Events		0
+#endif
+
 PP_Begin_Namespace_PowerPlant
 
 // ---------------------------------------------------------------------------

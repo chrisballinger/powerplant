@@ -1263,6 +1263,48 @@ LPane::ClickTimesAreClose(
 }
 
 
+#if PP_Uses_ContextMenus
+// ---------------------------------------------------------------------------
+//	¥ ContextClick
+// ---------------------------------------------------------------------------
+//	Handle a contextual menu click by passing the click up the visual
+//	hierarchy.
+
+OSStatus
+LPane::ContextClick (
+	Point				inGlobalPt)
+{
+	OSStatus			result = noErr;
+
+	if (ExecuteAttachments(msg_ContextClick, (void*) &inGlobalPt)) {
+		if (not ContextClickSelf(inGlobalPt)) {
+			LView *		superView = GetSuperView();
+			if (superView) {
+				result = superView->ContextClick(inGlobalPt);
+			} else {
+				result = eventNotHandledErr;
+			}
+		}
+	}
+	return result;
+}
+
+
+// ---------------------------------------------------------------------------
+//	¥ ContextClickSelf
+// ---------------------------------------------------------------------------
+//	Handle a contextual menu click by passing the click up the visual
+//	hierarchy. Override if this object has an associated contextual menu.
+
+bool
+LPane::ContextClickSelf (
+	Point				/* inGlobalPt */)
+{
+	return false;
+}
+#endif
+
+
 // ---------------------------------------------------------------------------
 //	¥ AdjustMouse
 // ---------------------------------------------------------------------------
@@ -1317,6 +1359,8 @@ LPane::AdjustMouseSelf(
 {
 	UCursor::SetArrow();				// Arrow is the default cursor
 }
+
+
 
 #pragma mark -
 

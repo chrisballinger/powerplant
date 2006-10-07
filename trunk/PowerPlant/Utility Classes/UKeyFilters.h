@@ -1,6 +1,3 @@
-// Copyright ©2005, 2006 Freescale Semiconductor, Inc.
-// Please see the License for the specific language governing rights and
-// limitations under the License.
 // ===========================================================================
 //	UKeyFilters.h				PowerPlant 2.2.2	©1993-2005 Metrowerks Inc.
 // ===========================================================================
@@ -113,6 +110,8 @@ public:
 
 	static bool			IsEscapeKey(const EventRecord &inKeyEvent);
 	static bool			IsCmdPeriod(const EventRecord &inKeyEvent);
+
+	static bool			IsHelpKey(const EventRecord &inKeyEvent);
 };
 
 PP_End_Namespace_PowerPlant

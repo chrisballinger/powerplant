@@ -88,6 +88,10 @@ LPopupGroupBox::InitPopupGroupBox(
 {
 	SetMenuID(inMenuID);
 
+#if PP_Uses_Carbon_Events
+	mControlSubPane->SetDataTag(kControlNoPart, kControlGroupBoxMenuHandleTag, sizeof(MenuHandle*), (Ptr) &mMenuH);
+#endif
+
 	mControlSubPane->SetValue(inInitialMenuItem);
 }
 
@@ -116,6 +120,8 @@ LPopupGroupBox::SetMacMenuH(
 	if (inMenuH != mMenuH) {
 		mControlSubPane->SetDataTag(0, dataTag_MenuHandle,
 									sizeof(MenuHandle), &inMenuH);
+		mControlSubPane->SetDataTag(kControlNoPart, kControlGroupBoxMenuHandleTag, 
+									sizeof(MenuHandle*), (Ptr)&inMenuH);
 
 		LMenuController::SetMacMenuH(inMenuH, inOwnsMenu);
 	}

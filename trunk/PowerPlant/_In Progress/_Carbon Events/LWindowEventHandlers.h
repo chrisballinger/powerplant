@@ -63,6 +63,14 @@ public:
 	OSStatus			MouseMoved(
 								EventHandlerCallRef	inCallRef,
 								EventRef			inEventRef);
+	
+	OSStatus			InputText(
+								EventHandlerCallRef	inCallRef,
+								EventRef			inEventRef);
+	
+	OSStatus			ShowWindow (
+								EventHandlerCallRef	inCallRef,
+								EventRef			inEventRef);
 
 private:
 	LWindow*	mWindow;
@@ -77,6 +85,8 @@ private:
 	TEventHandler<LWindowEventHandlers>	mZoom;
 	TEventHandler<LWindowEventHandlers>	mClose;
 	TEventHandler<LWindowEventHandlers>	mMouseMoved;
+	TEventHandler<LWindowEventHandlers>	mInputText;
+	TEventHandler<LWindowEventHandlers>	mShowWindow;
 };
 
 

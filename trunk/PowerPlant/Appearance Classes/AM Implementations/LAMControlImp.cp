@@ -192,6 +192,22 @@ LAMControlImp::~LAMControlImp()
 {
 }
 
+
+#if PP_Uses_Carbon_Events
+// ---------------------------------------------------------------------------
+//	¥ FinishCreateSelf
+// ---------------------------------------------------------------------------
+
+void
+LAMControlImp::FinishCreateSelf()
+{
+	ControlRef		ctlRef = GetMacControl();
+	EventTargetRef	tgtRef = ::GetControlEventTarget(ctlRef);
+	mDrawEvent.Install(tgtRef, kEventClassControl, kEventControlDraw, this, &LAMControlImp::DoDrawEvent);
+}
+#endif
+
+
 #pragma mark -
 
 // ---------------------------------------------------------------------------
@@ -879,6 +895,26 @@ LAMControlImp::ApplyTextColor(
 
 	::RGBForeColor(&textTraits.color);
 }
+
+
+#if PP_Uses_Carbon_Events
+// ---------------------------------------------------------------------------
+//	¥ DoDrawEvent
+// ---------------------------------------------------------------------------
+//	Since draw events can occur asynchronously with respect to the PowerPlant
+//	draw system, make sure we're properly focused.
+
+OSStatus
+LAMControlImp::DoDrawEvent (
+	EventHandlerCallRef				/* inCallRef */,
+	EventRef						/* inEventRef */ ) 
+{
+	mControlPane->FocusDraw();
+	
+	return eventNotHandledErr;
+}
+#endif
+
 
 #pragma mark -
 

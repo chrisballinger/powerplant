@@ -109,6 +109,10 @@ LPopupButton::InitPopupButton(
 		AppendResMenu(inMenuResType);	// Use Resource Type to build menu
 	}
 
+#if PP_Uses_Carbon_Events
+	mControlImp->SetDataTag(kControlNoPart, kControlPopupButtonMenuHandleTag, sizeof(MenuHandle*), (Ptr) &mMenuH);
+#endif
+
 	SetValue(inInitialMenuItem);
 }
 
@@ -120,6 +124,25 @@ LPopupButton::InitPopupButton(
 LPopupButton::~LPopupButton()
 {
 }
+
+
+#if PP_Uses_Carbon_Events
+// ---------------------------------------------------------------------------
+//	¥ SetMacMenuH													  [public]
+// ---------------------------------------------------------------------------
+//	Override to also associate the menu handle with the control implementation.
+
+void
+LPopupButton::SetMacMenuH(
+	MenuHandle		inMenuH,
+	bool			inOwnsMenu)
+{
+	LMenuController::SetMacMenuH(inMenuH, inOwnsMenu);
+	mControlImp->SetDataTag(kControlNoPart, kControlPopupButtonMenuHandleTag, 
+							sizeof(MenuHandle*), (Ptr)&mMenuH);
+}
+#endif
+
 
 
 // ---------------------------------------------------------------------------

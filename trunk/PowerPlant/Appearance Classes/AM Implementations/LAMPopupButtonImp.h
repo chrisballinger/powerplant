@@ -15,6 +15,10 @@
 	#pragma import on
 #endif
 
+#ifndef PP_Uses_Carbon_Events
+	#define	PP_Uses_Carbon_Events		0
+#endif
+
 PP_Begin_Namespace_PowerPlant
 
 // ---------------------------------------------------------------------------
@@ -34,7 +38,9 @@ public:
 
 	virtual void		DrawSelf();
 
+#if not PP_Uses_Carbon_Events
 	virtual void		PostSetValue();
+#endif
 
 	virtual void		SetDataTag(
 								SInt16			inPartCode,
@@ -49,7 +55,9 @@ protected:
 								ConstStringPtr	inTitle,
 								SInt32			inRefCon);
 
+#if not PP_Uses_Carbon_Events
 	virtual MenuHandle	GetMacMenuH() const;
+#endif
 	
 	virtual void		AlignControlRect();
 

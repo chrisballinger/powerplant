@@ -301,6 +301,12 @@ public:
 
 	static LPane*		GetLastPaneClicked()	{ return sLastPaneClicked; }
 
+#if PP_Uses_ContextMenus
+	virtual OSStatus	ContextClick ( Point inGlobalPt );
+	
+	virtual bool		ContextClickSelf ( Point inGlobalPt );
+#endif
+
 		// ¥ Showing
 
 	Boolean				IsVisible() const			{ return (mVisible == triState_On); }

@@ -215,6 +215,24 @@
 
 
 // ---------------------------------------------------------------------------
+//	Option for using Contextual Menus
+
+	// This flag controls whether modern support for contextual menus is
+	// included. It controls whether code is added to Carbon Event
+	// handlers and LPane. This feature may only be used when Carbon
+	// Event support is enabled.
+
+#ifndef PP_Uses_ContextMenus
+	#define PP_Uses_ContextMenus		0
+#endif
+
+#if !PP_Uses_Carbon_Events
+	#undef PP_Uses_ContextMenus
+	#define PP_Uses_ContextMenus		0
+#endif
+
+
+// ---------------------------------------------------------------------------
 //	Option for implementing Periodicals using event loop Timers
 
 	// CarbonLib 1.1 and later, as well as Mac OS X, support event loop
