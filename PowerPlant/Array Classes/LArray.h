@@ -33,6 +33,8 @@ typedef	SInt32			ArrayIndexT;
 //	¥ LArray ¥
 // ===========================================================================
 
+class LArrayIterator;
+
 class	LArray {
 	friend class LArrayIterator;
 	friend class LLockedArrayIterator;
