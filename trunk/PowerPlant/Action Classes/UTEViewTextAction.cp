@@ -24,7 +24,9 @@
 
 #include <LTextEditView.h>
 
+#ifndef __MACH__
 #include <Fonts.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -708,7 +710,11 @@ LTEViewFontAction::LTEViewFontAction(
 
 	: LTEViewStyleAction(str_Font, inCommander, inPane, inAlreadyDone)
 {
+/*
 	::GetFNum(inFontName, &mFont);			// Get font number from name
+/*/
+	mFont = ::FMGetFontFamilyFromName(inFontName);
+/**/
 
 	mTEView->GetFont(mSavedFont);			// Save the current font
 }

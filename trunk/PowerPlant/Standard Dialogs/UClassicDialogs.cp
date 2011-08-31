@@ -8,6 +8,8 @@
 //	Classes which use StandardFile dialogs to prompt the user to open
 //	and save files
 
+#error	Classic Dialogs (and Classic environment) are no longer supported
+
 #ifdef PowerPlant_PCH
 	#include PowerPlant_PCH
 #endif

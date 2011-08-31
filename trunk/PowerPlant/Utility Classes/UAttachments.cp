@@ -17,7 +17,9 @@
 #include <LStream.h>
 #include <LView.h>
 
+#ifndef __MACH__
 #include <Sound.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

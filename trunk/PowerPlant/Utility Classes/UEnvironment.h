@@ -10,7 +10,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
-#include <CodeFragments.h>
+#ifndef __MACH__
+	#include <CodeFragments.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

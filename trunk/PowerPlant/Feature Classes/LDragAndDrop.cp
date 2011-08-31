@@ -27,7 +27,9 @@
 #include <UEnvironment.h>
 #include <URegions.h>
 
+#ifndef __MACH__
 #include <Gestalt.h>
+#endif
 
 
 PP_Begin_Namespace_PowerPlant

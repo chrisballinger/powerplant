@@ -205,7 +205,9 @@ UCursor::SetWatch()
 // ---------------------------------------------------------------------------
 //	¥ SetThemeCursor
 // ---------------------------------------------------------------------------
+#ifndef __MACH__
 #include <Sound.h>
+#endif
 void
 UCursor::SetThemeCursor(
 	ThemeCursor	inCursor)

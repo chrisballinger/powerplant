@@ -159,6 +159,31 @@ private:
 };
 
 
+// ---------------------------------------------------------------------------
+//	Namespace wraps the Resource Manager's Resource Flipper APIs
+
+namespace	UResFlip	{
+			bool			HasFlipper (
+									ResType					inResType );
+									
+			OSStatus		GetFlipper (
+									ResType					inResType,
+									CoreEndianFlipProc *	outFlipProc,
+									void **					outRefCon );
+			
+			OSStatus		SetFlipper (
+									ResType					inResType,
+									CoreEndianFlipProc		inFlipProc,
+									void *					inRefCon );
+							
+			OSStatus		Flip (
+									ResType					inResType,
+									ResIDT					inID,
+									void *					ioData,
+									ByteCount				inDataLen,
+									Boolean					inIsNative );
+}
+
 PP_End_Namespace_PowerPlant
 
 

@@ -34,8 +34,10 @@ A collection of useful utilities that are used throughout the grayscale classes.
 #include <PP_Prefix.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <TextEdit.h>
 #include <Fonts.h>
+#endif
 
 
 //==================================================================================== 

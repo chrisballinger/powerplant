@@ -35,8 +35,10 @@ A collection of useful utilities that are used throughout the grayscale classes.
 #include <UGraphicUtils.h>		// PP CHANGE ADDED
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <TextEdit.h>
 #include <Fonts.h>
+#endif
 
 
 //==================================================================================== 

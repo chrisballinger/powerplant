@@ -50,14 +50,20 @@
 	#include PowerPlant_PCH
 #endif
 
+#ifndef	PP_Uses_STL_Containers
+	#define	PP_Uses_STL_Containers		0
+#endif
+
 #include <LGrowZone.h>
 #include <TArrayIterator.h>
 #include <LListener.h>
 #include <PP_Messages.h>
 #include <PP_Resources.h>
 
+#ifndef __MACH__
 #include <Dialogs.h>
 #include <OSUtils.h>
+#endif
 
 
 PP_Begin_Namespace_PowerPlant
@@ -238,6 +244,18 @@ LGrowZone::AskListenersToFree(
 	SInt32	byteCount = inBytesNeeded;
 
 	if (mIsBroadcasting) {
+#if PP_Uses_STL_Containers
+		std::list<LListener*>::iterator	iter = mListeners.begin();
+		while (iter != mListeners.end() && 
+				(bytesFreed < inBytesNeeded)) {
+			if ((*iter)->IsListening()) {
+				byteCount = inBytesNeeded - bytesFreed;
+				(*iter)->ListenToMessage(msg_GrowZone, &byteCount);
+				bytesFreed += byteCount;
+			}
+			iter++;
+		}
+#else
 		TArrayIterator<LListener*>	iterator(mListeners);
 		LListener		*theListener;
 		
@@ -253,6 +271,7 @@ LGrowZone::AskListenersToFree(
 				bytesFreed += byteCount;
 			}
 		}
+#endif
 	}
 
 	return bytesFreed;

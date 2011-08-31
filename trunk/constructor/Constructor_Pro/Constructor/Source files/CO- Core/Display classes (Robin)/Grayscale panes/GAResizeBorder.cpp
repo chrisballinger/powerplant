@@ -174,19 +174,34 @@ GAResizeBorder::GAResizeBorder (	LStream*	inStream ) : LGAFocusBorder ( inStream
 
 	//	* Setup the data members for the view
 	Int16 width, height;
+	Int16	resizeOption;
+/*
 	inStream->ReadData ( &width, sizeof (Int16));
 	mMinimumSize.width = width;
 	inStream->ReadData ( &height, sizeof (Int16));
 	mMinimumSize.height = height;
 	inStream->ReadData ( &mAdjustBarsOnResize, sizeof (Boolean));
 	inStream->ReadData ( &mAdjustHorizontally, sizeof (Boolean));
-	Int16	resizeOption;
 	inStream->ReadData ( &resizeOption, sizeof (Int16));
 	mAdjustOption = (EAdjustOptions)resizeOption;
 	inStream->ReadData ( &mCanZoom, sizeof ( Boolean ));
 	inStream->ReadData ( &mZoomWidgetID, sizeof ( PaneIDT ));
 	inStream->ReadData ( &mHideBorderOnZoom, sizeof ( Boolean ));
 	inStream->ReadData ( &mZoomCommanderID, sizeof (PaneIDT));
+/*/
+	*inStream >> width;
+	mMinimumSize.width = width;
+	*inStream >> height;
+	mMinimumSize.height = height;
+	*inStream >> mAdjustBarsOnResize;
+	*inStream >> mAdjustHorizontally;
+	*inStream >> resizeOption;
+	mAdjustOption = (EAdjstOptions)resizeOption;
+	*inStream >> mCanZoom;
+	*inStream >> mZoomWidgetID;
+	*inStream >> mHideBorderOnZoom;
+	*inStream >> mZoomCommanderID;
+/**/
 	
 }	//	GAResizeBorder::GAResizeBorder
 

@@ -18,6 +18,15 @@
 	//
 	// The file UStandardDialogs.i contains the function declarations
 
+/*
+	08/20/2011	RL Aurbach
+	Change the functioning of UStandardDialogs to ignore the PP_StdDialogs_Option
+	parameter and always use Navigation Services. We no longer support the
+	Classic environment.
+	
+	In addition, we will change the API so as to add support for the new 
+	Navigation Services APIs introduced in 10.4 and where possible.
+
 #if	PP_StdDialogs_Option == PP_StdDialogs_NavServicesOnly
 								// Always use Navigation Services
 	#include <UNavServicesDialogs.h>
@@ -33,6 +42,11 @@
 	#include <UClassicDialogs.h>
 	namespace PP_StandardDialogs = PP_PowerPlant::UClassicDialogs;
 #endif
+
+/*/
+	#include <UNavServicesDialogs.h>
+	namespace PP_StandardDialogs = PP_PowerPlant::UNavServicesDialogs;
+/**/
 
 
 PP_Begin_Namespace_PowerPlant

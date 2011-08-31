@@ -42,9 +42,11 @@
 #include <UAppearance.h>
 #include <UTBAccessors.h>
 
+#ifndef __MACH__
 #include <Dialogs.h>
 #include <Fonts.h>
 #include <LowMem.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

@@ -15,9 +15,11 @@
 #include <UDrawingUtils.h>
 #include <UTBAccessors.h>
 
+#ifndef __MACH__
 #include <LowMem.h>
 #include <MacWindows.h>
 #include <TextUtils.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

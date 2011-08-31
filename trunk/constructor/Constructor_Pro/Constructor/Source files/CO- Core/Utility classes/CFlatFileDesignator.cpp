@@ -26,6 +26,7 @@ struct FlatFileUserData
 {
 	Boolean							wantsFlatFile;
 	Boolean							usingAquaLayout;
+	AEDesc *						defLoc;			// Added 08/23/2011 rlaurb
 };
 typedef struct FlatFileUserData			FlatFileUserData;
 
@@ -98,25 +99,26 @@ CFlatFileDesignator::AskDesignateFlatFile(
 	ConstStringPtr	inDefaultName,
 	Boolean			inSuggestFlatened)
 {
+	bool				result = false;
 	UNavServicesDialogs::StNavEventUPP	eventUPP(FlatFileNavEventProc);
 
-	LString::CopyPStr(inDefaultName, mNavOptions.savedFileName);
-
 	mNavReply.SetDefaultValues();
+/*
+	LString::CopyPStr(inDefaultName, mNavOptions.savedFileName);
 
 	AEDesc*		defaultLocationDesc = nil;
 	if (not mDefaultLocation.IsNull()) {
 		defaultLocationDesc = mDefaultLocation;
 
 		if (mSelectDefault) {
-			mNavOptions.dialogOptionFlags |= kNavSelectDefaultLocation;
+			mNavOptions.optionFlags |= kNavSelectDefaultLocation;
 		} else {
-			mNavOptions.dialogOptionFlags &= ~kNavSelectDefaultLocation;
+			mNavOptions.optionFlags &= ~kNavSelectDefaultLocation;
 		}
 	}
 	
 	// Allow users to save files inside of bundles
-	mNavOptions.dialogOptionFlags |= kNavSupportPackages | kNavAllowOpenPackages;
+	mNavOptions.optionFlags |= kNavSupportPackages | kNavAllowOpenPackages;
 
 	UDesktop::Deactivate();
 
@@ -155,6 +157,60 @@ CFlatFileDesignator::AskDesignateFlatFile(
 	}
 	
 	return mNavReply.IsValid();
+/*/
+	mNavOptions.saveFileName = ::CFStringCreateWithPascalString(kCFAllocatorDefault,
+							inDefaultName, kCFStringEncodingMacRoman);
+	
+	OSStatus			status = noErr;
+	NavUserAction		action = kNavUserActionNone;
+	NavDialogRef		dlgRef = nil;
+	
+	mNavOptions.location.h = mNavOptions.location.v = -1;
+	AEDesc *			defLoc = (mDefaultLocation.IsNull() ? nil : (AEDesc*) mDefaultLocation);
+	if (mSelectDefault) {
+		mNavOptions.optionFlags |= kNavSelectDefaultLocation;
+	} else {
+		mNavOptions.optionFlags &= ~kNavSelectDefaultLocation;
+	}
+	mNavOptions.optionFlags |= kNavSupportPackages | kNavAllowOpenPackages;
+	
+	SInt32				gestaltValue;
+	FlatFileUserData	navUserData;
+	
+	navUserData.wantsFlatFile = inSuggestFlatened;
+	navUserData.usingAquaLayout = false;
+	navUserData.defLoc = defLoc;
+	status = ::Gestalt(gestaltMenuMgrAttr, &gestaltValue);
+	if ((status == noErr) && (gestaltValue & gestaltMenuMgrAquaLayoutMask)) {
+		navUserData.usingAquaLayout = true;
+	}
+	
+	UDesktop::Deactivate();
+	status = ::NavCreatePutFileDialog(&mNavOptions, mFileType, mFileCreator,
+							eventUPP, &navUserData, &dlgRef);
+	if (status == noErr) {
+		status = ::NavDialogRun(dlgRef);
+		if (status == noErr) {
+			action = ::NavDialogGetUserAction(dlgRef);
+			result = (action == kNavUserActionSaveAs);
+			if (result) {
+				mNavReply.UpdateReply(dlgRef);
+				mFlatFile = navUserData.wantsFlatFile;
+			}
+		}
+	}
+	UDesktop::Activate();
+	
+	if (dlgRef != nil) {
+		::NavDialogDispose(dlgRef);
+	}
+	if (mNavOptions.saveFileName != nil) {
+		::CFRelease(mNavOptions.saveFileName);
+	}
+	ThrowIfOSStatus_(status);
+	
+	return result;
+/**/
 }
 
 
@@ -284,6 +340,9 @@ FlatFileNavEventProc(
 					OSErr	err;
 					
 					err = NavCustomControl(ioParams->context, kNavCtlAddControl, gFlatCheckboxControl);
+				}
+				if (((FlatFileUserData*) ioUserData)->defLoc != nil) {
+					::NavCustomControl(ioParams->context, kNavCtlSetLocation, ((FlatFileUserData*) ioUserData)->defLoc);
 				}
 				break;
 			}

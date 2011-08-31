@@ -338,8 +338,10 @@ void PTPatternView::ParseColorPattern( Handle inPattern, SUOffscreen **outColor,
 	SUOffscreen			*tempColorBuffer = nil, *colorBuffer = nil, *bwBuffer = nil;
 
 	try
-	{	
-		if ( p->patType != 1 )
+	{
+		short			patType = CFSwapInt16BigToHost(p->patType);
+			
+		if ( patType != 1 )
 			LException::Throw( err_InvalidImageFormat );
 			
 		/*******************************************
@@ -350,13 +352,15 @@ void PTPatternView::ParseColorPattern( Handle inPattern, SUOffscreen **outColor,
 		/*******************************************
 			now the color pattern
 		********************************************/
-		PixMapPtr			theMap = (PixMapPtr)( *inPattern + (SInt32) p->patMap );
-		UInt8 *				theData = (UInt8*)( *inPattern + (SInt32) p->patData );
+		SInt32				patMapOffset = CFSwapInt32BigToHost((SInt32) p->patMap);
+		PixMapPtr			theMap = (PixMapPtr)( *inPattern + patMapOffset );
+		SInt32				patDataOffset = CFSwapInt32BigToHost((SInt32) p->patData);
+		UInt8 *				theData = (UInt8*)( *inPattern + patDataOffset );
 		
-		SInt32				depth = theMap->pixelSize;
-		SInt32				width = theMap->bounds.right - theMap->bounds.left;
-		SInt32				height = theMap->bounds.bottom - theMap->bounds.top;
-		SInt32				rowBytes = theMap->rowBytes & 0x3FFF;		// clear flags
+		SInt32				depth = CFSwapInt16BigToHost(theMap->pixelSize);
+		SInt32				width = CFSwapInt16BigToHost(theMap->bounds.right) - CFSwapInt16BigToHost(theMap->bounds.left);
+		SInt32				height = CFSwapInt16BigToHost(theMap->bounds.bottom) - CFSwapInt16BigToHost(theMap->bounds.top);
+		SInt32				rowBytes = CFSwapInt16BigToHost(theMap->rowBytes) & 0x3FFF;		// clear flags
 		
 		if ( (depth != 1) && (depth != 2) && (depth != 4) && (depth != 8) )
 			LException::Throw( err_InvalidImageDepth );
@@ -364,9 +368,10 @@ void PTPatternView::ParseColorPattern( Handle inPattern, SUOffscreen **outColor,
 		if ( (width <= 3) || (width > 64) || (height <= 3) || (height > 64) )
 			LException::Throw( err_InvalidImageSize );
 		
-		theTable = SUColorUtils::NewColorTableFromPtr( depth, (UInt8*)( *inPattern + (SInt32)theMap->pmTable) );
+		SInt32				pmTableOffset = CFSwapInt32BigToHost((SInt32) theMap->pmTable);
+		theTable = SUColorUtils::NewColorTableFromPtr( depth, (UInt8*)( *inPattern + pmTableOffset ), true );
 		tempColorBuffer = SUOffscreen::CreateBuffer( width, height, depth, theTable );
-		tempColorBuffer->CopyFromRawData( theData, rowBytes );
+		tempColorBuffer->CopyFromRawData( theData, rowBytes, true, depth );
 
 		// now switch to a 32-bit buffer
 		colorBuffer = SUOffscreen::CreateBuffer( width, height, 32 );
@@ -508,24 +513,38 @@ Handle PTPatternView::CreateColorPattern( SUOffscreen *inColor, SUOffscreen *inB
 		PixMapPtr	theMap = (PixMapPtr)( *h + offsetToPixmap );
 		CTabPtr		destTable = (CTabPtr)( *h + offsetToColorTable );
 		
-		p->patType = 1;
-		p->patMap = (PixMapHandle) offsetToPixmap;
-		p->patData = (Handle) offsetToPixelData;
-		p->patXValid = -1;
+		p->patType = CFSwapInt16HostToBig(1);
+		p->patMap = (PixMapHandle) CFSwapInt32HostToBig(offsetToPixmap);
+		p->patData = (Handle) CFSwapInt32HostToBig(offsetToPixelData);
+		p->patXValid = -1;				// We don't need to swap -1 any more than we do 0
 		
-		theMap->rowBytes = 0x8000 + pixelRowBytes;
-		::SetRect( &theMap->bounds, 0, 0, width, height );
-		theMap->hRes = 0x00480000;
-		theMap->vRes = 0x00480000;
-		theMap->pixelSize = depth;
-		theMap->cmpCount = 1;
-		theMap->cmpSize = depth;
-		theMap->pmTable = (CTabHandle) offsetToColorTable;
+		theMap->rowBytes = CFSwapInt16HostToBig(0x8000 + pixelRowBytes);
+		::SetRect( &theMap->bounds, 0, 0, CFSwapInt16HostToBig(width), CFSwapInt16HostToBig(height) );
+		theMap->hRes = CFSwapInt32HostToBig(0x00480000);
+		theMap->vRes = CFSwapInt32HostToBig(0x00480000);
+		theMap->pixelSize = CFSwapInt16HostToBig(depth);
+		theMap->cmpCount = CFSwapInt16HostToBig(1);
+		theMap->cmpSize = CFSwapInt16HostToBig(depth);
+		theMap->pmTable = (CTabHandle) CFSwapInt32HostToBig(offsetToColorTable);
 		
 		inBW->CopyToRawData( (UInt8*) &p->pat1Data, BWPatternRowBytes );
-		inColor->CopyToRawData( (UInt8*) (*h + offsetToPixelData), pixelRowBytes );
+		inColor->CopyToRawData( (UInt8*) (*h + offsetToPixelData), pixelRowBytes, true, depth );
+/*
 		::BlockMoveData( *sourceTable, destTable, colorTableBytes );
 		destTable->ctFlags = 0;					// 0 for pixmaps, 0x8000 for devices
+/*/
+		destTable->ctSeed = CFSwapInt32HostToBig((**sourceTable).ctSeed);
+		destTable->ctFlags = 0;					// 0 for pixmaps, 0x8000 for devices
+		destTable->ctSize = CFSwapInt16HostToBig((**sourceTable).ctSize);
+		SInt32		numEntries = (**sourceTable).ctSize + 1;
+		for (SInt32 iEntry = 0; iEntry < numEntries; iEntry++) {
+			ColorSpec	spec = (**sourceTable).ctTable[iEntry];
+			destTable->ctTable[iEntry].value = CFSwapInt16HostToBig(spec.value);
+			destTable->ctTable[iEntry].rgb.red = CFSwapInt16HostToBig(spec.rgb.red);
+			destTable->ctTable[iEntry].rgb.green = CFSwapInt16HostToBig(spec.rgb.green);
+			destTable->ctTable[iEntry].rgb.blue = CFSwapInt16HostToBig(spec.rgb.blue);
+		}
+/**/
 	}
 	catch( ... )
 	{

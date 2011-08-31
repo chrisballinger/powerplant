@@ -15,9 +15,11 @@
 
 #include <UDebugging.h>
 
-#include <MacErrors.h>
-#include <MacMemory.h>
-#include <Resources.h>
+#ifndef __MACH__
+	#include <MacErrors.h>
+	#include <MacMemory.h>
+	#include <Resources.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

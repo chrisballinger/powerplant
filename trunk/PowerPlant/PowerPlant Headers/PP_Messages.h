@@ -68,7 +68,7 @@ const MessageT	cmd_SaveCopyAs		= 18;	// nil
 const MessageT	cmd_ShowClipboard	= 19;	// nil
 const MessageT	cmd_Preferences		= 27;	// nil
 
-const MessageT	cmd_Help			= 28;	// nil
+const MessageT	cmd_Help			= 29;	// nil
 
 					// Undo/Redo Editing Actions
 const CommandT	cmd_ActionDeleted	= 20;	// LAction*

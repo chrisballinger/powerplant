@@ -18,7 +18,9 @@
 #include <LTextTableView.h>
 #include <LInPlaceEditField.h>
 
+#ifndef __MACH__
 #include <MacWindows.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

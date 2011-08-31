@@ -18,10 +18,12 @@
 #include <LString.h>
 #include <PP_Messages.h>
 
+#ifndef __MACH__
 #include <AEInteraction.h>
 #include <AERegistry.h>
 #include <AEObjects.h>
 #include <AEPackObject.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

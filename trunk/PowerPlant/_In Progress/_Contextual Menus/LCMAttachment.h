@@ -17,7 +17,9 @@
 #include <UAppleEventsMgr.h>
 #include <LCommander.h>
 
+#ifndef __MACH__
 #include <Menus.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

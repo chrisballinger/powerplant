@@ -16,7 +16,9 @@
 #include <LFileTypeList.h>
 #include <PP_Resources.h>
 
+#ifndef __MACH__
 #include <Processes.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

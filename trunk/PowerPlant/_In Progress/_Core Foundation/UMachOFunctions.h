@@ -9,8 +9,10 @@
 #define _H_UMachOFunctions
 #pragma once
 
+#ifndef __MACH__
 #include <CFBundle.h>
 #include <CGContext.h>
+#endif
 
 // ===========================================================================
 //	UMachOFunctions

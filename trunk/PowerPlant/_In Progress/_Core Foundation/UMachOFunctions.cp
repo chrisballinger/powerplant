@@ -8,7 +8,9 @@
 #include <UMachOFunctions.h>
 #include <LCFURL.h>
 
+#ifndef __MACH__
 #include <Folders.h>
+#endif
 
 
 #if (TARGET_RT_MAC_CFM && TARGET_API_MAC_CARBON)

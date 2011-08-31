@@ -68,6 +68,10 @@
 	#include PowerPlant_PCH
 #endif
 
+#ifndef	PP_Uses_STL_Containers
+	#define	PP_Uses_STL_Containers		0
+#endif
+
 #include <LPaneTree.h>
 #include <UWindows.h>
 #include <UDrawingUtils.h>
@@ -405,7 +409,11 @@ LPaneTree::WalkPaneList(
 				// Convert the Broadcaster to a PeekBroadcaster so the
 				// Listener list can be obtained (yes, this is a hack).
 			const LPeekBroadcaster*	theBroadcaster = reinterpret_cast<const LPeekBroadcaster*>(paneAsBroadcaster);
+#if PP_Uses_STL_Containers
+			UInt32 numListeners = theBroadcaster->GetListeners().size();
+#else
 			UInt32 numListeners = theBroadcaster->GetListeners().GetCount();
+#endif
 			if (numListeners > 0) {
 
 				LStr255	listenerInfo;
@@ -416,6 +424,33 @@ LPaneTree::WalkPaneList(
 
 				listenerInfo += StringLiteral_("Broadcasts to: ");
 
+#if PP_Uses_STL_Containers
+				std::list<LListener*>::const_iterator	listenerIter = theBroadcaster->GetListeners().begin();
+				bool first = true;
+				while (listenerIter != theBroadcaster->GetListeners().end()) {
+					LListener* theListener = (*listenerIter);
+					if (!first) {
+						listenerInfo != StringLiteral_(", ");
+					} else {
+						first = false;
+					}
+					listenerInfo += typeid(*theListener).name();
+					LPane* listenerAsPane = dynamic_cast<LPane*>(theListener);
+					if (listenerAsPane != nil) {
+						PaneIDT theID = listenerAsPane->GetPaneID();
+						LStr255 theIDString(StringLiteral_(" ("));
+						if (theID >= 0x20202020) {
+							theIDString += LStr255(static_cast<FourCharCode>(theID));
+						} else {
+							theIDString += theID;
+						}
+						theIDString += ')';
+
+						listenerInfo += theIDString;
+					}
+					++listenerIter;
+				}
+#else
 				TArrayIterator<LListener*>	listenerIterator(theBroadcaster->GetListeners());
 				LListener* theListener;
 				bool first = true;
@@ -446,7 +481,7 @@ LPaneTree::WalkPaneList(
 						listenerInfo += theIDString;
 					}
 				}
-
+#endif
 				listenerInfo += char_Return;
 
 				err = ::PtrAndHand(listenerInfo.TextPtr(), mTreeTextH, listenerInfo.LongLength());
@@ -461,7 +496,11 @@ LPaneTree::WalkPaneList(
 				// Convert the Listener to a PeekListener so the
 				// Broadcaster list can be obtained (yes, this is a hack).
 			const LPeekListener* theListener = reinterpret_cast<const LPeekListener*>(paneAsListener);
+#if PP_Uses_STL_Containers
+			UInt32 numBroadcasters = theListener->GetBroadcasters().size();
+#else
 			UInt32 numBroadcasters = theListener->GetBroadcasters().GetCount();
+#endif
 			if (numBroadcasters > 0) {
 
 				LStr255 broadcasterInfo;
@@ -472,6 +511,39 @@ LPaneTree::WalkPaneList(
 
 				broadcasterInfo += StringLiteral_("Listens to: ");
 
+#if PP_Uses_STL_Containers
+				std::list<LBroadcaster*>::const_iterator	broadcasterIterator = theListener->GetBroadcasters().begin();
+				bool first = true;
+				while (broadcasterIterator != theListener->GetBroadcasters().end()) {
+					LBroadcaster* theBroadcaster = (*broadcasterIterator);
+
+						// Cosmetics for the list
+					if (!first) {
+						broadcasterInfo += StringLiteral_(", ");
+					} else {
+						first = false;
+					}
+
+						// Add the Broadcaster's name
+					broadcasterInfo += typeid(*theBroadcaster).name();
+
+						// If the Broadcaster is also a Pane, add its PaneIDT
+					LPane* broadcasterAsPane = dynamic_cast<LPane*>(theBroadcaster);
+					if (broadcasterAsPane != nil) {
+						PaneIDT theID = broadcasterAsPane->GetPaneID();
+						LStr255 theIDString(StringLiteral_(" ("));
+						if (theID >= 0x20202020) {
+							theIDString += LStr255(static_cast<FourCharCode>(theID));
+						} else {
+							theIDString += theID;
+						}
+						theIDString += ')';
+
+						broadcasterInfo += theIDString;
+					}
+					++broadcasterIterator;
+				}
+#else
 				TArrayIterator<LBroadcaster*>	broadcasterIterator(theListener->GetBroadcasters());
 				LBroadcaster* theBroadcaster;
 				bool first = true;
@@ -502,6 +574,7 @@ LPaneTree::WalkPaneList(
 						broadcasterInfo += theIDString;
 					}
 				}
+#endif
 
 				broadcasterInfo += char_Return;
 

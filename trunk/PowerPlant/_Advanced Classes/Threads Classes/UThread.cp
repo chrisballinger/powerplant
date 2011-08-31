@@ -26,7 +26,9 @@
 #include <UException.h>
 
 // system headers
-#include <Threads.h>
+#if !defined(__MACH__)
+	#include <Threads.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

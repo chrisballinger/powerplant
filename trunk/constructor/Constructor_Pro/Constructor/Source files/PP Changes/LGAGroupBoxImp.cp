@@ -16,7 +16,9 @@
 #include <LControlPane.h>
 #include <UDrawingState.h>
 
-#include <MacWindows.h>
+#ifndef __MACH__
+	#include <MacWindows.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

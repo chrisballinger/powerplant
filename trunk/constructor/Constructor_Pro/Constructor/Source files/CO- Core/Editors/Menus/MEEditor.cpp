@@ -622,6 +622,7 @@ MEEditor::ReadMbarResource(
 	ValidateHandle_(mbarData);
 	
 	LHandleStream mbarStream(mbarData);
+	mbarStream.SetNativeEndian(inResource.HasEndianFlipper());
 
 	// Build a menu bar item.
 	
@@ -695,8 +696,11 @@ MEEditor::ReadMenuResource(
 	ValidateHandle_(menuData);
 	
 	LHandleStream menuStream(menuData);
+	menuStream.SetNativeEndian(inResource.HasEndianFlipper());
 	LHandleStream mcmdStream;
+	mcmdStream.SetNativeEndian(RFType::HasEndianFlipper('Mcmd'));
 	LHandleStream xmnuStream;
+	xmnuStream.SetNativeEndian(RFType::HasEndianFlipper('xmnu'));
 	
 	// See if there's an 'Mcmd' resource with PowerPlant
 	// command numbers.
@@ -1007,6 +1011,7 @@ MEEditor::WriteMbarResource(
 	// Build output stream for the resource.
 	
 	LHandleStream mbarStream;
+	mbarStream.SetNativeEndian(inResource.HasEndianFlipper());
 
 	// Write menu count.
 
@@ -1105,8 +1110,11 @@ MEEditor::WriteMenuResource(
 	// Build output stream for the resources.
 	
 	LHandleStream menuStream;
+	menuStream.SetNativeEndian(inResource.HasEndianFlipper());
 	LHandleStream mcmdStream;
+	mcmdStream.SetNativeEndian(RFType::HasEndianFlipper('Mcmd'));
 	LHandleStream xmnuStream;
+	xmnuStream.SetNativeEndian(RFType::HasEndianFlipper('xmnu'));
 	Boolean mcmdNeeded = false;		// will be set to true if there are any non-zero command numbers
 	Boolean xmnuNeeded = false;
 

@@ -85,11 +85,19 @@ LAnimatedIcon::LAnimatedIcon (	LStream*	inStream ) : LPane( inStream )
 {
 
 	// ¥ Get our fields setup from the stream
+/*
 	inStream->ReadData( &mFirstIconID, sizeof ( ResIDT ) );
 	inStream->ReadData( &mLastIconID, sizeof ( ResIDT ) );
 	mCurrIconID = mFirstIconID;
 	mNextTime = 0;
 	inStream->ReadData( &mIndicatorSpeed, sizeof ( Int16 ) );
+/*/
+	*inStream >> mFirstIconID;
+	*inStream >> mLastIconID;
+	mCurrIconID = mFirstIconID;
+	mNextTime = 0;
+	*inStream >> mIndicatorSpeed;
+/**/
 
 }	//	LAnimatedIcon::LAnimatedIcon
 

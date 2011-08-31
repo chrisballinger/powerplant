@@ -150,6 +150,7 @@
 
 	// MacOS : Resource manager
 #include "RFResource.h"
+#include "RFType.h"
 
 	// PowerPlant : GA : Grayscale utilities
 #include <UGAColorRamp.h>
@@ -381,6 +382,7 @@ VPEditor::ReadResourceDataSelf()
 	
 	LHandleStream ppobStream(mPrimaryResource->GetResData());
 	LHandleStream windStream(windRsrc != nil ? windRsrc->GetResData() : ::NewHandle(0));
+	windStream.SetNativeEndian(RFType::HasEndianFlipper('WIND'));
 
 	// Make sure the PPob version is correct.
 	
@@ -471,8 +473,11 @@ VPEditor::WriteResourceDataSelf()
 	
 	LHandleStream ppobStream;
 	LHandleStream windStream;
+	windStream.SetNativeEndian(RFType::HasEndianFlipper('WIND'));
 	LHandleStream ridlStream;
+	ridlStream.SetNativeEndian(RFType::HasEndianFlipper('RidL'));
 	LHandleStream wctbStream;
+	wctbStream.SetNativeEndian(RFType::HasEndianFlipper('wctb'));
 	
 	// Write the PPob version number.
 	

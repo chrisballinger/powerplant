@@ -16,12 +16,14 @@
 #include <UEnvironment.h>
 #include <UException.h>
 
-#include <MacErrors.h>
-#include <Gestalt.h>
-#include <LowMem.h>
-#include <Power.h>
-#include <Processes.h>
-#include <Threads.h>
+#if !defined(__MACH__)
+	#include <MacErrors.h>
+	#include <Gestalt.h>
+	#include <LowMem.h>
+	#include <Power.h>
+	#include <Processes.h>
+	#include <Threads.h>
+#endif
 
 #if TARGET_RT_MAC_CFM
 	#include <CodeFragments.h>

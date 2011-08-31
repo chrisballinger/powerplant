@@ -16,7 +16,6 @@
 #include <PP_Debug.h>
 #include <LView.h>
 
-#include <UOnyx.h>
 #include <UDebugNew.h>
 
 #if PP_Uses_Pragma_Import
@@ -79,7 +78,7 @@ PP_Begin_Namespace_PowerPlant
 
 
 // ---------------------------------------------------------------------------
-// Validation macros. QC and DebugNew are used if those supports are enabled.
+// Validation macros. DebugNew is used if support is enabled.
 
 #if PP_Debug
 
@@ -88,7 +87,6 @@ PP_Begin_Namespace_PowerPlant
 	#define ValidatePtr_(p)													\
 		do {																\
 			ThrowIf_(p == nil);												\
-			QCVerifyPtr_(p);												\
 		} while (false)
 
 		//	ValidateHandle_ should be called before dereferencing any handle.
@@ -96,7 +94,6 @@ PP_Begin_Namespace_PowerPlant
 	#define ValidateHandle_(h)												\
 		do {																\
 			ThrowIf_((h == nil) || ((*h) == nil));							\
-			QCVerifyHandle_(h);												\
 		} while (false)
 
 #else

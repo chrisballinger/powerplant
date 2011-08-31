@@ -19,7 +19,9 @@
 #include <UDrawingState.h>
 #include <PP_Messages.h>
 
+#ifndef __MACH__
 #include <MacWindows.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

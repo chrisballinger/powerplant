@@ -16,7 +16,9 @@
 #include <LPeriodical.h>
 #include <LCommander.h>
 
+#ifndef __MACH__
 #include <MacMemory.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

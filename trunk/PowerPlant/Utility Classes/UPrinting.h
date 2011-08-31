@@ -11,7 +11,9 @@
 
 #include <UMemoryMgr.h>
 
-#include <PMApplication.h>
+#ifndef __MACH__
+	#include <PMApplication.h>
+#endif
 
 #if !TARGET_RT_MAC_MACHO
 	#include <Printing.h>

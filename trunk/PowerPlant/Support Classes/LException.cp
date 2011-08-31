@@ -40,7 +40,9 @@
 #endif
 
 #include <LException.h>
+#ifndef __MACH__
 #include <MacMemory.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

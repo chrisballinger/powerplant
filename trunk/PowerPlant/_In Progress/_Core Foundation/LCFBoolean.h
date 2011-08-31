@@ -12,7 +12,9 @@
 #pragma once
 
 #include <LCFObject.h>
+#ifndef __MACH__
 #include <CFNumber.h>
+#endif
 
 // ---------------------------------------------------------------------------
 

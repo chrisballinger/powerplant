@@ -16,7 +16,9 @@
 #include <UEnvironment.h>
 #include <UCarbonEvents.h>
 
+#ifndef __MACH__
 #include <Sound.h>
+#endif
 
 #include <new>
 

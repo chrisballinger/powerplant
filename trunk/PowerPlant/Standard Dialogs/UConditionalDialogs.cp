@@ -9,6 +9,8 @@
 //	to prompt the user to open and save files. Use NavServices if available
 //	(based on a runtime check), and StandardFile otherwise.
 
+#error	Conditional Dialogs (and Classic) are no longer supported
+
 #ifdef PowerPlant_PCH
 	#include PowerPlant_PCH
 #endif

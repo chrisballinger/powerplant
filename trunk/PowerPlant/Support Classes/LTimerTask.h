@@ -11,7 +11,10 @@
 #pragma once
 
 #include <PP_Prefix.h>
-#include <CarbonEvents.h>
+
+#ifndef __MACH__
+	#include <CarbonEvents.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

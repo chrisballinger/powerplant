@@ -14,7 +14,9 @@
 #include <PP_Resources.h>
 #include <UDrawingState.h>
 
+#ifndef __MACH__
 #include <Icons.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

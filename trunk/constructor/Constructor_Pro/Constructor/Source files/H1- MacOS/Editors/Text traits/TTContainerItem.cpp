@@ -8,6 +8,11 @@
 //	 Created: 10/29/96
 //	   $Date: 2006/01/18 01:33:53 $
 //	$History: TTContainerItem.cpp $
+//
+//	*****************  Version 4  *****************
+//	User: rlaurb	   QDate: 08/03/11	 Time: 11:30
+//	Updated in $/Constructor/Source files/H1- MacOS/Editors/Text traits
+//	Restored functioning of the style field
 //	
 //	*****************  Version 3  *****************
 //	User: scouten      QDate: 02/18/97   Time: 19:18
@@ -62,40 +67,40 @@ TTContainerItem::~TTContainerItem()
 //		* Collapse
 // ---------------------------------------------------------------------------
 //	Overriden to disable collapsing.
-
+/*
 void
 TTContainerItem::Collapse()
 {
 	mExpanded = false;
 }
-
+*/
 
 
 // ---------------------------------------------------------------------------
 //		* CanExpand
 // ---------------------------------------------------------------------------
 //	Overriden to disable drawing the disclosure triangle.
-
+/*
 Boolean
 TTContainerItem::CanExpand() const
 {
 	return false;
 }
-
+*/
 
 
 // ---------------------------------------------------------------------------
 //		* CalcLocalDisclosureTriangleRect
 // ---------------------------------------------------------------------------
 //	Overriden to disable drawing the disclosure triangle.
-
+/*
 Boolean
 TTContainerItem::CalcLocalDisclosureTriangleRect(
-	Rect&	/* outTriangleRect */)
+	Rect&	outTriangleRect)
 {
 	return false;
 }
-
+*/
 
 // ===========================================================================
 
@@ -119,9 +124,25 @@ TTContainerItem::GetDrawContentsSelf(
 
 	// Cancel bold title behavior.
 
-	if (inCell.col == 1)
+	if (inCell.col == 1) {
 		ioDrawContents.outTextTraits.style &= ~bold;
+	}
 
+}
+
+// ---------------------------------------------------------------------------
+//		* PrepareDrawContents
+// ---------------------------------------------------------------------------
+//	Move the label a bit to the right to leave more room for the disclosure
+//	triangle.
+
+void
+TTContainerItem::PrepareDrawContents(
+	const STableCell&		inCell,
+	SOutlineDrawContents&	ioDrawContents)
+{
+	PIContainerItem::PrepareDrawContents(inCell, ioDrawContents);
+	ioDrawContents.prTextFrame.left += 8;
 }
 
 // ---------------------------------------------------------------------------

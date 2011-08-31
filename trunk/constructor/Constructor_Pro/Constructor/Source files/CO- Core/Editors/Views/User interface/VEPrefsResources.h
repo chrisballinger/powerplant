@@ -39,14 +39,16 @@
 #pragma once
 
 
-const ResType pref_ResourceType = 'Vprf';			// ResType for view editor prefs
+//const ResType pref_ResourceType = 'Vprf';			// ResType for view editor prefs
+const CFStringRef	Vprf_ShowHide	CFSTR("CAShowHideOptions");
+const CFStringRef	Vprf_GridPref	CFSTR("CAGridPreferences");
 
 
 // ===========================================================================
 //		* Show/hide preferences information
 // ===========================================================================
 
-const ResIDT pref_ShowHide = 129;
+//const ResIDT pref_ShowHide = 129;
 
 struct SShowHideInfo {
 	Boolean			mShowGrid;
@@ -64,7 +66,7 @@ struct SShowHideInfo {
 //		* Grid preferences information
 // ===========================================================================
 
-const ResIDT pref_Grid = 130;
+//const ResIDT pref_Grid = 130;
 
 struct SGridInfo {
 	Boolean			mSnapToGrid;

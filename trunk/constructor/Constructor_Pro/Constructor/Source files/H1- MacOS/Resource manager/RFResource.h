@@ -102,6 +102,8 @@ public:
 									{ return mResType; }
 
 	virtual Boolean			IsModified() const;
+	
+	Boolean					HasEndianFlipper () const;
 
 	// resource info changers
 

@@ -35,7 +35,9 @@ the focus from one focus border to another.
 #include <LCommander.h>
 #include <UEnvironment.h>
 
-#include <Quickdraw.h>
+#if !defined(__MACH__)
+	#include <Quickdraw.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

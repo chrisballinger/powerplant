@@ -16,7 +16,7 @@ class SUColorUtils
 
 		static CTabHandle	NewColorTableByDepth( SInt32 depth );
 		static CTabHandle	NewColorTableByEntries( SInt32 depth );
-		static CTabHandle	NewColorTableFromPtr( SInt32 depth, UInt8 *sourceData );
+		static CTabHandle	NewColorTableFromPtr( SInt32 depth, UInt8 *sourceData, bool doFlip = false );
 		static CTabHandle	GetColorTable( SInt32 inResourceID );
 		static void			FixColorTableBW( CTabHandle inTable, Boolean inForceEm );
 		
@@ -27,6 +27,9 @@ class SUColorUtils
 		static RGBColor		Color16ToRGB( Color32 inColor );
 		static Color32		RGBToColor32( const RGBColor & );
 		static Color32		RGBToColor16( const RGBColor & );
+		
+		static Color32		Color32BigToNative ( Color32 inColor );
+		static Color32		Color32NativeToBig ( Color32 inColor );
 		
 		static Boolean		EqualRGB( const RGBColor &, const RGBColor & );
 		static Boolean		EqualColor32( Color32, Color32 );

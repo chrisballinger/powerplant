@@ -80,7 +80,9 @@ CHANGE HISTORY :
 #include <UDrawingUtils.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Gestalt.h>
+#endif
 
 
 //=====================================================================================

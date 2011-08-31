@@ -12,7 +12,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
-#include <AppleEvents.h>
+#ifndef __MACH__
+	#include <AppleEvents.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

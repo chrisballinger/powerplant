@@ -15,14 +15,21 @@
 #include <PP_Prefix.h>
 #include <LFileTypeList.h>
 #include <UAppleEventsMgr.h>
+#ifndef __MACH__
 #include <Navigation.h>
 #include <StandardFile.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on
 #endif
 
 PP_Begin_Namespace_PowerPlant
+
+/*
+	08/20/2011	RL Aurbach
+	Deprecate Conditional Dialogs, since we only use Navigation Services and
+	no longer support the Classic Environment.
 
 // ---------------------------------------------------------------------------
 
@@ -120,6 +127,9 @@ namespace UClassicDialogs {
 							void*			ioDataPtr);
 }
 
+/*/
+	#include <UNavServicesDialogs.h>
+/**/
 
 PP_End_Namespace_PowerPlant
 

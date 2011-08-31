@@ -8,6 +8,11 @@
 //	 Created: 10/09/96
 //	   $Date: 2006/04/12 08:48:30 $
 //	$History: UIconUtilities.cpp $
+//
+//	*****************  Version 10  ****************
+//	User: rlaurb	   QDate: 07/19/11	 Time: 19:42
+//	Updated in $/Constructor/Source files/CO- Core/Utility classes
+//	Added endian-swapping for ALTI resource in GetRemappedIconID
 //	
 //	*****************  Version 9  *****************
 //	User: scouten      QDate: 03/05/97   Time: 09:56
@@ -326,7 +331,7 @@ UIconUtilities::GetRemappedIconID(
 		{
 			ValidateHandle_(theAlternate);
 			
-			outResID = **((ResIDT **) theAlternate);
+			outResID = CFSwapInt16BigToHost(**((ResIDT **) theAlternate));
 			
 			::ReleaseResource(theAlternate);
 		}

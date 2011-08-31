@@ -45,7 +45,9 @@
 #include <LControl.h>
 #include <UMemoryMgr.h>
 
+#ifndef __MACH__
 #include <LowMem.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -221,6 +223,7 @@ LTreeWindow::~LTreeWindow()
 void
 LTreeWindow::FinishCreateSelf()
 {
+	LWindow::FinishCreateSelf();
 	if (mTreeID != 0) {
 		mTree = FindPaneByID_(this, mTreeID, LTree);
 		ValidateObject_(mTree);

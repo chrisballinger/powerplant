@@ -10,7 +10,10 @@
 #pragma once
 
 #include <LAction.h>
-#include <TextEdit.h>
+
+#ifndef __MACH__
+	#include <TextEdit.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

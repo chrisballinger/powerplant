@@ -10,7 +10,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
-#include <Menus.h>
+#if !defined(__MACH__)
+	#include <Menus.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

@@ -17,9 +17,7 @@
 #include <PP_Messages.h>
 #include <UMemoryMgr.h>
 
-#if __MACH__
-	#include <Carbon/Carbon.h>
-#else
+#ifndef __MACH__
 	#include <Balloons.h>
 #endif
 

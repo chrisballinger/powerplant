@@ -14,7 +14,9 @@
 #include <LModelObject.h>
 #include <LAttachment.h>
 
-#include <Appearance.h>
+#ifndef __MACH__
+	#include <Appearance.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

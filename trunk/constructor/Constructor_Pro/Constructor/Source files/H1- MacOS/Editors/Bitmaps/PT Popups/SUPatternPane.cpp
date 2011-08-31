@@ -95,7 +95,8 @@ void SUPatternPane::SetPatternIndex( SInt32 inIndex, ERedrawOptions inRedraw )
 void SUPatternPane::GetCurrentPattern( Pattern *outPattern )
 {
 	ThrowIfNil_( mPatternListH );
-	ThrowIf_( (mCurrentIndex < 0) || (mCurrentIndex >= (**mPatternListH).numPatterns) );
+	short					patCt = CFSwapInt16BigToHost((**mPatternListH).numPatterns);
+	ThrowIf_( (mCurrentIndex < 0) || (mCurrentIndex >= patCt /*(**mPatternListH).numPatterns*/));
 
 	*outPattern = (**mPatternListH).patterns[ mCurrentIndex ];
 }
@@ -227,7 +228,8 @@ void SUPatternPane::DrawSwatch()
 ===================================================*/
 void SUPatternPane::DrawSwatchSelf( const Rect &swatchR )
 {
-	if ( !mPatternListH || (mCurrentIndex < 0) || (mCurrentIndex >= (**mPatternListH).numPatterns) ) return;
+	short				patCt = CFSwapInt16BigToHost((**mPatternListH).numPatterns);
+	if ( !mPatternListH || (mCurrentIndex < 0) || (mCurrentIndex >= patCt /*(**mPatternListH).numPatterns*/)) return;
 	
 	StColorPenState		oldPenState;
 	oldPenState.Normalize();

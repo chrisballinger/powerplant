@@ -24,7 +24,10 @@
 #include <UDrawingState.h>
 #include <UAttachments.h>
 
+#ifndef __MACH__
 #include <Fonts.h>
+#endif
+
 
 PP_Begin_Namespace_PowerPlant
 
@@ -192,7 +195,11 @@ LTree::InitTree(
 		mBaseTraits.color.green		= 0;
 		mBaseTraits.color.blue		= 0;
 		LString::CopyPStr(StringLiteral_("Monaco"), mBaseTraits.fontName);
+/*
 		::GetFNum(mBaseTraits.fontName, &mBaseTraits.fontNumber);
+/*/
+		mBaseTraits.fontNumber = ::FMGetFontFamilyFromName(mBaseTraits.fontName);
+/**/
 	}
 }
 

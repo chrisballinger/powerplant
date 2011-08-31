@@ -13,7 +13,9 @@
 #include <LEventDispatcher.h>
 #include <LModelObject.h>
 
-#include <AERegistry.h>
+#ifndef __MACH__
+	#include <AERegistry.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

@@ -15,7 +15,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
-#include <NumberFormatting.h>
+#ifndef __MACH__
+	#include <NumberFormatting.h>
+#endif
 #include <cstddef>
 
 #if PP_Uses_Pragma_Import

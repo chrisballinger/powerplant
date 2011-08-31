@@ -23,7 +23,9 @@
 #include <UQDOperators.h>
 #include <PP_Messages.h>
 
+#ifndef __MACH__
 #include <ColorPicker.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

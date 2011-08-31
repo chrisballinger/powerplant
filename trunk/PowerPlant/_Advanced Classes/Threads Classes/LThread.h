@@ -18,8 +18,10 @@
 	#include <PPCToolbox.h>
 #endif
 
-#include <Files.h>
-#include <Timer.h>
+#ifndef __MACH__
+	#include <Files.h>
+	#include <Timer.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

@@ -45,7 +45,9 @@
 #include <UMemoryMgr.h>
 #include <PP_Resources.h>
 
+#ifndef __MACH__
 #include <Fonts.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -97,7 +99,11 @@ UTextTraits::LoadTextTraits(
 		switch (ioTextTraits->fontNumber) {
 
 			case fontNumber_Unknown:
+/*
 				::GetFNum(ioTextTraits->fontName, &ioTextTraits->fontNumber);
+/*/
+				ioTextTraits->fontNumber = ::FMGetFontFamilyFromName(ioTextTraits->fontName);
+/**/
 				break;
 
 			case systemFont:

@@ -16,7 +16,9 @@
 #include <UDrawingUtils.h>
 #include <UTextTraits.h>
 
+#ifndef __MACH__
 #include <TextUtils.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

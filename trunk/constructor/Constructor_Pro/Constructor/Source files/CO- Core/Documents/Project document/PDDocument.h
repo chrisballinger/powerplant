@@ -123,11 +123,14 @@ protected:
 									const FSSpec&		inCurrentFileSpec);
 
 	virtual Boolean			IsModified();
-
+/*
 	virtual MessageT		DoSaveChangesDialog(
 									ResIDT				inDialogPPob,
 									SInt32				inStringIndex);
-
+/*/
+	virtual	MessageT		DoSaveChangesDialog (
+									bool 				inIsClosing );
+/**/
 	// file closing
 
 	virtual void			RemoveSubCommander(

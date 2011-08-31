@@ -15,7 +15,9 @@
 #include <PP_Prefix.h>
 #include <LFileTypeList.h>
 #include <UAppleEventsMgr.h>
-#include <Navigation.h>
+#if !defined(__MACH__)
+	#include <Navigation.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on
@@ -36,6 +38,9 @@ namespace UNavServicesDialogs {
 								~StNavReplyRecord();
 
 			void				SetDefaultValues();
+			
+			OSStatus			UpdateReply (
+									NavDialogRef	inDialogRef );
 
 			operator NavReplyRecord*()		{ return &mNavReply; }
 
@@ -58,9 +63,15 @@ namespace UNavServicesDialogs {
 
 			void				GetFileSpec(
 										FSSpec&		outFileSpec) const;
+			
+			void				GetFileSpec(
+										FSRef*		outFileSpec) const;
+			
+			CFStringRef			CopySaveFileName () const;
 
 		protected:
 			NavReplyRecord		mNavReply;
+			bool				mAllocated;
 
 		private:					// Unimplemented to prevent copying
 								StNavReplyRecord(
@@ -79,13 +90,30 @@ namespace UNavServicesDialogs {
 		public:
 			#include <LFileChooser.i>
 
+	
+			CFArrayRef			GetUTIList () const;
+			
+			void				CopyUTIList (
+									CFArrayRef		inList );
+			
+			void				AddUTIToList (
+									CFStringRef		inUTI );
+			
+			void				AddUTIListToList (
+									CFArrayRef		inUTIList );
+			
+			void				DeriveUTIList (
+									const LFileTypeList&	inFileTypes );
+
 		protected:
 			StNavReplyRecord		mNavReply;
-			NavDialogOptions		mNavOptions;
+//			NavDialogOptions		mNavOptions;
+			NavDialogCreationOptions	mNavOptions;
 			NavObjectFilterProcPtr	mNavFilterProc;
 			NavPreviewProcPtr		mNavPreviewProc;
 			StAEDescriptor			mDefaultLocation;
 			bool					mSelectDefault;
+			CFMutableArrayRef		mUTIList;
 	};
 
 	// -----------------------------------------------------------------------
@@ -96,7 +124,8 @@ namespace UNavServicesDialogs {
 
 		protected:
 			StNavReplyRecord	mNavReply;
-			NavDialogOptions	mNavOptions;
+//			NavDialogOptions	mNavOptions;
+			NavDialogCreationOptions	mNavOptions;
 			OSType				mFileType;
 			OSType				mFileCreator;
 			StAEDescriptor		mDefaultLocation;

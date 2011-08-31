@@ -11,7 +11,10 @@
 #pragma once
 
 #include <UEnvironment.h>
-#include <Icons.h>
+
+#if !defined(__MACH__)
+	#include <Icons.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

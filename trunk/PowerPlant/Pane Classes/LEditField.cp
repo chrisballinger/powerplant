@@ -27,8 +27,10 @@
 #include <UScrap.h>
 #include <UTextTraits.h>
 
+#ifndef __MACH__
 #include <Script.h>
 #include <Sound.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

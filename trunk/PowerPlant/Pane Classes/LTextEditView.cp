@@ -25,8 +25,10 @@
 #include <UTextTraits.h>
 #include <UTEViewTextAction.h>
 
+#ifndef __MACH__
 #include <Fonts.h>
 #include <Sound.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

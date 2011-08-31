@@ -102,7 +102,7 @@ VPDrawingAgent::~VPDrawingAgent()
 //		* CreateDisplayObject
 // ---------------------------------------------------------------------------
 //	Create the PowerPlant class for this model object. Relies on the
-//	pure virtual function CreateFromStrea to create the appropriate class,
+//	pure virtual function CreateFromStreams to create the appropriate class,
 //	then does some extra configuration on it.
 
 void

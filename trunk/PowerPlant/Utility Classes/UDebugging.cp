@@ -13,8 +13,10 @@
 
 #include <UDebugging.h>
 #include <PP_Constants.h>
+#ifndef __MACH__
 #include <Dialogs.h>
 #include <Processes.h>
+#endif
 
 
 // ---------------------------------------------------------------------------

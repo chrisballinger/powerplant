@@ -8,6 +8,11 @@
 //	 Created: 10/29/96
 //	   $Date: 2006/01/18 01:33:53 $
 //	$History: TTContainerItem.h $
+//
+//	*****************  Version 4  *****************
+//	User: rlaurb	   QDate: 08/03/11	 Time: 11:30
+//	Updated in $/Constructor/Source files/H1- MacOS/Editors/Text traits
+//	Restored functioning of the style field
 //	
 //	*****************  Version 3  *****************
 //	User: scouten      QDate: 02/18/97   Time: 19:18
@@ -50,15 +55,18 @@ public:
 
 	// disclosure triangle
 
-	virtual void			Collapse();
-	virtual Boolean			CanExpand() const;
-	virtual Boolean			CalcLocalDisclosureTriangleRect(
-									Rect&					outTriangleRect);
+//	virtual void			Collapse();
+//	virtual Boolean			CanExpand() const;
+//	virtual Boolean			CalcLocalDisclosureTriangleRect(
+//									Rect&					outTriangleRect);
 
 	// drawing behaviors
 	
 protected:
 	virtual void			GetDrawContentsSelf(
+									const STableCell&		inCell,
+									SOutlineDrawContents&	ioDrawContents);
+	virtual void			PrepareDrawContents(
 									const STableCell&		inCell,
 									SOutlineDrawContents&	ioDrawContents);
 	virtual void			DrawRowAdornments(

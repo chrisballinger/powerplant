@@ -49,12 +49,14 @@ titles are always drawn centered on the tab button.
 #include <LControl.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #ifndef __MACTYPES__
 	#include <MacTypes.h>
 #endif
 
 #ifndef __QUICKDRAW__
 	#include <Quickdraw.h>
+#endif
 #endif
 
 	

@@ -13,7 +13,9 @@
 #include <LString.h>
 #include <UATSUI.h>
 
+#ifndef __MACH__
 #include <CFString.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

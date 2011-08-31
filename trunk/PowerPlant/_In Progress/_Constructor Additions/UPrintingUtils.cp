@@ -12,7 +12,9 @@
 #include <UPrintingUtils.h>
 #include <UMemoryMgr.h>
 
+#ifndef __MACH__
 #include <Quickdraw.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

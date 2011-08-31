@@ -26,8 +26,10 @@
 #include <UTextTraits.h>
 #include <UTBAccessors.h>
 
+#ifndef __MACH__
 #include <LowMem.h>
 #include <ToolUtils.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

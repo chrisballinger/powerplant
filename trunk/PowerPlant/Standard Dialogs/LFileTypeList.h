@@ -15,7 +15,9 @@
 
 #include <PP_Prefix.h>
 #include <UMemoryMgr.h>
-#include <Navigation.h>
+#ifndef __MACH__
+	#include <Navigation.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

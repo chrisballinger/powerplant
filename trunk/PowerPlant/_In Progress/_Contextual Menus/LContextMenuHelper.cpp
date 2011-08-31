@@ -47,7 +47,9 @@
  */
 
 #include			<LContextMenuHelper.h>
+#ifndef __MACH__
 #include			<Menus.h>
+#endif
 #include			<PP_Resources.h>
 #include			<UCMMUtils.h>
 

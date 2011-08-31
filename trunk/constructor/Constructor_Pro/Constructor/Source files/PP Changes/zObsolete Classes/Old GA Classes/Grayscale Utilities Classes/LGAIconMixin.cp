@@ -45,8 +45,9 @@ CHANGE HISTORY :
 #include <UGraphicsUtilities.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Icons.h>
-
+#endif
 
 //=====================================================================================
 // CONSTANTS

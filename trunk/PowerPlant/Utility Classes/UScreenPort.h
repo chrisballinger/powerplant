@@ -10,7 +10,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
-#include <Quickdraw.h>
+#ifndef __MACH__
+	#include <Quickdraw.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

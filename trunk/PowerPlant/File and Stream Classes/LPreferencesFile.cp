@@ -15,10 +15,12 @@
 #include <LPreferencesFile.h>
 #include <LString.h>
 
+#ifndef __MACH__
 #include <Aliases.h>
 #include <Files.h>
 #include <Folders.h>
 #include <Resources.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

@@ -23,7 +23,9 @@
 #include <UDrawingState.h>
 #include <UEnvironment.h>
 
+#ifndef __MACH__
 #include <Appearance.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

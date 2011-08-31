@@ -13,7 +13,9 @@
 #include <LCommander.h>
 #include <LBroadcaster.h>
 
-#include <Lists.h>
+#ifndef __MACH__
+	#include <Lists.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

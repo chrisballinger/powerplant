@@ -22,8 +22,6 @@
 ================================================*/
 SUColorPane::SUColorPane( LStream *inStream ) : LPane( inStream )
 {
-	RGBColor	anRGB;
-	
 	mColorTable = nil;	
 	mClippedRgn = nil;
 	
@@ -32,10 +30,19 @@ SUColorPane::SUColorPane( LStream *inStream ) : LPane( inStream )
 		note: Constructor for CW10 used the userCon field for the color -- CW11
 				uses the stream data instead.
 	*/
+/*
+	*** rlaurb :: There IS no CW11. The actual last version of CW was CW10.
+	And the color panel resource doesn't include the extra data for the
+	RGB. So, we need to use the userCon field instead.
+		
+	RGBColor	anRGB;
 	*inStream >> anRGB.red;
 	*inStream >> anRGB.green;
 	*inStream >> anRGB.blue;
 	mCurrentColor = SUColorUtils::RGBToColor32( anRGB );
+/*/
+	mCurrentColor = mUserCon;
+/**/
 	
 	*inStream >> mClipsToSibblings;
 	*inStream >> mUsePickerOption;

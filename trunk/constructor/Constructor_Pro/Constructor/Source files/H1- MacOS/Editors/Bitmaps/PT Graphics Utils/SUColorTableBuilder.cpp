@@ -68,7 +68,9 @@ CHANGE HISTORY :
 #include "SUColorTableBuilder.h"
 #include "SUColorUtils.h"
 #include "SUColorHash.h"
+#ifndef __MACH__
 #include <PictUtils.h>
+#endif
 
 #include <UMemoryMgr.h>
 

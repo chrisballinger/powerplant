@@ -11,11 +11,13 @@
 
 #include <UDrawingState.h>
 
-#include <CarbonEvents.h>
-#include <Quickdraw.h>
-#include <Script.h>
-#include <TextEdit.h>
-#include <TextUtils.h>
+#ifndef __MACH__
+	#include <CarbonEvents.h>
+	#include <Quickdraw.h>
+	#include <Script.h>
+	#include <TextEdit.h>
+	#include <TextUtils.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

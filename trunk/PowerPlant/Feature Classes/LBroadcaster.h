@@ -12,7 +12,16 @@
 #define _H_LBroadcaster
 #pragma once
 
-#include <TArray.h>
+#ifndef	PP_Uses_STL_Containers
+	#define	PP_Uses_STL_Containers	0
+#endif
+
+#if	PP_Uses_STL_Containers
+	#include	<list>
+#else
+	#include 	<TArray.h>
+#endif
+#include	<PP_Types.h>
 
 #if PP_Uses_Pragma_Import
 	#pragma import on
@@ -49,7 +58,11 @@ public:
 						void*			ioParam = nil);
 
 protected:
+#if	PP_Uses_STL_Containers
+	std::list<LListener*>	mListeners;
+#else
 	TArray<LListener*>	mListeners;
+#endif
 	bool				mIsBroadcasting;
 };
 

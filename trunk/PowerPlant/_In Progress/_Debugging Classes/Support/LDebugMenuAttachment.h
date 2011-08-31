@@ -21,7 +21,9 @@
 	#include <UOnyx.h>
 #endif
 
+#ifndef __MACH__
 #include <Aliases.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

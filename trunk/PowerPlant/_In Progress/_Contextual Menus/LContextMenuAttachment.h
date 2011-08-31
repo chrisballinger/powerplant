@@ -50,7 +50,9 @@
 #include <LPane.h>
 #include <LString.h>
 #include <LCommander.h>
+#ifndef __MACH__
 #include <Menus.h>
+#endif
 
 #include <vector>
 

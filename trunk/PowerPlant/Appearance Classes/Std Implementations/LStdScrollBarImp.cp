@@ -272,7 +272,7 @@ LStdScrollBarImp::TrackLiveThumb(
 
 	UControlMgr::SendControlMessage(mMacControlH, thumbCntl, &dragParams);
 
-	SInt32	vValue;
+	SInt32	vValue = 0;
 	SInt32	vMin = mControlPane->GetMinValue();
 	SInt32	vMax = mControlPane->GetMaxValue();
 

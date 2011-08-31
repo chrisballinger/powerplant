@@ -170,6 +170,7 @@ GAResizeBar::GAResizeBar (	LStream*		inStream ) : LPane ( inStream )
 	mInitialMouseOffset = 0;
 	mFirstPane = nil;
 	mSecondPane = nil;
+/*
 	inStream->ReadData ( &mFirstPaneID, sizeof (PaneIDT));
 	inStream->ReadData ( &mSecondPaneID, sizeof (PaneIDT));
 	inStream->ReadData ( &endInsetValue, sizeof (Int16));
@@ -179,6 +180,17 @@ GAResizeBar::GAResizeBar (	LStream*		inStream ) : LPane ( inStream )
 	inStream->ReadData ( &mPaintBackground, sizeof (Boolean));
 	inStream->ReadData ( &mResizeMessage, sizeof (MessageT));
 	inStream->ReadData ( &mZoomCommanderID, sizeof (PaneIDT));
+/*/
+	*inStream >> mFirstPaneID;
+	*inStream >> mSecondPaneID;
+	*inStream >> endInsetValue;
+	mEndInsets.h = endInsetValue;
+	*inStream >> endInsetValue;
+	mEndInsets.v = endInsetValue;
+	*inStream >> mPaintBackground;
+	*inStream >> mResizeMessage;
+	*inStream >> mZoomCommandID;
+/**/
 
 	// * Figure out if we are a vertical or horizontal bar
 	Rect	localFrame;

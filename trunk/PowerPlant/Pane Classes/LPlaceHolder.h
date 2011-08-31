@@ -10,7 +10,9 @@
 #pragma once
 
 #include <LView.h>
-#include <Icons.h>
+#ifndef __MACH__
+	#include <Icons.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

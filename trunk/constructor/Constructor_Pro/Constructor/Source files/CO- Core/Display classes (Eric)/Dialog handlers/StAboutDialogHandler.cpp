@@ -48,8 +48,9 @@
 #include <PP_Messages.h>
 
 	// Universal headers
+#ifndef __MACH__
 #include <Sound.h>
-
+#endif
 
 // ===========================================================================
 

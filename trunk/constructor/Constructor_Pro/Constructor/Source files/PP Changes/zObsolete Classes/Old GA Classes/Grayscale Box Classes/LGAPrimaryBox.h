@@ -41,7 +41,9 @@ into the surface.
 #include <LView.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <TextEdit.h>
+#endif
 
 	
 //==================================================================================== 

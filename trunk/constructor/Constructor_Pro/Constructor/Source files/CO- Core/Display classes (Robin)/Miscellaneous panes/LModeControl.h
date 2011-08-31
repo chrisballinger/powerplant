@@ -37,12 +37,14 @@ CREATION DATE :	96.11.17
 #include <LControl.h>
 
 // * TOOLBOX HEADERS
+#ifndef __MACH__
 #ifndef __TYPES__
 	#include <Types.h>
 #endif
 
 #ifndef __QUICKDRAW__
 	#include <Quickdraw.h>
+#endif
 #endif
 
 	

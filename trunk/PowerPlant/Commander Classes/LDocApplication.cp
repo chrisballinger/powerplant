@@ -16,7 +16,9 @@
 #include <UDesktop.h>
 #include <UPrinting.h>
 
+#ifndef __MACH__
 #include <AEObjects.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

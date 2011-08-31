@@ -12,13 +12,23 @@
 #define _H_LListener
 #pragma once
 
-#include <TArray.h>
+#ifndef	PP_Uses_STL_Containers
+	#define	PP_Uses_STL_Containers	0
+#endif
+
+#if	PP_Uses_STL_Containers
+	#include	<list>
+#else
+	#include 	<TArray.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on
 #endif
 
 PP_Begin_Namespace_PowerPlant
+
+class		LBroadcaster;			// forward declaration
 
 // ---------------------------------------------------------------------------
 
@@ -45,7 +55,11 @@ public:
 							void*			ioParam) = 0;
 
 protected:
+#if PP_Uses_STL_Containers
+	std::list<LBroadcaster*>	mBroadcasters;
+#else
 	TArray<LBroadcaster*>	mBroadcasters;
+#endif
 	Boolean					mIsListening;
 
 	void			AddBroadcaster( LBroadcaster* inBroadcaster );
