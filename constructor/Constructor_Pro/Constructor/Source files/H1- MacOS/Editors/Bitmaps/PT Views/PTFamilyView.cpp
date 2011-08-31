@@ -87,6 +87,23 @@ PTFamilyView::PTFamilyView( LStream *inStream ) : PTPaintView( inStream )
 	ResIDT infoID = this->GetUserCon();
 	mFamilyListH = (PaintFamilyListH) SUFileUtils::GetAppResource( resType_PaintFamilyInfo, infoID );
 	::DetachResource( (Handle) mFamilyListH );
+
+// rlaurb - 08/06/2011
+// Explicitly convert the mFamilyListH resource handle to native endian.
+	(**mFamilyListH).defaultPane = CFSwapInt32BigToHost((**mFamilyListH).defaultPane);
+	(**mFamilyListH).numEntries  = CFSwapInt32BigToHost((**mFamilyListH).numEntries);
+	for (SInt32 i = 0; i < (**mFamilyListH).numEntries; i++) {
+		(**mFamilyListH).members[i].resourceType =		CFSwapInt32BigToHost((**mFamilyListH).members[i].resourceType);
+		(**mFamilyListH).members[i].flags =				CFSwapInt32BigToHost((**mFamilyListH).members[i].flags);
+		(**mFamilyListH).members[i].width =				CFSwapInt32BigToHost((**mFamilyListH).members[i].width);
+		(**mFamilyListH).members[i].height =			CFSwapInt32BigToHost((**mFamilyListH).members[i].height);
+		(**mFamilyListH).members[i].depth =				CFSwapInt32BigToHost((**mFamilyListH).members[i].depth);
+		(**mFamilyListH).members[i].rowBytes =			CFSwapInt32BigToHost((**mFamilyListH).members[i].rowBytes);
+		(**mFamilyListH).members[i].samplePaneID =		CFSwapInt32BigToHost((**mFamilyListH).members[i].samplePaneID);
+		(**mFamilyListH).members[i].maskOffset =		CFSwapInt32BigToHost((**mFamilyListH).members[i].maskOffset);
+		(**mFamilyListH).members[i].maskRowBytes =		CFSwapInt32BigToHost((**mFamilyListH).members[i].maskRowBytes);
+		(**mFamilyListH).members[i].maskSamplePaneID =	CFSwapInt32BigToHost((**mFamilyListH).members[i].maskSamplePaneID);
+	}
 }
 
 /*====================================

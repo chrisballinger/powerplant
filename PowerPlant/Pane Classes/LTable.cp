@@ -22,7 +22,9 @@
 #include <UDrawingState.h>
 #include <UDrawingUtils.h>
 
+#ifndef __MACH__
 #include <LowMem.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

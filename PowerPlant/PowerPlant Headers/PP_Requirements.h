@@ -25,7 +25,9 @@
 #define _H_PP_Requirements
 #pragma once
 
-#include <ConditionalMacros.h>
+#ifndef __MACH__
+	#include <ConditionalMacros.h>
+#endif
 
 // ---------------------------------------------------------------------------
 //	System Software Requirements

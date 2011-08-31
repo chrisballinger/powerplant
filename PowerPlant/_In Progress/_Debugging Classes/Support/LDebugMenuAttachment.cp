@@ -39,8 +39,10 @@
 #include <LMenu.h>
 #include <UDesktop.h>
 
+#ifndef __MACH__
 #include <Fonts.h>
 #include <ToolUtils.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -1995,7 +1997,7 @@ LDebugMenuAttachment::FindUniqueMenuID(
 	ResIDT	theID = 0;
 	bool	found = false;
 	{
-		StSpotlightDisable_();	// Spotlight complains when GetMenuHandle
+//		StSpotlightDisable_();	// Spotlight complains when GetMenuHandle
 								// returns nil, which is desired here.
 
 		for ( ; inStartID <= inStopID; inStartID++ ) {

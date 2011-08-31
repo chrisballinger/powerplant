@@ -150,8 +150,12 @@ LATSUIStyle::SetThemeFont(
 									// Get the QuickDraw font family ID
 									//   and use that to find the ATSU
 									//   font ID
+/*
 	SInt16		fontFamily;
 	::GetFNum(fontName, &fontFamily);
+/*/
+	SInt16		fontFamily = ::FMGetFontFamilyFromName(fontName);
+/**/
 	
 	ATSUFontID	atsuFont;
 	

@@ -37,7 +37,9 @@
 	void				SetFileCreator(
 								OSType				inFileCreator);
 
-	NavDialogOptions*	GetDialogOptions();
+//	NavDialogOptions*	GetDialogOptions();
+	NavDialogCreationOptions *
+						GetDialogOptions();
 
 	void				SetDefaultLocation(
 								const FSSpec&		inFileSpec,
@@ -50,6 +52,13 @@
 
 	void				GetFileSpec(
 								FSSpec&				outFileSpec) const;
+	
+	void				GetFileSpec (
+								FSRef *				outParentRef,
+								CFStringRef *		outFileName ) const;
+	
+	void				GetFileSpec (
+								CFURLRef *			outURLRef ) const;
 
 	bool				IsReplacing() const;
 

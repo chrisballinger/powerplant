@@ -16,7 +16,7 @@
 #include <UEnvironment.h>
 #include <UMemoryMgr.h>
 
-#include <UOnyx.h>
+//#include <UOnyx.h>
 #include <PP_DebugMacros.h>
 
 #if !TARGET_API_MAC_OSX
@@ -27,9 +27,11 @@
 	#define AmIBeingMWDebugged()		false
 #endif
 
+#ifndef __MACH__
 #include <Gestalt.h>
 #include <LowMem.h>
 #include <ToolUtils.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -237,9 +239,9 @@ UDebugUtils::GetLowLevelDebuggerInfo(
 			#endif
 
 
-			SLDisable_();	// Spotlight (understandably) doesn't like this
+//			SLDisable_();	// Spotlight (understandably) doesn't like this
 			outSignature = **debugWorld;
-			SLEnable_();
+//			SLEnable_();
 
 			switch (outSignature) {
 				case (('M' << 8) | 'T'):

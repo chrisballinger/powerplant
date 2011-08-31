@@ -19,15 +19,17 @@
 	#include <cstdio>
 #endif
 
-#include <Gestalt.h>
-#include <Power.h>
-#include <Processes.h>
+#if !defined(__MACH__)
+	#include <Gestalt.h>
+	#include <Power.h>
+	#include <Processes.h>
 
-#if !TARGET_RT_MAC_MACHO
-	#include <SegLoad.h>
+	#if !TARGET_RT_MAC_MACHO
+		#include <SegLoad.h>
+	#endif
+
+	#include <Threads.h>
 #endif
-
-#include <Threads.h>
 
 #if TARGET_RT_MAC_CFM
 	#include <CodeFragments.h>

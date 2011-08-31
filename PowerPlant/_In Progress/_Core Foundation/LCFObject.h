@@ -11,8 +11,10 @@
 #define _H_LCFObject
 #pragma once
 
+#ifndef __MACH__
 #include <CFBase.h>
 #include <CFData.h>
+#endif
 
 
 // ---------------------------------------------------------------------------

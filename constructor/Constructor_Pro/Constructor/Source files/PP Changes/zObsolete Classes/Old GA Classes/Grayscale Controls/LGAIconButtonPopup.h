@@ -50,7 +50,9 @@ rid of the old menu and getting the new one setup.
 #include <LGAIconButton.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Menus.h>
+#endif
 
 
 //==================================================================================== 

@@ -80,6 +80,12 @@ public:
 									{ return mResType; }
 	inline RFMap&			GetRFMap() const
 									{ return mResMap; }
+	
+	static bool				HasEndianFlipper (
+									ResType				inType );
+	
+	bool					HasEndianFlipper () const
+									{ return RFType::mHasEndianFlipper; }
 
 	// resource ID arbitration
 
@@ -96,6 +102,7 @@ private:
 protected:
 	RFMap&					mResMap;					// the resource map we belong to
 	ResType					mResType;					// resource type represented by this object
+	bool					mHasEndianFlipper;			// is an endian-flipper installed for this type
 
 	friend class RFMap;
 

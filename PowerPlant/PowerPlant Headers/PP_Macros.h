@@ -231,6 +231,15 @@
 	#define PP_Uses_ContextMenus		0
 #endif
 
+// ---------------------------------------------------------------------------
+//	Option for using STL containers
+	// This flag controls whether LArrays are replaced with appropriate
+	// STL containers (list, vector, etc).
+
+#ifndef PP_Uses_STL_Containers
+	#define PP_Uses_STL_Containers		0
+#endif
+
 
 // ---------------------------------------------------------------------------
 //	Option for implementing Periodicals using event loop Timers

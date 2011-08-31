@@ -19,7 +19,9 @@
 #include <UTableHelpers.h>
 #include <UTBAccessors.h>
 
+#ifndef __MACH__
 #include <Drag.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

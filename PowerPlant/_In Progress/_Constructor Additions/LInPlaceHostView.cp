@@ -9,6 +9,10 @@
 	#include PowerPlant_PCH
 #endif
 
+#ifndef	PP_Uses_STL_Containers
+	#define	PP_Uses_STL_Containers		0
+#endif
+
 #include <LInPlaceHostView.h>
 #include <LInPlaceEditField.h>
 
@@ -325,11 +329,20 @@ LInPlaceHostView::SpawnInPlaceEditor()
 	// Set up listener relationships for edit field.
 
 	mEditField->SetValueMessage(mValueMessage);
+
+#if PP_Uses_STL_Containers
+	std::list<LListener*>::iterator	iter = mListeners.begin();
+	while (iter != mListeners.end()) {
+		mEditField->AddListener(*iter);
+		++iter;
+	}
+#else
 	LFastArrayIterator iter(mListeners);
 	LListener* listener;
 	while (iter.Next(&listener)) {
 		mEditField->AddListener(listener);
 	}
+#endif
 }
 
 #pragma mark -

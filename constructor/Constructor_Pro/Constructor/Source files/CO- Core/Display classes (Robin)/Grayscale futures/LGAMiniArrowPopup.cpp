@@ -47,12 +47,14 @@ CHANGE HISTORY :
 #include <UTextTraits.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Quickdraw.h>
 #include <Icons.h>
 #include <LowMem.h>
 #include <Menus.h>
 #include <TextEdit.h>
 #include <ToolUtils.h>
+#endif
 
 
 //=====================================================================================

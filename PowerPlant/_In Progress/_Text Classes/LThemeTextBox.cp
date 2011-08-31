@@ -15,8 +15,10 @@
 #include <UEnvironment.h>
 #include <UTextTraits.h>
 
+#ifndef __MACH__
 #include <CFString.h>
 #include <MacTextEditor.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

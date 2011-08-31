@@ -58,7 +58,9 @@
 
 #include <LListener.h>
 #include <LBroadcaster.h>
+#if !PP_Uses_STL_Containers
 #include <TArrayIterator.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -91,11 +93,20 @@ LListener::LListener(
 
 LListener::~LListener()
 {
+#if PP_Uses_STL_Containers
+	std::list<LBroadcaster*>::iterator	iter = mBroadcasters.begin();
+	while (iter != mBroadcasters.end()) {
+		LBroadcaster *	theBroadcaster = (*iter);
+		++iter;
+		theBroadcaster->RemoveListener(this);
+	}
+#else
 	TArrayIterator<LBroadcaster*> iterator(mBroadcasters);
 	LBroadcaster*	theBroadcaster;
 	while (iterator.Next(theBroadcaster)) {
 		theBroadcaster->RemoveListener(this);
 	}
+#endif
 }
 
 
@@ -108,7 +119,21 @@ bool
 LListener::HasBroadcaster(
 	LBroadcaster*	inBroadcaster)
 {
+#if PP_Uses_STL_Containers
+	bool			found = false;
+	std::list<LBroadcaster*>::iterator	iter = mBroadcasters.begin();
+	while (iter != mBroadcasters.end()) {
+		if ((*iter) == inBroadcaster) {
+			found = true;
+			break;
+		} else {
+			++iter;
+		}
+	}
+	return found;
+#else
 	return (mBroadcasters.FetchIndexOf(inBroadcaster) != LArray::index_Bad);
+#endif
 }
 
 
@@ -126,7 +151,11 @@ void
 LListener::AddBroadcaster(
 	LBroadcaster*	inBroadcaster)
 {
+#if PP_Uses_STL_Containers
+	mBroadcasters.push_back(inBroadcaster);
+#else
 	mBroadcasters.AddItem(inBroadcaster);
+#endif
 }
 
 
@@ -144,7 +173,11 @@ void
 LListener::RemoveBroadcaster(
 	LBroadcaster*	inBroadcaster)
 {
+#if PP_Uses_STL_Containers
+	mBroadcasters.remove(inBroadcaster);
+#else
 	mBroadcasters.Remove(inBroadcaster);
+#endif
 }
 
 

@@ -8,6 +8,19 @@
 //   Created: 06/17/96
 //     $Date: 2006/04/12 08:48:13 $
 //	$History: VELayoutView.cpp $
+//
+//	*****************  Version 32  *****************
+//	User: rlaurb	   Date: 8/24/11	Time: 11:34
+//	Updated in $/Constructor/Source files/CO- Core/Editors/Views/User interface
+//	Converted preferences code from being resource-based to being CFPreferences-
+//	based.
+//
+//	*****************  Version 31  *****************
+//	User: rlaurb       Date: 8/04/11    Time: 17:13
+//	Updated in $/Constructor/Source files/CO- Core/Editors/Views/User interface
+//	Added code to set the user's current resource file as current in Draw. The
+//	LCaption code was otherwise unable to find the correct font information
+//	(since it doesn't cache it, but rather does a draw-time GetResource).
 //	
 //	*****************  Version 30  *****************
 //	User: scouten      Date: 3/05/97    Time: 10:50a
@@ -184,7 +197,8 @@
 #include "VELayoutView.h"
 
 	// Core : Application
-#include "CAPreferencesFile.h"
+//#include "CAPreferencesFile.h"
+#include "TCAPreferences.h"
 
 	// Core : Data model : Core classes
 #include "DMSelection.h"
@@ -316,6 +330,7 @@ VELayoutView::VELayoutView(
 	// Load global prefs if not already done.
 	
 	if (!sPrefsLoaded) {
+/*
 		StPreferencesContext prefsContext;
 		if (prefsContext.IsValid()) {
 			StResource showHidePrefsR(pref_ResourceType, pref_ShowHide, false);
@@ -323,7 +338,7 @@ VELayoutView::VELayoutView(
 			
 			if (showHidePrefsH != nil) {
 				ValidateHandle_(showHidePrefsH);
-				sShowHideInfo = **((SShowHideInfo**) showHidePrefsH);
+				sShowHideInfo = **((SShowHideInfo**) showHidePrefsH);	// endian OK
 			}
 
 			StResource gridPrefsR(pref_ResourceType, pref_Grid, false);
@@ -331,10 +346,21 @@ VELayoutView::VELayoutView(
 			
 			if (gridPrefsH != nil) {
 				ValidateHandle_(gridPrefsH);
-				sGridInfo = **((SGridInfo**) gridPrefsH);
+				sGridInfo.mSnapToGrid = (**((SGridInfo**) gridPrefsH)).mSnapToGrid;
+				sGridInfo.mGridSize.width = CFSwapInt16BigToHost((**((SGridInfo**) gridPrefsH)).mGridSize.width);
+				sGridInfo.mGridSize.height = CFSwapInt16BigToHost((**((SGridInfo**) gridPrefsH)).mGridSize.height);
 			}
 		}
 		sPrefsLoaded = true;
+/*/
+		if (CAPreferences::IsDefined(Vprf_ShowHide)) {
+			TCAPreferences::GetValue<SShowHideInfo>(Vprf_ShowHide, sShowHideInfo);
+		}
+		
+		if (CAPreferences::IsDefined(Vprf_GridPref)) {
+			TCAPreferences::GetValue<SGridInfo>(Vprf_GridPref, sGridInfo);
+		}
+/**/
 	}
 	
 	// Copy global prefs to local.
@@ -367,6 +393,7 @@ VELayoutView::~VELayoutView()
 	// Save preferences.
 	
 	if (sPrefsChanged) {
+/*
 		StPreferencesContext prefsContext;
 		if (prefsContext.IsValid()) {
 			StNewResource showHideInfoR(pref_ResourceType, pref_ShowHide, sizeof (SShowHideInfo));
@@ -377,9 +404,17 @@ VELayoutView::~VELayoutView()
 			StNewResource gridInfoR(pref_ResourceType, pref_Grid, sizeof (SGridInfo));
 			Handle gridInfoH = (Handle) gridInfoR;
 			ValidateHandle_(gridInfoH);
-			**((SGridInfo**) gridInfoH) = sGridInfo;
+			(**((SGridInfo**) gridInfoH)).mSnapToGrid = sGridInfo.mSnapToGrid;
+			(**((SGridInfo**) gridInfoH)).mGridSize.width = CFSwapInt16HostToBig(sGridInfo.mGridSize.width);
+			(**((SGridInfo**) gridInfoH)).mGridSize.height = CFSwapInt16HostToBig(sGridInfo.mGridSize.height);
 		}
 		sPrefsChanged = false;
+/*/
+		StUpdatePreferences	prefsCtx;
+		TCAPreferences::SetValue<SShowHideInfo>(Vprf_ShowHide, sShowHideInfo);
+		TCAPreferences::SetValue<SGridInfo>(Vprf_GridPref, sGridInfo);
+		sPrefsChanged = false;
+/**/
 	}
 	
 	// Get rid of the backdrop object.
@@ -1152,6 +1187,10 @@ VELayoutView::Draw(
 		if (!::EmptyRgn(mUpdateRgn)) {
 
 			// Some portion needs to be drawn.
+
+#if Constructor_UseRF
+			StResourceContext docContext(mRFMap->GetResourceContext());
+#endif
 
 			Rect frame;
 			CalcLocalFrameRect(frame);

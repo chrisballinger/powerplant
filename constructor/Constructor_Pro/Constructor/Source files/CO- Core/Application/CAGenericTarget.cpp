@@ -189,7 +189,8 @@
 #include "Constructor.menu.h"
 
 	// Core : Application
-#include "CAPreferencesFile.h"
+//#include "CAPreferencesFile.h"
+#include "CAPreferences.h"
 #include "Constructor.PPob.h"
 
 	// Core : Catalog
@@ -329,6 +330,8 @@ const SInt16		str_PrefsFileName	= 2;
 const ResIDT		STR_GenericStrings		= 1466;
 const SInt16		str_NavServicesError	= 1;
 const SInt16		str_RebuildDesktopDB	= 2;
+
+const CFStringRef	prefs_OpenWindows	CFSTR("CAOpenWindowList");
 
 
 // ===========================================================================
@@ -528,8 +531,8 @@ main(void)
 
 		// Start up the preferences file.
 
-		LStr255 prefsFileName(STR_TargetInfo, str_PrefsFileName);
-		CAPreferencesFile thePrefs(prefsFileName);
+//		LStr255 prefsFileName(STR_TargetInfo, str_PrefsFileName);
+//		CAPreferencesFile thePrefs(prefsFileName);
 
 		// Set up the correct application object for the target.
 
@@ -1347,8 +1350,8 @@ CAGenericTarget::DoStdFileOpenDialog(void)
 		kNavAllowOpenPackages;
 	flags &= ~kNavAllowMultipleFiles;		// Can't select multiple files
 
-	NavDialogOptions*	options = chooser.GetDialogOptions();
-	options->dialogOptionFlags = flags;
+	NavDialogCreationOptions*	options = chooser.GetDialogOptions();
+	options->optionFlags = flags;
 
 	isGood = chooser.AskOpenFile(fileTypes);
 
@@ -1474,6 +1477,7 @@ CAGenericTarget::RememberOpenWindows()
 	// are currently open.
 	
 	LHandleStream windowList;
+	windowList.SetNativeEndian(true);			// store native-endian
 
 	// Let subclass specify which windows are open.
 
@@ -1498,7 +1502,7 @@ CAGenericTarget::RememberOpenWindows()
 	}
 
 	// Write this data to prefs file.
-	
+/*
 	StPreferencesContext prefsContext;
 	if (prefsContext.IsValid()) {					//* 2.4a2: BUG FIX #1072: added if statement
 	
@@ -1518,6 +1522,14 @@ CAGenericTarget::RememberOpenWindows()
 		windowListR.Write();
 	
 	}
+/*/
+	StUpdatePreferences	prefsCtx;
+	if (windowList.GetLength() != 0) {
+		CAPreferences::SetValueAsHandle(prefs_OpenWindows, windowList.GetDataHandle());
+	} else {
+		CAPreferences::Remove(prefs_OpenWindows);
+	}
+/**/
 }
 
 
@@ -1547,13 +1559,20 @@ CAGenericTarget::ReopenGlobalWindows()
 {
 
 	// See if we have window prefs resource.
-	
+/*
 	StPreferencesContext prefsContext;
 	if (!prefsContext.IsValid())				//* 2.4a2: BUG FIX #1072: added if statement
 		return;
 		
 	StResource windowListR('WOPN', 1000, false, true);
 												//! TEMPORARY: magic numbers
+/*/
+	if (!CAPreferences::IsDefined(prefs_OpenWindows)) {
+		return;
+	}
+	
+	StHandleBlock	windowListR(CAPreferences::CopyValueAsHandle(prefs_OpenWindows));
+/**/
 	if (((Handle) windowListR) == nil)
 		return;
 	
@@ -1564,6 +1583,7 @@ CAGenericTarget::ReopenGlobalWindows()
 	
 	ValidateHandle_(windowListR);
 	LHandleStream windowList((Handle) windowListR);
+	windowList.SetNativeEndian(true);		// Preference is native-endian
 
 	while (windowList.GetLength() - windowList.GetMarker() >= 4) {
 		try {
@@ -1657,6 +1677,7 @@ CAGenericTarget::ShowAboutBox()
 	// Read our 'vers' 1 resource to get the version number.
 	
 	appContext.Enter();
+/*
 	Handle vers1Resource = ::Get1Resource('vers', 1);
 	ValidateHandle_(vers1Resource);
 	HLock(vers1Resource);
@@ -1668,6 +1689,15 @@ CAGenericTarget::ShowAboutBox()
 	tempStr += versRecP->shortVersion;
 	versCaption->SetDescriptor(tempStr);
 	::ReleaseResource(vers1Resource);
+/*/
+	CFBundleRef				main = ::CFBundleGetMainBundle();
+	CFStringRef				versRef = (CFStringRef) ::CFBundleGetValueForInfoDictionaryKey(main, CFSTR("CFBundleVersion"));
+	::CFRetain(versRef);
+	if (::CFStringGetPascalString(versRef, StringPtr(tempStr), tempStr.Length(), kCFStringEncodingMacRoman)) {
+		versCaption->SetDescriptor(tempStr);
+	}
+	::CFRelease(versRef);
+/**/
 	
 	// Run the about box dialog until the user clicks on it.
 	

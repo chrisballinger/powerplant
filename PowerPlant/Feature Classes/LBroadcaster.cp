@@ -52,7 +52,9 @@
 
 #include <LBroadcaster.h>
 #include <LListener.h>
+#if !PP_Uses_STL_Containers
 #include <TArrayIterator.h>
+#endif
 
 #include <PP_Messages.h>
 
@@ -91,11 +93,20 @@ LBroadcaster::~LBroadcaster()
 	BroadcastMessage(msg_BroadcasterDied, this);
 
 						// Tell all Listeners to remove this Broadcaster
+#if PP_Uses_STL_Containers
+	std::list<LListener*>::iterator	iter = mListeners.begin();
+	while (iter != mListeners.end()) {
+		LListener *	theListener = *iter;
+		++iter;
+		theListener->RemoveBroadcaster(this);
+	}
+#else
 	TArrayIterator<LListener*> iterator(mListeners);
 	LListener*	theListener;
 	while (iterator.Next(theListener)) {
 		theListener->RemoveBroadcaster(this);
 	}
+#endif
 }
 
 
@@ -117,7 +128,11 @@ LBroadcaster::AddListener(
 	LListener*	inListener)
 {
 	if (not HasListener(inListener)) {		// Add if not already a Listener
+#if PP_Uses_STL_Containers
+		mListeners.push_back(inListener);
+#else
 		mListeners.AddItem(inListener);
+#endif
 		inListener->AddBroadcaster(this);
 	}
 }
@@ -140,7 +155,11 @@ void
 LBroadcaster::RemoveListener(
 	LListener*	inListener)
 {
+#if PP_Uses_STL_Containers
+	mListeners.remove(inListener);
+#else
 	mListeners.Remove(inListener);
+#endif
 	inListener->RemoveBroadcaster(this);
 }
 
@@ -154,7 +173,21 @@ bool
 LBroadcaster::HasListener(
 	LListener*	inListener)
 {
+#if PP_Uses_STL_Containers
+	bool		found = false;
+	std::list<LListener*>::iterator	iter = mListeners.begin();
+	while (iter != mListeners.end()) {
+		if ((*iter) == inListener) {
+			found = true;
+			break;
+		} else {
+			++iter;
+		}
+	}
+	return found;
+#else
 	return (mListeners.FetchIndexOf(inListener) != LArray::index_Bad);
+#endif
 }
 
 
@@ -171,6 +204,16 @@ LBroadcaster::BroadcastMessage(
 	void*		ioParam)
 {
 	if (mIsBroadcasting) {
+#if PP_Uses_STL_Containers
+		std::list<LListener*>::iterator		iter = mListeners.begin();
+		while (iter != mListeners.end()) {
+			LListener *		theListener = *iter;
+			iter++;
+			if (theListener->IsListening()) {
+				theListener->ListenToMessage(inMessage, ioParam);
+			}
+		}
+#else
 		TArrayIterator<LListener*>	iterator(mListeners);
 		LListener*	theListener;
 		while (iterator.Next(theListener)) {
@@ -178,6 +221,7 @@ LBroadcaster::BroadcastMessage(
 				theListener->ListenToMessage(inMessage, ioParam);
 			}
 		}
+#endif
 	}
 }
 

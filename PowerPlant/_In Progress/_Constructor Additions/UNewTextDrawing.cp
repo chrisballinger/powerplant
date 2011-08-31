@@ -11,9 +11,11 @@
 
 #include <UNewTextDrawing.h>
 
-#include <FixMath.h>
-#include <Script.h>
-#include <TextEdit.h>
+#ifndef __MACH__
+	#include <FixMath.h>
+	#include <Script.h>
+	#include <TextEdit.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

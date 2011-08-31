@@ -12,7 +12,9 @@
 
 #include <UMemoryMgr.h>
 #include <cstring>
+#ifndef __MACH__
 #include <TextUtils.h>
+#endif
 
 #include <LStream.h>
 #include <LTemporaryFileStream.h>

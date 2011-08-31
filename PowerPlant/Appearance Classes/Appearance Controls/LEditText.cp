@@ -55,7 +55,9 @@
 #include <UMemoryMgr.h>
 #include <UScrap.h>
 
+#ifndef __MACH__
 #include <Sound.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

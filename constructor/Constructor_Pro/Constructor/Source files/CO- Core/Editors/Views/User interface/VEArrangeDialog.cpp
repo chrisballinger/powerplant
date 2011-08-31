@@ -9,6 +9,11 @@
 //     $Date: 2006/04/12 08:48:13 $
 //	$History: VEArrangeDialog.cpp $
 //	
+//	*****************  Version 11  *****************
+//	User: rlaurb	   Date: 8/24/11	 Time: 12:36
+//	Updated in $/Constructor/Source files/CO- Core/Editors/Views/User interface
+//	Replace resource-based preferences; using CFPreferences instead
+//
 //	*****************  Version 10  *****************
 //	User: scouten      QDate: 02/20/97   Time: 18:26
 //	Updated in $/Constructor/Source files/CO- Core/Editors/Views/User interface
@@ -97,7 +102,8 @@
 #include "VEArrangeDialog.h"
 
 	// Core : Application
-#include "CAPreferencesFile.h"
+//#include "CAPreferencesFile.h"
+#include "TCAPreferences.h"
 
 	// Core : Editors : Views : User interface
 #include "VEMenuResources.h"
@@ -121,8 +127,9 @@ const PaneIDT	PaneID_Sample1				= 'smp1';
 const PaneIDT	PaneID_Sample2				= 'smp2';
 const PaneIDT	PaneID_Sample3				= 'smp3';
 
-const ResType	ResType_ArrangementData		= 'Arrg'; // GHD: Changed from 'arrg'
-const ResIDT	ResID_ArrangementData		= 1000;
+//const ResType	ResType_ArrangementData		= 'Arrg'; // GHD: Changed from 'arrg'
+//const ResIDT	ResID_ArrangementData		= 1000;
+const CFStringRef	prefs_Arrangement	CFSTR("CAArrangementOptions");
 
 
 // ===========================================================================
@@ -384,8 +391,8 @@ VEArrangeDialog::SaveArrangementData()
 	SAlignmentData arrangeData;
 	GetArrangementData(arrangeData);
 	
+/*
 	// Create the new resource which will contain the arrangement info.
-	
 	StPreferencesContext prefsContext;
 	if (prefsContext.IsValid()) {					//* 2.4a2: BUG FIX #1072: added if statement
 
@@ -403,6 +410,10 @@ VEArrangeDialog::SaveArrangementData()
 		newResource.Write(true);
 	
 	}
+/*/
+	StUpdatePreferences		prefCtx;
+	TCAPreferences::SetValue<SAlignmentData>(prefs_Arrangement, arrangeData);
+/**/
 }
 
 
@@ -1113,7 +1124,7 @@ VEArrangeDialog::FinishCreateSelf()
 
 	// Last time through this dialog, we saved the user's preferences for aligning.
 	// Now restore this information.
-	
+/*
 	StPreferencesContext prefsContext;
 	StResource currArrangementData(ResType_ArrangementData, ResID_ArrangementData, false);
 
@@ -1125,4 +1136,11 @@ VEArrangeDialog::FinishCreateSelf()
 		SAlignmentData defaultAlign = { alignHoriz_None, 0, alignVert_None, 0 };
 		SetArrangementData(defaultAlign);
 	}
+/*/
+	SAlignmentData		alignData = { alignHoriz_None, 0, alignVert_None, 0 };
+	if (CAPreferences::IsDefined(prefs_Arrangement)) {
+		TCAPreferences::GetValue<SAlignmentData>(prefs_Arrangement, alignData);
+	}
+	SetArrangementData(alignData);
+/**/
 }

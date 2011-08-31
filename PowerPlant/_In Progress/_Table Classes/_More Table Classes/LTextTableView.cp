@@ -35,7 +35,9 @@
 #include <LTableSingleRowSelector.h>
 #include <LTableMultiRowSelector.h>
 
+#ifndef __MACH__
 #include <Drag.h>
+#endif
 #include <limits.h>
 
 PP_Begin_Namespace_PowerPlant

@@ -27,7 +27,9 @@
 #include <UEventMgr.h>
 #include <UReanimator.h>
 
+#ifndef __MACH__
 #include <ControlDefinitions.h>
+#endif
 
 
 PP_Begin_Namespace_PowerPlant

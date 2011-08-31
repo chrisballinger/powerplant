@@ -22,11 +22,13 @@
 
 #include <UNewTextDrawing.h>
 
-#include <Drag.h>
-#include <Events.h>
-#include <Icons.h>
-#include <LowMem.h>
-#include <MacWindows.h>
+#ifndef __MACH__
+	#include <Drag.h>
+	#include <Events.h>
+	#include <Icons.h>
+	#include <LowMem.h>
+	#include <MacWindows.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -1031,7 +1033,11 @@ LOutlineItem::ClickCell(
 	// If there's an icon, hit test it.
 
 	if (drawInfo.outHasIcon && (drawInfo.outIconSuite != nil)) {
+/*  rlaurb 08/06/2011
 		if (::PtInIconSuite(inMouseDown.whereLocal, &drawInfo.prIconFrame, (SInt16) drawInfo.outIconAlign, drawInfo.outIconSuite)) {
+/*/
+		if (::MacPtInRect(inMouseDown.whereLocal, &drawInfo.prIconFrame)) {
+/**/
 			TrackContentClick(inCell, inMouseDown, drawInfo, false);
 			return;
 		}

@@ -14,8 +14,10 @@
 #include <LStream.h>	// needed for EStreamFrom
 #include <LString.h>
 
+#ifndef __MACH__
 #include <ConditionalMacros.h>
 #include <Quickdraw.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

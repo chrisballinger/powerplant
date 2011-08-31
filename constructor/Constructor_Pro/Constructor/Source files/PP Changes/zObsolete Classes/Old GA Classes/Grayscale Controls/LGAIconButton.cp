@@ -176,7 +176,9 @@ CHANGE HISTORY :
 #include <UDrawingUtils.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Icons.h>
+#endif
 
 
 //=====================================================================================

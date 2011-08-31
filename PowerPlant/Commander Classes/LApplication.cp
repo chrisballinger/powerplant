@@ -30,10 +30,12 @@
 
 #include <new>
 
+#ifndef __MACH__
 #include <AEObjects.h>
 #include <Devices.h>
 #include <Dialogs.h>
 #include <LowMem.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

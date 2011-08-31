@@ -357,6 +357,18 @@ RFResource::IsModified() const
 }
 
 
+// ---------------------------------------------------------------------------
+//		* HasEndianFlipper
+// ---------------------------------------------------------------------------
+//	Return true if an endian-flipper is installed for this resource
+
+Boolean
+RFResource::HasEndianFlipper () const
+{
+	return mResType.HasEndianFlipper();
+}
+
+
 // ===========================================================================
 
 #pragma mark -

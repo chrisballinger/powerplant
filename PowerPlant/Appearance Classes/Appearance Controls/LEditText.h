@@ -14,7 +14,9 @@
 #include <LPeriodical.h>
 #include <UKeyFilters.h>
 
-#include <TextEdit.h>
+#if !defined(__MACH__)
+	#include <TextEdit.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

@@ -48,7 +48,9 @@ rid of the old menu and getting the new one setup.
 #include <LGATitleMixin.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Menus.h>
+#endif
 
 
 //==================================================================================== 

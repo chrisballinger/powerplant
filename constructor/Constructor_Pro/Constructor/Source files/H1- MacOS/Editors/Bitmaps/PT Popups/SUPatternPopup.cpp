@@ -53,7 +53,7 @@ void SUPatternPopup::Prepare( Point inTopLeft )
 {
 	ThrowIfNil_( mPatternList );
 	
-	mItems = (**mPatternList).numPatterns;
+	mItems = CFSwapInt16BigToHost((**mPatternList).numPatterns);
 	
 	mCols = MIN( mItems, 16 );				// MAX of 16 items across
 	mRows = 1 + (mItems - 1) / mCols;

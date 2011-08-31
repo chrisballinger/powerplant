@@ -46,7 +46,7 @@
 #include "GWindowPositioner.h"
 
 	// Application object
-#include "CAPreferencesFile.h"
+//#include "CAPreferencesFile.h"
 
 
 // ===========================================================================
@@ -123,7 +123,7 @@ SWindowPositionH
 GWindowPositioner::ReadWindowPosition(
 	ResIDT	inResID)
 {
-	StPreferencesContext prefs;
+//	StPreferencesContext prefs;
 	return LWindowPositioner::ReadWindowPosition(inResID);
 }
 
@@ -138,7 +138,7 @@ GWindowPositioner::WriteWindowPosition(
 	ResIDT				inResID,
 	SWindowPositionH	inWindowPositionH)
 {
-	StPreferencesContext prefs;
-	if (prefs.IsValid())						//* 2.4a2: BUG FIX #1072: added if statement
+//	StPreferencesContext prefs;
+//	if (prefs.IsValid())						//* 2.4a2: BUG FIX #1072: added if statement
 		LWindowPositioner::WriteWindowPosition(inResID, inWindowPositionH);
 }

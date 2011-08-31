@@ -139,7 +139,9 @@ CHANGE HISTORY :
 #include <PP_Messages.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <MacWindows.h>
+#endif
 
 
 //=====================================================================================

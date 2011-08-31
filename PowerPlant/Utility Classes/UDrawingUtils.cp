@@ -15,11 +15,13 @@
 #include <UEnvironment.h>
 #include <UEventMgr.h>
 
+#ifndef __MACH__
 #include <Events.h>
 #include <FixMath.h>
 #include <Folders.h>
 #include <Gestalt.h>
 #include <LowMem.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

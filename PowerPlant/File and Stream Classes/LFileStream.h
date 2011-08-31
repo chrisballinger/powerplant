@@ -14,7 +14,9 @@
 #include <LFile.h>
 #include <LStream.h>
 
-#include <Script.h>
+#ifndef __MACH__
+	#include <Script.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

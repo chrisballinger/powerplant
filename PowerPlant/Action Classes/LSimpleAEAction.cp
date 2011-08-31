@@ -16,7 +16,9 @@
 #include <UAppleEventsMgr.h>
 #include <LModelObject.h>
 
+#ifndef __MACH__
 #include <AEInteraction.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

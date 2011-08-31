@@ -16,10 +16,12 @@
 #include <UCursor.h>
 #include <UEnvironment.h>
 
-#include <MacWindows.h>
-#include <Menus.h>
+#if !defined(__MACH__)
+	#include <MacWindows.h>
+	#include <Menus.h>
 
-#include <Sound.h>	// $$$ DEBUG
+	#include <Sound.h>	// $$$ DEBUG
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

@@ -48,8 +48,10 @@ CHANGE HISTORY :
 #include <UException.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Quickdraw.h>
 #include <TextEdit.h>
+#endif
 
 
 //=====================================================================================

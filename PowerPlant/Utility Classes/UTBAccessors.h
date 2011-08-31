@@ -42,6 +42,7 @@
 #define _H_UTBAccessors
 #pragma once
 
+#ifndef __MACH__
 #include <ConditionalMacros.h>
 
 	// Define accessor function for the "Transition" and "Classic"
@@ -306,5 +307,7 @@ WindowRef		GetWindowFromPort( GrafPtr port )
 #endif // !OPAQUE_TOOLBOX_STRUCTS
 
 #endif // !ACCESSOR_CALLS_ARE_FUNCTIONS || !OPAQUE_TOOLBOX_STRUCTS
+
+#endif
 
 #endif

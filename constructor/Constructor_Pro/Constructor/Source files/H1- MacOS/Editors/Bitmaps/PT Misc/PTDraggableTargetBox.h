@@ -5,7 +5,9 @@
 
 #include "PTTargetBox.h"
 #include "PTImageDragMixin.h"
+#ifndef __MACH__
 #include <Drag.h>
+#endif
 
 class SUOffscreen;
 class SUColorCursorCache;

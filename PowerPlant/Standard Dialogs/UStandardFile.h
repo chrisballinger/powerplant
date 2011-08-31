@@ -12,7 +12,9 @@
 #include <PP_Prefix.h>
 #include <PP_Resources.h>
 
+#ifndef __MACH__
 #include <StandardFile.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

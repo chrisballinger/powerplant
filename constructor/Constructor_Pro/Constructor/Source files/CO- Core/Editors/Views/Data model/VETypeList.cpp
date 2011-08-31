@@ -129,7 +129,9 @@
 #include <UModalDialogs.h>
 
 	// Universal headers
+#ifndef __MACH__
 #include <Finder.h>
+#endif
 
 
 // ===========================================================================

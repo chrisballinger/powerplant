@@ -84,6 +84,10 @@ TCLEditor::ReadResourceDataSelf()
 	ValidateHandle_(tabData);
 
 	LHandleStream tabStream(tabData);
+	RFResource* rfRsrc = dynamic_cast<RFResource*>(mPrimaryResource);
+	if (rfRsrc) {
+		tabStream.SetNativeEndian(rfRsrc->HasEndianFlipper());
+	}
 
 	// Build a menu header item.
 	DMReanimator* reanimator = DMReanimator::GetReanimator();
@@ -158,6 +162,10 @@ TCLEditor::WriteResourceDataSelf()
 
 	// Build output stream for the resource.
 	LHandleStream tabStream;
+	RFResource* rfRsrc = dynamic_cast<RFResource*>(mPrimaryResource);
+	if (rfRsrc != nil) {
+		tabStream.SetNativeEndian(rfRsrc->HasEndianFlipper());
+	}
 
 	TCLModelTabControl* tabControl = dynamic_cast<TCLModelTabControl*>(mDataModelRoot.GetObject());
 	ValidateObject_(tabControl);

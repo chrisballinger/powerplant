@@ -10,7 +10,9 @@
 #pragma once
 
 #include <PP_Macros.h>
-#include <MacTypes.h>				// Toolbox data types
+#ifndef __MACH__
+	#include <MacTypes.h>				// Toolbox data types
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

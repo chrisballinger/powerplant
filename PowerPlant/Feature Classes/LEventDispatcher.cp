@@ -24,18 +24,19 @@
 #include <UEnvironment.h>
 #include <UWindows.h>
 
-#include <AEInteraction.h>
-#include <CarbonEvents.h>
+#ifndef __MACH__
+	#include <AEInteraction.h>
+	#include <CarbonEvents.h>
 
-#if !TARGET_RT_MAC_MACHO
-	#include <DiskInit.h>
+	#if !TARGET_RT_MAC_MACHO
+		#include <DiskInit.h>
+	#endif
+
+	#include <LowMem.h>
+	#include <MacWindows.h>
+	#include <Sound.h>
+	#include <ToolUtils.h>
 #endif
-
-#include <LowMem.h>
-#include <MacWindows.h>
-#include <Sound.h>
-#include <ToolUtils.h>
-
 
 PP_Begin_Namespace_PowerPlant
 
@@ -433,15 +434,16 @@ LEventDispatcher::EventActivate(
 									(WindowPtr) inMacEvent.message);
 	if (theWindow != nil) {
 		if (inMacEvent.modifiers & activeFlag) {
-			LCommander::SetUpdateCommandStatus(true);
+//			LCommander::SetUpdateCommandStatus(true);
 			theWindow->Activate();
 		} else {
 			theWindow->Deactivate();
 									// No need to update status now.
 									//   An Activate event must be pending,
 									//   and it will update the status.
-			LCommander::SetUpdateCommandStatus(false);
+//			LCommander::SetUpdateCommandStatus(false);
 		}
+		LCommander::SetUpdateCommandStatus(true);
 	}
 }
 

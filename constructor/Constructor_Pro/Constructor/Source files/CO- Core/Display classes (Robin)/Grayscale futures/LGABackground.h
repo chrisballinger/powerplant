@@ -40,6 +40,7 @@ CREATION DATE :	96.11.19
 #include <LAttachment.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #ifndef __MACTYPES__
 	#include <MacTypes.h>
 #endif
@@ -47,7 +48,7 @@ CREATION DATE :	96.11.19
 #ifndef __QUICKDRAW__
 	#include <Quickdraw.h>
 #endif
-
+#endif
 
 	
 //==================================================================================== 

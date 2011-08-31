@@ -53,6 +53,13 @@ public:
 						{
 							return GetMarker() >= GetLength();
 						}
+	
+	bool			IsNativeEndian () const
+						{	return mNativeEndian;		}
+	
+	void			SetNativeEndian (
+							bool			inNativeEndian = true )
+						{	mNativeEndian = inNativeEndian;	}
 
 						// Write Operations
 
@@ -87,10 +94,14 @@ public:
 	LStream&		operator << (const Rect	&inRect)
 						{
 							Rect rect;
-							rect.top = CFSwapInt16HostToBig(inRect.top);
-							rect.left = CFSwapInt16HostToBig(inRect.left);
-							rect.right= CFSwapInt16HostToBig(inRect.right);
-							rect.bottom = CFSwapInt16HostToBig(inRect.bottom);
+							if (mNativeEndian) {
+								rect = inRect;
+							} else {
+								rect.top = CFSwapInt16HostToBig(inRect.top);
+								rect.left = CFSwapInt16HostToBig(inRect.left);
+								rect.right= CFSwapInt16HostToBig(inRect.right);
+								rect.bottom = CFSwapInt16HostToBig(inRect.bottom);
+							}
 							WriteBlock(&rect, sizeof(rect));
 							return (*this);
 						}
@@ -98,8 +109,12 @@ public:
 	LStream&		operator << (const Point &inPoint)
 						{
 							Point pt;
-							pt.v = CFSwapInt16HostToBig(inPoint.v);
-							pt.h = CFSwapInt16HostToBig(inPoint.h);
+							if (mNativeEndian) {
+								pt = inPoint;
+							} else {
+								pt.v = CFSwapInt16HostToBig(inPoint.v);
+								pt.h = CFSwapInt16HostToBig(inPoint.h);
+							}
 							WriteBlock(&pt, sizeof(pt));
 							return (*this);
 						}
@@ -130,41 +145,61 @@ public:
 
 	LStream&		operator << (SInt16 inNum)
 						{
-							SInt16 n;
-							n = CFSwapInt16HostToBig(inNum);
-							WriteBlock(&n, sizeof(n));
+							if (mNativeEndian) {
+								WriteBlock(&inNum, sizeof(SInt16));
+							} else {
+								SInt16 n;
+								n = CFSwapInt16HostToBig(inNum);
+								WriteBlock(&n, sizeof(n));
+							}
 							return (*this);
 						}
 
 	LStream&		operator << (UInt16 inNum)
 						{
-							UInt16 n;
-							n = CFSwapInt16HostToBig(inNum);
-							WriteBlock(&n, sizeof(n));
+							if (mNativeEndian) {
+								WriteBlock(&inNum, sizeof(UInt16));
+							} else {
+								UInt16 n;
+								n = CFSwapInt16HostToBig(inNum);
+								WriteBlock(&n, sizeof(n));
+							}
 							return (*this);
 						}
 
 	LStream&		operator << (SInt32 inNum)
 						{
-							SInt32 n;
-							n = CFSwapInt32HostToBig(inNum);
-							WriteBlock(&n, sizeof(n));
+							if (mNativeEndian) {
+								WriteBlock(&inNum, sizeof(SInt32));
+							} else {
+								SInt32 n;
+								n = CFSwapInt32HostToBig(inNum);
+								WriteBlock(&n, sizeof(n));
+							}
 							return (*this);
 						}
 
 	LStream&		operator << (UInt32 inNum)
 						{
-							UInt32 n;
-							n = CFSwapInt32HostToBig(inNum);
-							WriteBlock(&n, sizeof(n));
+							if (mNativeEndian) {
+								WriteBlock(&inNum, sizeof(UInt32));
+							} else {
+								UInt32 n;
+								n = CFSwapInt32HostToBig(inNum);
+								WriteBlock(&n, sizeof(n));
+							}
 							return (*this);
 						}
 
 	LStream&		operator << (float inNum)
 						{
-							CFSwappedFloat32 swappedFloat;
-							swappedFloat = CFConvertFloat32HostToSwapped(inNum);
-							WriteBlock(&swappedFloat, sizeof(swappedFloat));
+							if (mNativeEndian) {
+								WriteBlock(&inNum, sizeof(float));
+							} else {
+								CFSwappedFloat32 swappedFloat;
+								swappedFloat = CFConvertFloat32HostToSwapped(inNum);
+								WriteBlock(&swappedFloat, sizeof(swappedFloat));
+							}
 							return (*this);
 						}
 
@@ -191,7 +226,11 @@ public:
 							Assert_(sizeof(inBool) == 4);
 							
 							UInt32 boolValue;
-							boolValue = CFSwapInt32HostToBig(inBool);
+							if (mNativeEndian) {
+								boolValue = inBool;
+							} else {
+								boolValue = CFSwapInt32HostToBig(inBool);
+							}
 							WriteBlock(&boolValue, sizeof(boolValue));
 							return (*this);
 						}
@@ -233,18 +272,22 @@ public:
 	LStream&		operator >> (Rect &outRect)
 						{
 							ReadBlock(&outRect, sizeof(outRect));
-							outRect.top = CFSwapInt16BigToHost(outRect.top);
-							outRect.left = CFSwapInt16BigToHost(outRect.left);
-							outRect.right= CFSwapInt16BigToHost(outRect.right);
-							outRect.bottom = CFSwapInt16BigToHost(outRect.bottom);
+							if (!mNativeEndian) {
+								outRect.top = CFSwapInt16BigToHost(outRect.top);
+								outRect.left = CFSwapInt16BigToHost(outRect.left);
+								outRect.right= CFSwapInt16BigToHost(outRect.right);
+								outRect.bottom = CFSwapInt16BigToHost(outRect.bottom);
+							}
 							return (*this);
 						}
 
 	LStream&		operator >> (Point &outPoint)
 						{
 							ReadBlock(&outPoint, sizeof(outPoint));
-							outPoint.v = CFSwapInt16BigToHost(outPoint.v);
-							outPoint.h = CFSwapInt16BigToHost(outPoint.h);
+							if (!mNativeEndian) {
+								outPoint.v = CFSwapInt16BigToHost(outPoint.v);
+								outPoint.h = CFSwapInt16BigToHost(outPoint.h);
+							}
 							return (*this);
 						}
 
@@ -275,36 +318,48 @@ public:
 	LStream&		operator >> (SInt16 &outNum)
 						{
 							ReadBlock(&outNum, sizeof(outNum));
-							outNum = CFSwapInt16BigToHost(outNum);
+							if (!mNativeEndian) {
+								outNum = CFSwapInt16BigToHost(outNum);
+							}
 							return (*this);
 						}
 
 	LStream&		operator >> (UInt16 &outNum)
 						{
 							ReadBlock(&outNum, sizeof(outNum));
-							outNum = CFSwapInt16BigToHost(outNum);
+							if (!mNativeEndian) {
+								outNum = CFSwapInt16BigToHost(outNum);
+							}
 							return (*this);
 						}
 
 	LStream&		operator >> (SInt32 &outNum)
 						{
 							ReadBlock(&outNum, sizeof(outNum));
-							outNum = CFSwapInt32BigToHost(outNum);
+							if (!mNativeEndian) {
+								outNum = CFSwapInt32BigToHost(outNum);
+							}
 							return (*this);
 						}
 
 	LStream&		operator >> (UInt32 &outNum)
 						{
 							ReadBlock(&outNum, sizeof(outNum));
-							outNum = CFSwapInt32BigToHost(outNum);
+							if (!mNativeEndian) {
+								outNum = CFSwapInt32BigToHost(outNum);
+							}
 							return (*this);
 						}
 
 	LStream&		operator >> (float &outNum)
 						{
-							CFSwappedFloat32 swappedFloat;
-							ReadBlock(&swappedFloat, sizeof(swappedFloat));
-							outNum = CFConvertFloat32SwappedToHost(swappedFloat);
+							if (mNativeEndian) {
+								ReadBlock(&outNum, sizeof(outNum));
+							} else {
+								CFSwappedFloat32 swappedFloat;
+								ReadBlock(&swappedFloat, sizeof(swappedFloat));
+								outNum = CFConvertFloat32SwappedToHost(swappedFloat);
+							}
 							return (*this);
 						}
 
@@ -336,7 +391,11 @@ public:
 							
 							UInt32 boolValue;
 							ReadBlock(&boolValue, sizeof(boolValue));
-							outBool = CFSwapInt32BigToHost(boolValue);
+							if (mNativeEndian) {
+								outBool = boolValue;
+							} else {
+								outBool = CFSwapInt32BigToHost(boolValue);
+							}
 							return (*this);
 						}
 
@@ -364,6 +423,7 @@ public:
 protected:
 	SInt32			mMarker;
 	SInt32			mLength;
+	bool			mNativeEndian;
 };
 
 PP_End_Namespace_PowerPlant

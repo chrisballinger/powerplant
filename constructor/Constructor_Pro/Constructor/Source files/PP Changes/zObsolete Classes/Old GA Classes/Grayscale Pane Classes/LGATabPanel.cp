@@ -140,9 +140,11 @@ CHANGE HISTORY :
 #include <LPlaceHolder.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Quickdraw.h>
 #include <TextEdit.h>
 #include <MacWindows.h>
+#endif
 
 //#include <stdlib.h>
 

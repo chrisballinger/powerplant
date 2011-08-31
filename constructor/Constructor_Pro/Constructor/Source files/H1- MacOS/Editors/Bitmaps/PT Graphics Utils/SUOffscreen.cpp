@@ -41,7 +41,9 @@ CHANGE HISTORY :
   #include "ctor.h"
 #endif
 
+#ifndef __MACH__
 #include <PictUtils.h>
+#endif
 
 #include "SU_Headers.h"
 
@@ -335,8 +337,8 @@ Color32 SUOffscreen::RawGetPixelColor( RawPtr inRowPtr, SInt32 h )
 {
 	PixelValue	thePixel = this->RawGetPixel( inRowPtr, h );
 	
-	if ( mDepth == 32 )
-		return( thePixel );
+//	if ( mDepth == 32 )
+//		return( thePixel );
 		
 	return( this->PixelValueToColor32( thePixel ) );
 }
@@ -346,6 +348,7 @@ Color32 SUOffscreen::RawGetPixelColor( RawPtr inRowPtr, SInt32 h )
 ===========================================*/
 void SUOffscreen::RawSetPixelColor( RawPtr inRowPtr, SInt32 h, Color32 inColor )
 {
+/*
 	if ( mDepth == 32 )
 	{
 		this->RawSetPixel( inRowPtr, h, inColor );		// already in 32-bit format
@@ -355,6 +358,10 @@ void SUOffscreen::RawSetPixelColor( RawPtr inRowPtr, SInt32 h, Color32 inColor )
 		PixelValue thePixel = this->Color32ToPixelValue( inColor );
 		this->RawSetPixel( inRowPtr, h, thePixel );
 	}
+/*/			// added 08/10/11 rlaurb
+	inColor = this->Color32ToPixelValue(inColor);
+	this->RawSetPixel(inRowPtr, h, inColor);
+/**/
 }
 
 /*==========================================
@@ -362,8 +369,9 @@ void SUOffscreen::RawSetPixelColor( RawPtr inRowPtr, SInt32 h, Color32 inColor )
 ===========================================*/
 Color32 SUOffscreen::PixelValueToColor32( PixelValue thePixelValue )
 {
-	if ( mDepth == 32 )
-		return( thePixelValue );			// already in the correct format
+	if ( mDepth == 32 ) {
+		return( CFSwapInt32BigToHost(thePixelValue) );
+	}
 	
 	RGBColor	theColor = this->PixelValueToRGB( thePixelValue );
 	return( SUColorUtils::RGBToColor32( theColor ) );
@@ -374,8 +382,9 @@ Color32 SUOffscreen::PixelValueToColor32( PixelValue thePixelValue )
 ===========================================*/
 PixelValue SUOffscreen::Color32ToPixelValue( Color32 theColor32 )
 {
-	if ( mDepth == 32 )
-		return( theColor32 );			// already in the correct format
+	if ( mDepth == 32 ) {
+		return( CFSwapInt32HostToBig(theColor32) );
+	}
 	
 	RGBColor	theRGB = SUColorUtils::Color32ToRGB( theColor32 );
 	return this->RGBToPixelValue( theRGB );
@@ -806,8 +815,12 @@ void SUOffscreen::EraseToWhite()
 	  
 	Note:
 	Depth, height, & width should be the same. RowBytes can be different.
+	
+	If pixels are larger than 8 bits, endian conversion may be necessary.
+	Added 08/08/11 by rlaurb
 ===========================================*/
-void SUOffscreen::CopyFromRawData( UInt8 *sourceData, SInt32 sourceRowBytes )
+void SUOffscreen::CopyFromRawData( 
+	UInt8 *sourceData, SInt32 sourceRowBytes, bool doFlip, short depth )
 {
 	sourceRowBytes = FixRowBytes( sourceRowBytes );		// in case the high 2 bits are set
 	
@@ -817,7 +830,24 @@ void SUOffscreen::CopyFromRawData( UInt8 *sourceData, SInt32 sourceRowBytes )
 		// move each row individually
 	for ( SInt32 count = 0; count < mHeight; count++ )
 	{
-		::BlockMoveData( sourceData, mRowArray[count], sourceRowBytes );
+		if (!doFlip || (doFlip && depth < 16)) {
+			::BlockMoveData( sourceData, mRowArray[count], sourceRowBytes );
+		} else if (depth == 16) {
+			UInt16 * sourcePtr = (UInt16*) sourceData;
+			UInt16 * rowPtr = (UInt16*) mRowArray[count];
+			UInt16 pixelCt = sourceRowBytes / 2;
+			for (UInt16 pixel = 0; pixel < pixelCt; pixel++) {
+				rowPtr[pixel] = CFSwapInt16BigToHost(sourcePtr[pixel]);
+			}
+		} else {
+			UInt32 * sourcePtr = (UInt32*) sourceData;
+			UInt32 * rowPtr = (UInt32*) mRowArray[count];
+			UInt32 pixelCt = sourceRowBytes / 4;
+			for (UInt32 pixel = 0; pixel < pixelCt; pixel++) {
+				rowPtr[pixel] = CFSwapInt32BigToHost(sourcePtr[pixel]);
+			}
+		}
+
 		sourceData += sourceRowBytes;
 	}
 }
@@ -831,8 +861,11 @@ void SUOffscreen::CopyFromRawData( UInt8 *sourceData, SInt32 sourceRowBytes )
 
 	Note:
 	Depth, height, & width should be the same. RowBytes can be different.
+	
+	If pixels are larger than 8 bits, endian conversion may be necessary.
+	Added 08/08/11 by rlaurb
 ===========================================*/
-void SUOffscreen::CopyToRawData( UInt8 *destData, SInt32 destRowBytes )
+void SUOffscreen::CopyToRawData( UInt8 *destData, SInt32 destRowBytes, bool doFlip, short depth )
 {
 	destRowBytes = FixRowBytes( destRowBytes );	// in case the high 2 bits are set
 	
@@ -841,7 +874,23 @@ void SUOffscreen::CopyToRawData( UInt8 *destData, SInt32 destRowBytes )
 	
 	for ( SInt32 count = 0; count < mHeight; count++ )
 	{
-		::BlockMoveData( mRowArray[count], destData, destRowBytes );
+		if (!doFlip || (doFlip && depth < 16)) {
+			::BlockMoveData( mRowArray[count], destData, destRowBytes );
+		} else if (depth == 16) {
+			UInt16 * destPtr = (UInt16*) destData;
+			UInt16 * rowPtr = (UInt16*) mRowArray[count];
+			UInt16 pixelCt = destRowBytes / 2;
+			for (UInt16 pixel = 0; pixel < pixelCt; pixel++) {
+				destPtr[pixel] = CFSwapInt16BigToHost(rowPtr[pixel]);
+			}
+		} else {
+			UInt32 * destPtr = (UInt32*) destData;
+			UInt32 * rowPtr = (UInt32*) mRowArray[count];
+			UInt32 pixelCt = destRowBytes / 4;
+			for (UInt32 pixel = 0; pixel < pixelCt; pixel++) {
+				destPtr[pixel] = CFSwapInt32BigToHost(rowPtr[pixel]);
+			}
+		}
 		destData += destRowBytes;
 	}
 }

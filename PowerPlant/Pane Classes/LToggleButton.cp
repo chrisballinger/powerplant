@@ -30,7 +30,9 @@
 #include <PP_Messages.h>
 #include <PP_Resources.h>
 
+#ifndef __MACH__
 #include <Icons.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

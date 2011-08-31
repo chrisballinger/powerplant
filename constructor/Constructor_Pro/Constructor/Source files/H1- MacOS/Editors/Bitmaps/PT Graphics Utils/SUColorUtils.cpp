@@ -395,8 +395,12 @@ UInt16 SUColorUtils::CalcPixmapRowBytes( SInt32 width, SInt32 depth )
 	This is needed because Quickdraw requires a full-sized color table
 	 but the various image resources (cicn, ppat, etc) sometimes have
 	 minimized color tables.
+	
+	Add option to do endian conversions of source data. By default, we assume this
+	is not necessary, but apparently this is not the case for ppat resources.
+	(Added 08/08/11 by rlaurb)
 ================================================*/
-CTabHandle SUColorUtils::NewColorTableFromPtr( SInt32 depth, UInt8 *sourceData )
+CTabHandle SUColorUtils::NewColorTableFromPtr( SInt32 depth, UInt8 *sourceData, bool doFlip )
 {
 	CTabHandle	theTable;
 	CTabPtr		sourceTable = (CTabPtr) sourceData;
@@ -406,7 +410,14 @@ CTabHandle SUColorUtils::NewColorTableFromPtr( SInt32 depth, UInt8 *sourceData )
 	numEntries = MIN( sourceTable->ctSize + 1, (**theTable).ctSize + 1 );
 
 	for ( SInt32 count = 0; count < numEntries; count++ )
-		(**theTable).ctTable[count] = sourceTable->ctTable[count];
+		if (doFlip) {
+			(**theTable).ctTable[count].value = CFSwapInt16BigToHost(sourceTable->ctTable[count].value);
+			(**theTable).ctTable[count].rgb.red = CFSwapInt16BigToHost(sourceTable->ctTable[count].rgb.red);
+			(**theTable).ctTable[count].rgb.green = CFSwapInt16BigToHost(sourceTable->ctTable[count].rgb.green);
+			(**theTable).ctTable[count].rgb.blue = CFSwapInt16BigToHost(sourceTable->ctTable[count].rgb.blue);
+		} else {
+			(**theTable).ctTable[count] = sourceTable->ctTable[count];
+		}
 	
 		// should we put b&w in the correct places ??? tough call.
 		// what about other colors ???
@@ -492,6 +503,24 @@ Color32 SUColorUtils::RGBToColor16( const RGBColor &inRGB )
 			((inRGB.green >> 6) & 0x000003E0)	|
 			((inRGB.blue >> 11) & 0x0000001F) );
 }
+
+/*===============================================
+	Color32BigToNative
+================================================*/
+Color32 SUColorUtils::Color32BigToNative ( Color32 inColor )
+{
+	return (CFSwapInt32BigToHost(inColor && 0x00FFFFFF));
+}
+
+
+/*===============================================
+	Color32NativeToBig
+================================================*/
+Color32 SUColorUtils::Color32NativeToBig ( Color32 inColor )
+{
+	return (CFSwapInt32HostToBig(inColor) && 0x00FFFFFF);
+}
+
 
 /*===============================================
 	EqualRGB

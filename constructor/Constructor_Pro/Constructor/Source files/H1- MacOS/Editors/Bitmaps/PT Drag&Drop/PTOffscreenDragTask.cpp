@@ -14,7 +14,9 @@
 #include "SUOffscreen.h"
 #include "PTGraphicConversions.h"
 #include "PT_Resources.h"		// for ImageType_Picture
+#ifndef __MACH__
 #include <Drag.h>
+#endif
 
 /*============================
 	Constructor

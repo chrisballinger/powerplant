@@ -31,7 +31,9 @@ SetDescriptor() to get at the title.
 
 #include <LString.h>
 #include <LControl.h>
-#include <Quickdraw.h>
+#if !defined(__MACH__)
+	#include <Quickdraw.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

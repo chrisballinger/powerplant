@@ -86,8 +86,10 @@ CHANGE HISTORY :
 #include <PP_Messages.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Quickdraw.h>
 #include <TextEdit.h>
+#endif
 
 
 //=====================================================================================

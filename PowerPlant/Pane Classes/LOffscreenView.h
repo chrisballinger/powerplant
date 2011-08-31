@@ -10,7 +10,9 @@
 #pragma once
 
 #include <LView.h>
-#include <QDOffscreen.h>
+#ifndef __MACH__
+	#include <QDOffscreen.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

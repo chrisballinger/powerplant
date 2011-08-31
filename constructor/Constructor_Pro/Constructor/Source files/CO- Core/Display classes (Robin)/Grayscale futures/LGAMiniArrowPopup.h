@@ -40,6 +40,7 @@ CREATION DATE :	96.12.14
 #include <LStream.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #ifndef __MACTYPES__
 	#include <MacTypes.h>
 #endif
@@ -51,7 +52,7 @@ CREATION DATE :	96.12.14
 #ifndef __MENUS__
 	#include <Menus.h>
 #endif
-
+#endif
 
 //==================================================================================== 
 //	CONSTANTS

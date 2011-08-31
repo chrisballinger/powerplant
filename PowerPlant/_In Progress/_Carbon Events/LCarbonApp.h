@@ -14,8 +14,10 @@
 
 #include <LEventHandlerFunctor.h>
 
+#ifndef __MACH__
 #include <AERegistry.h>
 #include <CarbonEvents.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

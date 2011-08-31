@@ -10,8 +10,11 @@
 #pragma	once
 
 #include <PP_Prefix.h>
-#include <UTBAccessors.h>
-#include <Quickdraw.h>
+
+#ifndef __MACH__
+	#include <UTBAccessors.h>
+	#include <Quickdraw.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

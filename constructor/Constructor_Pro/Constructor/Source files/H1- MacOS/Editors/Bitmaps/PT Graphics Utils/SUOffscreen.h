@@ -42,7 +42,9 @@ CHANGE HISTORY :
 
 #pragma once
 
-#include <QDOffscreen.h>	
+#ifndef __MACH__
+	#include <QDOffscreen.h>
+#endif	
 #include "SU_Types.h"
 #include "SU_Constants.h"
 #include "SUPixelHelper.h"
@@ -154,8 +156,8 @@ class SUOffscreen
 										const Rect *sourceR = nil, SInt16 xferMode = srcCopy,
 										RgnHandle inMaskRgn = nil );
 
-		virtual void			CopyFromRawData( RawPtr sourceData, SInt32 sourceRowBytes );
-		virtual void			CopyToRawData( RawPtr destData, SInt32 destRowBytes );
+		virtual void			CopyFromRawData( RawPtr sourceData, SInt32 sourceRowBytes, bool doFlip = false, short depth = 1 );
+		virtual void			CopyToRawData( RawPtr destData, SInt32 destRowBytes, bool doFlip = false, short depth = 1 );
 
 		virtual void 			CopyFromAndDownSample( SUOffscreen *inSource, 
 														Color32 inMatchColor = kWhiteColor32,

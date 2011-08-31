@@ -4,6 +4,14 @@
 // ===========================================================================
 //	LWindowPositioner.cpp		© 1996-97 Metrowerks Inc. All rights reserved.
 // ===========================================================================
+//	
+//	*****************  Version 2  *****************
+//	User: rlaurb       Date: 8/24/11    Time: 23:51
+//	Updated in $/Constructor/Source files/CO -Core/Display classes (Eric)/Window positioning
+//	Updated to use the CFPreferences mechanism. Also, I removed the endian flipping
+//	logic because we don't need it; we just read and write the resources in native
+//	format, which is appropriate for a preferences file.
+//
 
 	// Prefix file for Windows build
 #ifdef WINVER
@@ -12,9 +20,11 @@
 
 #include "LWindowPositioner.h"
 #include <UResourceMgr.h>
+#include "CAPreferences.h"
 
 
 LArray LWindowPositioner::sWindowPositioners(sizeof (LWindowPositioner*));
+const CFStringRef		StrTemplate		CFSTR("CAWindowPositionForPPob_%hi");
 
 
 // ===========================================================================
@@ -644,10 +654,15 @@ SWindowPositionH
 LWindowPositioner::ReadWindowPosition(
 	ResIDT	inResID)
 {
+/*
 	Handle positionH = ::Get1Resource(ResType_WindowPosition, inResID);
 	if (positionH != nil)
 		::DetachResource(positionH);
-	
+/*/
+	CFStringRef		key = ::CFStringCreateWithFormat(kCFAllocatorDefault, nil, StrTemplate, inResID);
+	Handle			positionH = CAPreferences::CopyValueAsHandle(key);
+	::CFRelease(key);
+/**/
 	return (SWindowPositionH) positionH;
 }
 
@@ -663,11 +678,18 @@ LWindowPositioner::WriteWindowPosition(
 	ResIDT				inResID,
 	SWindowPositionH	inWindowPositionH)
 {
+/*
 	StNewResource newPosResource(ResType_WindowPosition, inResID);
 	::SetHandleSize((Handle) newPosResource, ::GetHandleSize((Handle) inWindowPositionH));
 	::BlockMoveData(*inWindowPositionH, *newPosResource, ::GetHandleSize((Handle) inWindowPositionH));
 //	::HandAndHand((Handle) inWindowPositionH, (Handle) newPosResource);
 	newPosResource.Write();
+/*/
+	StUpdatePreferences	prefsCtx;
+	CFStringRef			key = ::CFStringCreateWithFormat(kCFAllocatorDefault, nil, StrTemplate, inResID);
+	CAPreferences::SetValueAsHandle(key, (Handle) inWindowPositionH);
+	::CFRelease(key);
+/**/
 }
 
 
@@ -710,6 +732,7 @@ LWindowPositioner::FindPositionerByKind(
 void
 LWindowPositioner::InitWindowPositioner()
 {
+/*
 	static int hasRegisteredFlipper = false;
 	
 	// Register our flipper.
@@ -719,7 +742,8 @@ LWindowPositioner::InitWindowPositioner()
 		ThrowIfOSStatus_(theErr);
 		hasRegisteredFlipper = true;
 	}
-	
+/*/
+/**/
 	// Clear variables.
 	
 	mHasSetPosition = false;

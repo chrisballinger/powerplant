@@ -31,7 +31,9 @@
 
 #include <UDebugUtils.h>
 
+#ifndef __MACH__
 #include <ToolUtils.h>
+#endif
 
 #include <cstdio>
 #include <cstring>
@@ -231,7 +233,7 @@ void
 LDebugStream::SetDataHandle(
 	Handle	inHandle)
 {
-	QCVerifyHandle_(inHandle);			// ValidateHandle_ would throw if nil, but
+//	QCVerifyHandle_(inHandle);			// ValidateHandle_ would throw if nil, but
 										// that is an acceptable situation.
 
 	if (mDataH != nil) {				// Free existing Handle
@@ -271,7 +273,7 @@ LDebugStream::DetachDataHandle()
 	mLength = 0;
 	mDataH = nil;					// Reset to nil Handle
 
-	QCVerifyHandle_(dataHandle);
+//	QCVerifyHandle_(dataHandle);
 
 	return dataHandle;
 }

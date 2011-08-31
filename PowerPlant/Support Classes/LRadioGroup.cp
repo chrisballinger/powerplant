@@ -24,6 +24,10 @@
 	#include PowerPlant_PCH
 #endif
 
+#ifndef	PP_Uses_STL_Containers
+	#define	PP_Uses_STL_Containers		0
+#endif
+
 #include <LRadioGroup.h>
 #include <LControl.h>
 #include <LView.h>
@@ -144,7 +148,12 @@ LRadioGroup::ListenToMessage(
 				mCurrentRadio = nil;	// Current RadioButton was deleted
 			}
 
-			if (mBroadcasters.GetCount() == 1) {
+#if PP_Uses_STL_Containers
+			if (mBroadcasters.size() == 1) 
+#else
+			if (mBroadcasters.GetCount() == 1) 
+#endif
+			{
 										// Last Broadcaster is dying.
 				delete this;			// Nothing left in group, so
 										//   delete this RadioGroup

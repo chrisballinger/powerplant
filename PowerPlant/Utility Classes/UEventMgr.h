@@ -13,7 +13,9 @@
 
 #include <PP_Prefix.h>
 
+#ifndef __MACH__
 #include <Events.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

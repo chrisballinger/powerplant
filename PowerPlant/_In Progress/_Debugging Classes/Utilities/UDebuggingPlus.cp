@@ -44,8 +44,10 @@
 #include <UDebugUtils.h>
 #include <LDebugStream.h>
 
+#ifndef __MACH__
 #include <Dialogs.h>
 #include <Processes.h>
+#endif
 
 
 

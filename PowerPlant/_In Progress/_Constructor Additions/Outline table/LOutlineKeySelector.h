@@ -12,7 +12,9 @@
 #include <LAttachment.h>
 #include <UTables.h>
 
+#ifndef __MACH__
 #include <Events.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

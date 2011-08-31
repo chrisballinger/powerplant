@@ -15,7 +15,9 @@
 #include <LPeriodical.h>
 #include <UKeyFilters.h>
 
+#ifndef __MACH__
 #include <MacTextEditor.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

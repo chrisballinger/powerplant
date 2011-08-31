@@ -94,7 +94,10 @@
 
 #include <PP_Types.h>
 #include <LException.h>
-#include <TextUtils.h>
+
+#ifndef __MACH__
+	#include <TextUtils.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on
@@ -119,7 +122,7 @@ typedef long	ExceptionCode;
 // ---------------------------------------------------------------------------
 // ¥ Debugging Actions
 
-typedef enum {
+typedef enum EDebugAction {
 	debugAction_Nothing				= 0,
 	debugAction_Alert				= 1,
 	debugAction_Debugger			= 2,

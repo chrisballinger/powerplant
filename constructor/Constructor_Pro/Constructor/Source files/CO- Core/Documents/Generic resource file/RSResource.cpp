@@ -245,7 +245,7 @@ RSResource::GetResID() const
 
 		ResIDT* resIDPtr = *((ResIDT**) mDeletedResData);
 		resIDPtr += 2;
-		return *resIDPtr;
+		return CFSwapInt16BigToHost(*resIDPtr);
 
 	}
 	else {
@@ -300,7 +300,7 @@ RSResource::GetResType() const
 		// Ugly, fragile, but quick way of getting data.
 		
 		ResType* resTypePtr = *((ResType**) mDeletedResData);
-		return *resTypePtr;
+		return CFSwapInt32BigToHost(*resTypePtr);
 		
 	}
 	else {

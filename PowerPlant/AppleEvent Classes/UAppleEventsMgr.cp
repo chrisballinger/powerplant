@@ -17,12 +17,14 @@
 #include <UModalDialogs.h>
 #include <PP_Resources.h>
 
+#ifndef __MACH__
 #include <AEInteraction.h>
 #include <AEObjects.h>
 #include <AEPackObject.h>
 #include <AERegistry.h>
 #include <Processes.h>
 #include <TextUtils.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

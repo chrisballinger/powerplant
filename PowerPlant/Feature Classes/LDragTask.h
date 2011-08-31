@@ -12,7 +12,9 @@
 #include <UAppleEventsMgr.h>
 #include <URegions.h>
 
-#include <Drag.h>
+#ifndef __MACH__
+	#include <Drag.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

@@ -194,8 +194,10 @@
 #include <TArrayIterator.h>
 #include <UTBAccessors.h>
 
+#ifndef __MACH__
 #include <Fonts.h>
 #include <MacWindows.h>
+#endif
 
 	// for ::ContextualMenuSelect()'s command ID fix. See comments in DoCMMClick
 	// for complete information.

@@ -13,7 +13,9 @@
 #include <UEnvironment.h>
 #include <UStandardDialogs.h>
 
+#ifndef __MACH__
 #include <Gestalt.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -81,9 +83,9 @@ UQuickTime::GetMovieFromFile()
 
 	PP_StandardDialogs::LFileChooser	chooser;
 
-	NavDialogOptions	*options = chooser.GetDialogOptions();
+	NavDialogCreationOptions	*options = chooser.GetDialogOptions();
 	if (options != nil) {
-		options->dialogOptionFlags =	kNavDefaultNavDlogOptions	+
+		options->optionFlags =	kNavDefaultNavDlogOptions	+
 										kNavSelectAllReadableItem;
 	}
 

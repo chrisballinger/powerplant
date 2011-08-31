@@ -163,6 +163,10 @@ TTEditor::ReadResourceDataSelf()
 	ValidateHandle_(txtrData);
 	
 	LHandleStream txtrStream(txtrData);
+	RFResource* rfRsrc = dynamic_cast<RFResource*> (mPrimaryResource);
+	if (rfRsrc != nil) {
+		txtrStream.SetNativeEndian(rfRsrc->HasEndianFlipper());
+	}
 
 	// Build a text traits data object.
 	
@@ -200,6 +204,10 @@ TTEditor::WriteResourceDataSelf()
 	// Build output stream for the resource.
 	
 	LHandleStream txtrStream;
+	RFResource* rfRsrc = dynamic_cast<RFResource*> (mPrimaryResource);
+	if (rfRsrc != nil) {
+		txtrStream.SetNativeEndian(rfRsrc->HasEndianFlipper());
+	}
 
 	// Ask the txtr data object to spill its data.
 	

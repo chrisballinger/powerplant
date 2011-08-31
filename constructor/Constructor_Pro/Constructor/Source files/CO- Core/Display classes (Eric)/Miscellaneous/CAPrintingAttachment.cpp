@@ -56,7 +56,8 @@
 #include "CAPrintingAttachment.h"
 
 	// Core : Application
-#include "CAPreferencesFile.h"
+//#include "CAPreferencesFile.h"
+#include "CAPreferences.h"
 
 	// PowerPlant : Utilities
 #include <UResourceMgr.h>
@@ -72,8 +73,9 @@ LPrintSpec CAPrintingAttachment::sPrintRecordSpec;
 //		* Resource IDs
 // ===========================================================================
 
-const ResType	PageSetup_ResType		= 'PGSU';
-const ResIDT	PageSetup_ResID			= 23800;
+//const ResType	PageSetup_ResType		= 'PGSU';
+//const ResIDT	PageSetup_ResID			= 23800;
+const CFStringRef	pref_PageSetup		CFSTR("CAPageSetup");
 
 const PaneIDT	Pane_DocumentName		= 'DOC ';
 const PaneIDT	Pane_ResourceID			= 'Rid ';
@@ -117,8 +119,12 @@ CAPrintingAttachment::CAPrintingAttachment(
 	StHandleBlock thePrintRecordH(Handle_Nil);
 	thePrintRecordH.Adopt(sPrintRecordSpec.GetPrintRecord());
 	if (not thePrintRecordH.IsValid()) {
+/*
 		StPreferencesContext prefsFile;
 		thePrintRecordH.Adopt(::Get1Resource(PageSetup_ResType, PageSetup_ResID));
+/*/
+		thePrintRecordH.Adopt(CAPreferences::CopyValueAsHandle(pref_PageSetup));
+/**/
 		if (thePrintRecordH.IsValid()) {
 			ValidateHandle_(thePrintRecordH);
 			::DetachResource(thePrintRecordH);
@@ -129,8 +135,12 @@ CAPrintingAttachment::CAPrintingAttachment(
 #else
 
 	if (sPrintRecordSpec.GetPrintRecord() == nil) {
+/*
 		StPreferencesContext prefsFile;
 		THPrint thePrintRecordH = (THPrint) ::Get1Resource(PageSetup_ResType, PageSetup_ResID);
+/*/
+		THPrint thePrintRecordH = (THPrint) CAPreferences::CopyValueAsHandle(pref_PageSetup);
+/**/
 		if (thePrintRecordH != nil) {
 			ValidateHandle_((Handle) thePrintRecordH);
 			::DetachResource((Handle) thePrintRecordH);
@@ -281,17 +291,24 @@ CAPrintingAttachment::DoPageSetup()
 
 		StHandleBlock thePrintRecordH(Handle_Nil);
 		thePrintRecordH.Adopt(sPrintRecordSpec.GetPrintRecord());
+/*
 		StNewResource pageSetup(PageSetup_ResType, PageSetup_ResID, ::GetHandleSize(thePrintRecordH));
 		::BlockMoveData(*((Handle) thePrintRecordH), *((Handle) pageSetup), ::GetHandleSize(thePrintRecordH));
 		pageSetup.Write();
-
+/*/
+		StUpdatePreferences	prefs;
+		CAPreferences::SetValueAsHandle(pref_PageSetup, (Handle) thePrintRecordH);
+/**/
 #else
-
 		Handle thePrintRecordH = (Handle) sPrintRecordSpec.GetPrintRecord();
+/*
 		StNewResource pageSetup(PageSetup_ResType, PageSetup_ResID, ::GetHandleSize(thePrintRecordH));
 		::BlockMoveData(*thePrintRecordH, *((Handle) pageSetup), ::GetHandleSize(thePrintRecordH));
 		pageSetup.Write();
-
+/*/
+		StUpdatePreferences	prefs;
+		CAPreferences::SetValueAsHandle(pref_PageSetup, thePrintRecordH);
+/**/
 #endif // __PowerPlant__ >= 0x02112002
 
 	}

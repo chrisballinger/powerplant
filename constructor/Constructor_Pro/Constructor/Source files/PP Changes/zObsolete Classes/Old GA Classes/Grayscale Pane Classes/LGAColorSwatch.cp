@@ -52,7 +52,9 @@ CHANGE HISTORY :
 #include <UDesktop.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <ColorPicker.h>
+#endif
 
 //=====================================================================================
 // CONSTANTS

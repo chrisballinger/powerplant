@@ -10,7 +10,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
+#ifndef __MACH__
 #include <OpenTransport.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

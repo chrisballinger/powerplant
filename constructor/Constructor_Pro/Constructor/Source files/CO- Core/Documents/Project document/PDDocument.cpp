@@ -44,7 +44,8 @@
 #include "PDDocument.h"
 
 	// Core : Application
-#include "CAPreferencesFile.h"
+//#include "CAPreferencesFile.h"
+#include "CAPreferences.h"
 
 	// Core : Data model : Core objects
 #include "DMReanimator.h"
@@ -105,6 +106,8 @@ const SInt16	str_ClosingPrefix		= 1;
 const SInt16	str_ClosingSuffix		= 2;
 const SInt16	str_QuittingPrefix		= 3;
 const SInt16	str_QuittingSuffix		= 4;
+
+const CFStringRef	prefs_Proj		CFSTR("CAProjectPreferences");
 
 
 // ===========================================================================
@@ -348,7 +351,8 @@ PDDocument::AttemptClose(
 		// Ask user what to do.
 	
 		StApplicationContext appContext;
-		MessageT response = DoSaveChangesDialog(PPob_SaveChanges, str_ClosingPrefix);
+
+		MessageT response = DoSaveChangesDialog(true /* PPob_SaveChanges, str_ClosingPrefix */);
 		
 		// Got answer.
 		
@@ -431,7 +435,7 @@ PDDocument::AttemptQuitSelf(
 			// Interaction with user is required.
 		
 			StApplicationContext appContext;
-			MessageT response = DoSaveChangesDialog(PPob_SaveChanges, str_QuittingPrefix);
+			MessageT response = DoSaveChangesDialog(false /* PPob_SaveChanges, str_QuittingPrefix */);
 			
 			// We have our answer.
 			
@@ -714,7 +718,7 @@ PDDocument::CheckCollapsedTypes()
 	}
 
 	// Now look in prefs file and see which types should be collapsed.
-
+/*
 	StPreferencesContext prefs;
 	if (prefs.IsValid()) {					//* 2.4a2: BUG FIX #1072: added if statement
 
@@ -735,6 +739,20 @@ PDDocument::CheckCollapsedTypes()
 			typeStream.DetachDataHandle();
 		}
 	}
+/*/
+	if (CAPreferences::IsDefined(prefs_Proj)) {
+		StHandleBlock	projHdl(CAPreferences::CopyValueAsHandle(prefs_Proj));
+		LHandleStream	typeStream(projHdl);
+		typeStream.SetNativeEndian(true);
+		try {
+			while (typeStream.GetMarker() < typeStream.GetLength()) {
+				typeStream >>theType;
+				expandedList.Remove(&theType);
+			}
+		} catch (...) {}
+		typeStream.DetachDataHandle();
+	}		
+/**/
 	
 	// Now expand the remaining types.
 	
@@ -769,6 +787,7 @@ PDDocument::RecordCollapsedTypes()
 	// Record all types which are not expanded.
 
 	LHandleStream typeStream;
+	typeStream.SetNativeEndian(true);			// Write in native byte-order
 	DMFastIterator iter(mRsrcContainer->GetResourceTypeList()->GetSubElements());
 
 	while (iter.NextElement()) {
@@ -781,7 +800,7 @@ PDDocument::RecordCollapsedTypes()
 	}
 
 	//* 2.3a3: BUG FIX #431: put this in preferences file now
-	
+/*
 	StPreferencesContext prefs;
 	if (prefs.IsValid()) {					//* 2.4a2: BUG FIX #1072: added if statement
 		StNewResource collPrefRsrc('Proj', 128, typeStream.GetLength(), true);
@@ -789,6 +808,10 @@ PDDocument::RecordCollapsedTypes()
 		::BlockMoveData(*(typeStream.GetDataHandle()), *((Handle) collPrefRsrc), typeStream.GetLength());
 		collPrefRsrc.Write();
 	}
+/*/
+	StUpdatePreferences	prefs;
+	CAPreferences::SetValueAsHandle(prefs_Proj, typeStream.GetDataHandle());
+/**/
 }
 
 
@@ -946,14 +969,18 @@ PDDocument::IsModified()
 // ---------------------------------------------------------------------------
 //		* DoSaveChangesDialog									[protected]
 // ---------------------------------------------------------------------------
-//	General solution for save changes before quit/close/revert dialogs.
+//	General solution for save changes before quit/close dialogs.
+//	Call with inClosing = true if user is closing a document, false if quitting
+//	the application. Result is msg_OK or msg_Cancel.
 
 MessageT
-PDDocument::DoSaveChangesDialog(
+PDDocument::DoSaveChangesDialog( /*
 	ResIDT		inDialogPPob,
-	SInt32		inStringIndex)
+	SInt32		inStringIndex
+/*/
+	bool 		inClosing /**/)
 {
-
+/*
 	// Validate pointers.
 
 	ValidateThis_();
@@ -996,7 +1023,33 @@ PDDocument::DoSaveChangesDialog(
 	// Return result of dialog.
 
 	return theMessage;
+/*/
+	OSStatus			status = noErr;
+	Str255				appName, docName;
+	CFStringRef			cfName;
+	SInt16				result = 0;
+	
+	ProcessSerialNumber	psn;
+	status = ::GetCurrentProcess(&psn);
+	if (status == noErr) {
+		::CopyProcessName(&psn, &cfName);
+		::CFStringGetPascalString(cfName, appName, 256, kCFStringEncodingMacRoman);
+		
+		GetDescriptor(docName);
 
+		result = UNavServicesDialogs::AskSaveChanges(docName, appName, inClosing);
+	}
+	
+	MessageT			message;
+	if (result == kNavUserActionSaveChanges) {
+		message = msg_OK;
+	} else if (result == kNavUserActionNone || result == kNavUserActionCancel) {
+		message = msg_Cancel;
+	} else {
+		message = msg_Nothing;
+	}
+	return message;
+/**/
 }
 
 

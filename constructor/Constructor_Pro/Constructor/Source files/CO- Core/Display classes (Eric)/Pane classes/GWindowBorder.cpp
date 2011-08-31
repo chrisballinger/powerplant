@@ -34,10 +34,17 @@ GWindowBorder::GWindowBorder(
 
 : LView(inStream)
 {
+/*
 	inStream->ReadData(&mInsetSubPaneID, sizeof (mInsetSubPaneID));
 	inStream->ReadData(&mGrowBoxOuterNotch, sizeof (mGrowBoxOuterNotch));
 	inStream->ReadData(&mGrowBoxInnerNotch, sizeof (mGrowBoxInnerNotch));
 	inStream->ReadData(&mFrameInsetPane, sizeof (mFrameInsetPane));
+/*/
+	(*inStream) >> mInsetSubPaneID;
+	(*inStream) >> mGrowBoxOuterNotch;
+	(*inStream) >> mGrowBoxInnerNotch;
+	(*inStream) >> mFrameInsetPane;
+/**/
 	mInsetSubPane = nil;
 	mHasBeenShown = false;
 	mDrawFrame = true;

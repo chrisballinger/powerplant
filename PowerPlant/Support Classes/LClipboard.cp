@@ -20,7 +20,9 @@
 #include <UMemoryMgr.h>
 #include <UScrap.h>
 
+#ifndef __MACH__
 #include <Events.h>
+#endif
 
 // ---------------------------------------------------------------------------
 //	Preprocessor symbol for workaround for an annoying interaction

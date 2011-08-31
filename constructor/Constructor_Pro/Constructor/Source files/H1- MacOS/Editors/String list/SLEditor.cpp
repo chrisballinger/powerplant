@@ -139,6 +139,10 @@ SLEditor::ReadResourceDataSelf()
 	ValidateHandle_(strData);
 	
 	LHandleStream strStream(strData);
+	RFResource *	rfRsrc = dynamic_cast<RFResource*>(mPrimaryResource);
+	if (rfRsrc != nil) {
+		strStream.SetNativeEndian(rfRsrc->HasEndianFlipper());
+	}
 
 	// Build a dynamic list object.
 	
@@ -184,6 +188,10 @@ SLEditor::WriteResourceDataSelf()
 	// Build output stream for the resource.
 	
 	LHandleStream strStream;
+	RFResource* rfRsrc = dynamic_cast<RFResource*>(mPrimaryResource);
+	if (rfRsrc != nil) {
+		strStream.SetNativeEndian(rfRsrc->HasEndianFlipper());
+	}
 
 	// Ask the string list attribute to spill its data.
 	

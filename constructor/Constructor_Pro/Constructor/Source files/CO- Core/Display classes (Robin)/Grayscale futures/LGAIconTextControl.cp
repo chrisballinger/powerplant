@@ -41,9 +41,11 @@ CHANGE HISTORY :
 #include <UDrawingUtils.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <Quickdraw.h>
 #include <Icons.h>
 #include	<LowMem.h>
+#endif
 
 
 //=====================================================================================

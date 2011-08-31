@@ -26,9 +26,11 @@
 #include <LModelDirector.h>
 #include <UAppleEventsMgr.h>
 
+#ifndef __MACH__
 #include <AERegistry.h>
 #include <AEObjects.h>
 #include <AEPackObject.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

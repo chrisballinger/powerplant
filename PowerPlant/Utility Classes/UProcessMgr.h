@@ -10,7 +10,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
+#ifndef	__MACH__
 #include <Processes.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

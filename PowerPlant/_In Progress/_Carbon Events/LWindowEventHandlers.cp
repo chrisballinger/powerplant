@@ -7,6 +7,7 @@
 
 #include <LWindowEventHandlers.h>
 #include <LWindow.h>
+#include <LMenuBar.h>
 #include <PP_Messages.h>
 #include <UCarbonEvents.h>
 #include <UCursor.h>

@@ -12,6 +12,7 @@
 //		Add "MACB D" support
 //		Add support for sending resource fork (MacBinary Encoding)
 
+#include <CoreServices/CoreServices.h>
 #include <LFTPConnection.h>
 #include <LInternetAddress.h>
 #include <UInternet.h>

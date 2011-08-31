@@ -139,7 +139,9 @@
 #include <PP_Messages.h>
 #include <UMemoryMgr.h>
 
+#ifndef __MACH__
 #include <Menus.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

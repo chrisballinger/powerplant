@@ -20,9 +20,10 @@
 #include <PP_Resources.h>
 #include <UMemoryMgr.h>
 
+#ifndef __MACH__
 #include <fp.h>
 #include <Script.h>
-
+#endif
 
 // ---------------------------------------------------------------------------
 
@@ -1465,7 +1466,7 @@ LString::StringToLongDouble(
 	long double		outNumber	= 0;
 	FormatStatus	status		= fFormatOK;
 
-#if TARGET_OS_MAC && TARGET_CPU_PPC	// Mac OS on PowerPC
+#if TARGET_OS_MAC && (TARGET_CPU_PPC || TARGET_CPU_X86)	// Mac OS, 32-bit, not 68K
 									//		long double is same as double
 									//		for Metrowerks C/C++
 

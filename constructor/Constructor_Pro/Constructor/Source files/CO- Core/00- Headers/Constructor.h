@@ -190,7 +190,9 @@ using namespace std;
 	#include <PP_ClassHeaders.cp>					// include most class definitions
 #endif
 
-#include <fp.h>
+#if !defined(__MACH__)								// RLA - for modern headers
+	#include <fp.h>
+#endif
 
 #define SKIPOMPARSE 1
 

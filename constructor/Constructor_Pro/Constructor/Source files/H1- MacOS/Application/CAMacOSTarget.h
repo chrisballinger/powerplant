@@ -85,12 +85,10 @@ public:
 									void*				ioParam);
 
 protected:
-	virtual PDDocument*
-MakeEmptyProject();
-	virtual PDDocument*
-MakeProjectFromFile(
-	const FSSpec&	inFileSpec);
-	virtual void			ChooseDocument();
+	virtual PDDocument*		MakeEmptyProject();
+	virtual PDDocument*		MakeProjectFromFile(
+									const FSSpec&		inFileSpec);
+									virtual void		ChooseDocument();
 	
 	// display class window behaviors
 

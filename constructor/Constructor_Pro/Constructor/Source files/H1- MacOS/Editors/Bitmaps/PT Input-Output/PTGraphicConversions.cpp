@@ -352,8 +352,18 @@ SUOffscreen *PTGraphicConversions::PictureToOffscreen( PicHandle inPict )
 {
 	StSaveGWorld	aSaver;
 	
+/*
 	SInt32	width = (**inPict).picFrame.right - (**inPict).picFrame.left;
 	SInt32	height = (**inPict).picFrame.bottom - (**inPict).picFrame.top;
+/*/
+	Rect			swappedRect;
+	swappedRect.top = CFSwapInt16BigToHost((**inPict).picFrame.top);
+	swappedRect.left = CFSwapInt16BigToHost((**inPict).picFrame.left);
+	swappedRect.bottom = CFSwapInt16BigToHost((**inPict).picFrame.bottom);
+	swappedRect.right = CFSwapInt16BigToHost((**inPict).picFrame.right);
+	SInt32	width = swappedRect.right - swappedRect.left;
+	SInt32	height = swappedRect.bottom - swappedRect.top;
+/**/
 	SInt32	depth;
 	
 	if ( (width <= 0) || (height <= 0) ) 

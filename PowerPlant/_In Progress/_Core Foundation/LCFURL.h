@@ -10,7 +10,9 @@
 #pragma once
 
 #include <LCFObject.h>
+#ifndef __MACH__
 #include <CFURL.h>
+#endif
 
 // ---------------------------------------------------------------------------
 

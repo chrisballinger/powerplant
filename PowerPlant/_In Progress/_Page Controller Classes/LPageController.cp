@@ -122,7 +122,9 @@ LPageController::LPageController(
 	*inStream >> mPushedTextColor.green;
 	*inStream >> mPushedTextColor.blue;
 
-	*inStream >> mGroupedArrows;
+	Boolean				tmp;
+	*inStream >> tmp;
+	mGroupedArrows = tmp;
 }
 
 

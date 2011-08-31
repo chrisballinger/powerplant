@@ -33,12 +33,14 @@
 #include <UTBAccessors.h>
 #include <UWindows.h>
 
+#ifndef __MACH__
 #include <AEPackObject.h>
 #include <AEObjects.h>
 #include <AERegistry.h>
 #include <MacWindows.h>
 #include <Sound.h>
 #include <ToolUtils.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

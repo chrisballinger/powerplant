@@ -89,11 +89,21 @@ LBanner::LBanner (	LStream*	inStream ) : LView ( inStream )
 {
 
 	// ¥ Read in the data from the stream
+/*
 	inStream->ReadData ( &mHasBorder, sizeof ( Boolean ));
 	inStream->ReadData ( &mHasShading, sizeof ( Boolean ));
 	inStream->ReadData ( &mHasFace, sizeof ( Boolean ));
 	inStream->ReadData ( &mHasAdornment, sizeof ( Boolean ));
 	inStream->ReadData ( &mFaceColor, sizeof ( RGBColor ));
+/*/
+	*inStream >> mHasBorder;
+	*inStream >> mHasShading;
+	*inStream >> mHasFace;
+	*inStream >> mHasAdornment;
+	*inStream >> mFaceColor.red;
+	*inStream >> mFaceColor.green;
+	*inStream >> mFaceColor.blue;
+/**/
 
 }	//	LBanner::LBanner
 

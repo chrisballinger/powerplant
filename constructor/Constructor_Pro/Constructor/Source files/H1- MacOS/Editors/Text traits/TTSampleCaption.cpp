@@ -43,6 +43,8 @@
 	// PowerPlant : GA : Grayscale utilities
 #include <UGAColorRamp.h>
 
+#include "RFType.h"
+
 
 // ===========================================================================
 
@@ -131,6 +133,7 @@ TTSampleCaption::DrawSelf()
 	// Set up text traits.
 	
 	LHandleStream txtrData;
+	txtrData.SetNativeEndian(RFType::HasEndianFlipper('Txtr'));
 	mTxtrObject->WriteStreamData(&txtrData);
 
 	SInt16 just;

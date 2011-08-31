@@ -10,9 +10,11 @@
 #pragma once
 
 #include <LAttachable.h>
-#include <Events.h>
-#include <AEDataModel.h>
-#include <CFString.h>
+#ifndef __MACH__
+	#include <Events.h>
+	#include <AEDataModel.h>
+	#include <CFString.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

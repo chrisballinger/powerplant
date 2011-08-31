@@ -13,10 +13,12 @@
 #include <UEnvironment.h>
 #include <LString.h>
 
+#ifndef __MACH__
 #include <Processes.h>
 #include <Files.h>
 #include <Gestalt.h>
 #include <Aliases.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

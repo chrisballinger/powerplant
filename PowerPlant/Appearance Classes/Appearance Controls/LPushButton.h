@@ -10,7 +10,9 @@
 #pragma once
 
 #include <LControlPane.h>
-#include <Appearance.h>
+#if !defined(__MACH__)
+	#include <Appearance.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

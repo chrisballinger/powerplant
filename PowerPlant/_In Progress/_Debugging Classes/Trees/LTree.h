@@ -24,6 +24,10 @@
 	#pragma import on
 #endif
 
+#ifndef	PP_Uses_STL_Containers
+	#define	PP_Uses_STL_Containers		0
+#endif
+
 PP_Begin_Namespace_PowerPlant
 
 extern const RGBColor	Color_Red;
@@ -129,13 +133,21 @@ protected:
 		class LPeekBroadcaster : public LBroadcaster
 		{
 		public:
+#if PP_Uses_STL_Containers
+			const std::list<LListener*>& GetListeners() const	{ return LBroadcaster::mListeners; }
+#else
 			const TArray<LListener*>& GetListeners() const { return LBroadcaster::mListeners; }
+#endif
 		};
 
 		class LPeekListener : public LListener
 		{
 		public:
+#if PP_Uses_STL_Containers
+			const std::list<LBroadcaster*>&	GetBroadcasters() const	{ return LListener::mBroadcasters; }
+#else
 			const TArray<LBroadcaster*>& GetBroadcasters() const { return LListener::mBroadcasters; }
+#endif
 		};
 
 private:

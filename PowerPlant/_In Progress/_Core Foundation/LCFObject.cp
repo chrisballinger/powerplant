@@ -7,7 +7,9 @@
 
 #include <LCFObject.h>
 
+#ifndef __MACH__
 #include <CFPropertyList.h>
+#endif
 
 // ---------------------------------------------------------------------------
 //	¥ LCFObject								Default Constructor		  [public]

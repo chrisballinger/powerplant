@@ -8,6 +8,7 @@
  *
  *	Author:				Isaac Wankerl
  *	Last Revision:		5/4/2001
+ *						8/11/2011 (rlaurb)
  *
  *  Copyright © 2001 Metrowerks Corporation.  All rights reserved.
  */
@@ -20,12 +21,12 @@
 	
 	#define MAJORREVISION		2
 	#define MINORREVISION		5
-	#define MINORFIX			8
+	#define MINORFIX			9
 	#define RELEASETYPE			release
 	#define RELEASEVERSION		0
 #endif
 
-#define VERSION_STRING		"2.5.8"
+#define VERSION_STRING		"2.5.9"
 
 #define LONG_VERSION_STRING	"v" VERSION_STRING ", a Metrowerks CodeWarrior Component"
 #define COPYRIGHT_STRING	"© 1993-2005 Metrowerks Corporation"

@@ -38,7 +38,9 @@
 #include <UEnvironment.h>
 #include <UKeyFilters.h>
 
+#ifndef __MACH__
 #include <ControlDefinitions.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

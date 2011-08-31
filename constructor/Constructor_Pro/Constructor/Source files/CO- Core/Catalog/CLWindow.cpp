@@ -72,7 +72,8 @@
 #include "CLWindow.h"
 
 	// Core : Application
-#include "CAPreferencesFile.h"
+//#include "CAPreferencesFile.h"
+#include "CAPreferences.h"
 
 	// Core : Catalog
 #include "CLDisplayClassTable.h"
@@ -118,8 +119,9 @@ const PaneIDT	Pane_PageScroller		= 'SCRL';
 const PaneIDT	Pane_DisplayClassTable	= 'CLDC';
 const PaneIDT	Pane_AlphaHierToggle	= 'alph';
 
-const ResType	CatPrefs_ResType		= 'CATL';
-const ResIDT	CatPrefs_ResID			= 1000;
+//const ResType	CatPrefs_ResType		= 'CATL';
+//const ResIDT	CatPrefs_ResID			= 1000;
+const CFStringRef	prefs_CatalogPrefs	CFSTR("CACatalogPreferences");
 
 
 // ===========================================================================
@@ -354,13 +356,15 @@ CLWindow::FinishCreateSelf()
 
 
 	// See if we have catalog prefs resource.
-	
+/*
 	StPreferencesContext prefsContext;
 	
 	Handle catlPrefsR = nil;
 	if (prefsContext.IsValid())											//* 2.4a2: BUG FIX #1072: added IsValid()
 		catlPrefsR = ::Get1Resource(CatPrefs_ResType, CatPrefs_ResID);	//* 2.4a2: BUG FIX #1065: stopped using StResource
-	
+/*/
+	Handle			catlPrefsR = CAPreferences::CopyValueAsHandle(prefs_CatalogPrefs);
+/**/
 	if (catlPrefsR == nil) {
 	
 		// No prefs resource. Just select first page.
@@ -373,9 +377,10 @@ CLWindow::FinishCreateSelf()
 		// Read the preferences data.
 		
 		ValidateHandle_(catlPrefsR);
-		::DetachResource(catlPrefsR);
+//		::DetachResource(catlPrefsR);		// Not a resource any longer
 		
 		LHandleStream catlPrefs(catlPrefsR);
+		catlPrefs.SetNativeEndian(true);	// The preference is stored native-endian
 		
 		Boolean alphaSort;
 		Str255 pageName;
@@ -640,6 +645,7 @@ CLWindow::RecordCatalogPrefs()
 	// Create preferences resource data.
 	
 	LHandleStream catlPrefs;
+	catlPrefs.SetNativeEndian(true);		// Store preference native-endian
 	
 	Boolean alphaSort = mClassTable->GetAlphabeticDisplay();
 	catlPrefs << alphaSort;
@@ -663,7 +669,7 @@ CLWindow::RecordCatalogPrefs()
 	catlPrefs << pageName;
 	
 	// Write this data to prefs file.
-	
+/*
 	StPreferencesContext prefsContext;
 	if (prefsContext.IsValid()) {					//* 2.4a2: BUG FIX #1072: added if statement
 	
@@ -678,4 +684,8 @@ CLWindow::RecordCatalogPrefs()
 		catlPrefsR.Write();
 
 	}
+/*/
+	StUpdatePreferences	prefsCtx;
+	CAPreferences::SetValueAsHandle(prefs_CatalogPrefs, catlPrefs.GetDataHandle());
+/**/
 }

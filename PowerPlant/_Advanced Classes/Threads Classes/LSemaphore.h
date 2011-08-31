@@ -11,7 +11,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
-#include <OSUtils.h>
+#ifndef __MACH__
+	#include <OSUtils.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

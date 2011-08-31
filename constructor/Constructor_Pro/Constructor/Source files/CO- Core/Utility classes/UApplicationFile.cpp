@@ -8,6 +8,11 @@
 //   Created: 02/29/96
 //     $Date: 2006/01/18 01:33:27 $
 //	$History: UApplicationFile.cpp $
+//
+//  ******************  Version 5  *****************
+//  User: rlaurb       QDate: 07/18/11	 Time: 16:37
+//  Updated in $/Constructor/Source files/CO- Core/Utility classes
+//	Return the file specification of the application bundle rather than the app file inside the bundle
 //	
 //	*****************  Version 4  *****************
 //	User: scouten      QDate: 02/21/97   Time: 11:16
@@ -61,7 +66,7 @@ FSSpec UApplicationFile::sAppFileSpec;
 void
 UApplicationFile::FindApplicationFile()
 {
-	
+/*
 	ProcessInfoRec infoRec;
 	Str63 name;
 
@@ -74,7 +79,19 @@ UApplicationFile::FindApplicationFile()
 	PSN.lowLongOfPSN = kCurrentProcess;
 	
 	ThrowIfOSErr_(::GetProcessInformation(&PSN, &infoRec));
-
+/*/
+	OSErr					err;
+	ProcessSerialNumber		psn;
+	err = ::GetCurrentProcess(&psn);
+	ThrowIfOSErr_(err);
+	
+	FSRef					location;
+	err = ::GetProcessBundleLocation(&psn, &location);
+	ThrowIfOSErr_(err);
+	
+	err = ::FSGetCatalogInfo(&location, kFSCatInfoNone, NULL, NULL, &sAppFileSpec, NULL);
+	ThrowIfOSErr_(err);
+/**/
 }
 
 

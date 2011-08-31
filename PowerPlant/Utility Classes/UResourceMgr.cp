@@ -14,7 +14,9 @@
 #include <UResourceMgr.h>
 #include <LString.h>
 
+#ifndef __MACH__
 #include <LowMem.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 
@@ -374,6 +376,75 @@ StResourceContext::GetCurrentRefNum()
 	}
 
 	return sCurrentContext->mThisContext;
+}
+
+
+#pragma mark
+// ---------------------------------------------------------------------------
+//	¥ HasFlipper													  [public]
+// ---------------------------------------------------------------------------
+//	Determine whether a resource flipper is installed for this resource type.
+
+bool
+UResFlip::HasFlipper (
+	ResType					inResType )
+{
+	CoreEndianFlipProc		procPtr;
+	void *					refcon = nil;
+	OSStatus				err = ::CoreEndianGetFlipper(kCoreEndianResourceManagerDomain,
+								inResType, &procPtr, &refcon);
+	return (err == noErr);
+}
+
+
+// ---------------------------------------------------------------------------
+//	¥ GetFlipper													  [public]
+// ---------------------------------------------------------------------------
+//	Return the resource flipper proc installed for the given resource.
+
+OSStatus
+UResFlip::GetFlipper (
+	ResType					inResType,
+	CoreEndianFlipProc *	outFlipProc,
+	void **					outRefCon )
+{
+	return ::CoreEndianGetFlipper(kCoreEndianResourceManagerDomain,
+								inResType, outFlipProc, outRefCon);
+}
+
+
+// ---------------------------------------------------------------------------
+//	¥ SetFlipper													  [public]
+// ---------------------------------------------------------------------------
+//	Install a resource flipper for the specified resource type
+
+OSStatus
+UResFlip::SetFlipper (
+	ResType					inResType,
+	CoreEndianFlipProc		inFlipProc,
+	void *					inRefCon )
+{
+	return ::CoreEndianInstallFlipper(kCoreEndianResourceManagerDomain,
+								inResType, inFlipProc, inRefCon);
+}
+
+
+// ---------------------------------------------------------------------------
+//	¥ Flip															  [public]
+// ---------------------------------------------------------------------------
+//	Flip the specified resource data, using the already-installed resource
+//	flipper.
+
+OSStatus
+UResFlip::Flip (
+	ResType					inResType,
+	ResIDT					inResID,
+	void *					ioData,
+	ByteCount				inDataLen,
+	Boolean					inIsNative )
+{
+	return ::CoreEndianFlipData(kCoreEndianResourceManagerDomain,
+								inResType, inResID, ioData, inDataLen, inIsNative);
 }
 
 

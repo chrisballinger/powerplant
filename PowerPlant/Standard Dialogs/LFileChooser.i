@@ -31,7 +31,9 @@
 
 						~LFileChooser();
 
-	NavDialogOptions*	GetDialogOptions();
+//	NavDialogOptions*	GetDialogOptions();
+	NavDialogCreationOptions *
+						GetDialogOptions();
 
 	void				SetDefaultLocation(
 								const FSSpec&			inFileSpec,
@@ -62,10 +64,18 @@
 	SInt32				GetNumberOfFiles() const;
 
 	void				GetFileSpec(
-								SInt32		inIndex,
-								FSSpec&		outFileSpec) const;
+								SInt32					inIndex,
+								FSSpec&					outFileSpec) const;
+	
+	void				GetFileSpec (
+								SInt32					inIndex,
+								FSRef *					outFSRef ) 	const;
+	
+	void				GetFileSpec (
+								SInt32					inIndex,
+								CFURLRef *				outURLRef ) const;
 
 	void				GetFileDescList(
-								AEDescList&	outDescList) const;
+								AEDescList&				outDescList) const;
 
 	ScriptCode			GetScriptCode() const;

@@ -15,7 +15,9 @@
 #include <TArray.h>
 #include <TTimerTask.h>
 
-#include <Events.h>
+#ifndef __MACH__
+	#include <Events.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on

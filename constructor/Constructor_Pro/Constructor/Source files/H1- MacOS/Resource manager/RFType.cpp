@@ -77,6 +77,7 @@ RFType::RFType(
 
 {
 	mResType = inResType;
+	mHasEndianFlipper = HasEndianFlipper(inResType);	// static method ok here
 }
 
 
@@ -184,6 +185,25 @@ RFType::FindResource(
 		return nil;
 
 	}
+}
+
+
+// ---------------------------------------------------------------------------
+//		* HasEndianFlipper
+// ---------------------------------------------------------------------------
+//	Determine whether a resource endian flipper has been installed for resources
+//	of this type. If so, the resource handle will always be native-endian; if
+//	not, the contents of the resource data handle may need to be endian-converted.
+
+bool
+RFType::HasEndianFlipper (
+	ResType		inType )
+{
+	CoreEndianFlipProc		procPtr;
+	void *					refcon = nil;
+	OSStatus				err = ::CoreEndianGetFlipper(kCoreEndianResourceManagerDomain,
+								inType, &procPtr, &refcon);
+	return (err == noErr);
 }
 
 

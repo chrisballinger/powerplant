@@ -102,8 +102,10 @@ CHANGE HISTORY :
 #include <UTextTraits.h>
 
 // ¥ TOOLBOX HEADERS
+#ifndef __MACH__
 #include <LowMem.h>
 #include <ToolUtils.h>
+#endif
 
 
 //=====================================================================================

@@ -14,7 +14,9 @@
 #include <cstdlib>
 #include <cstring>
 
+#ifndef __MACH__
 #include <ToolUtils.h>
+#endif
 
 PP_Begin_Namespace_PowerPlant
 

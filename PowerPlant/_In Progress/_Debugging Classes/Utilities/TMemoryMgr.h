@@ -33,7 +33,9 @@
 #pragma once
 
 #include <PP_Prefix.h>
+#ifndef __MACH__
 #include <MacMemory.h>
+#endif
 
 #if PP_Uses_Pragma_Import
 	#pragma import on
@@ -371,12 +373,12 @@ public:
 			Size	inSize,					// Bytes to allocate
 			bool	inThrowFail = true)		// Whether to Throw if allocate fails
 		{
-			mHandle = reinterpret_cast<T>(::NewHandleClear(inSize));
+			THandleBlock<T>::mHandle = reinterpret_cast<T>(::NewHandleClear(inSize));
 			if (inThrowFail) {
-				ThrowIfMemFail_(mHandle);
+				ThrowIfMemFail_(THandleBlock<T>::mHandle);
 			}
 
-			mIsOwner = (mHandle != nil);
+			THandleBlock<T>::mIsOwner = (THandleBlock<T>::mHandle != nil);
 		}
 
 };
@@ -400,12 +402,12 @@ public:
 			bool	inThrowFail = true)		// Whether to Throw if allocate fails
 		{
 			OSErr	err;
-			mHandle = reinterpret_cast<T>(::TempNewHandle(inSize, &err));
-			if (inThrowFail && (mHandle == nil)) {
+			THandleBlock<T>::mHandle = reinterpret_cast<T>(::TempNewHandle(inSize, &err));
+			if (inThrowFail && (THandleBlock<T>::mHandle == nil)) {
 				ThrowOSErr_(err);
 			}
 
-			mIsOwner = (mHandle != nil);
+			THandleBlock<T>::mIsOwner = (THandleBlock<T>::mHandle != nil);
 		}
 };
 
@@ -591,12 +593,12 @@ public:
 			Size	inSize,
 			bool	inThrowFail = true)
 		{
-			mPtr = reinterpret_cast<T>(::NewPtrClear(inSize) );
+			TPointerBlock<T>::mPtr = reinterpret_cast<T>(::NewPtrClear(inSize) );
 			if (inThrowFail) {
-				ThrowIfMemFail_(mPtr);
+				ThrowIfMemFail_(TPointerBlock<T>::mPtr);
 			}
 
-			mIsOwner = (mPtr != nil);
+			TPointerBlock<T>::mIsOwner = (TPointerBlock<T>::mPtr != nil);
 		}
 };
 
@@ -681,7 +683,7 @@ public:
 						GetResource(inResType, inResName, inThrowFail, inCurrResOnly);
 					}
 
-				~TResource()
+	virtual			~TResource()
 					{
 						Dispose();
 					}

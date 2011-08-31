@@ -57,7 +57,8 @@
 	// MacOS : Editors : Views : Type list
 #include "VPTypeList.h"
 
-#include "CAPreferencesFile.h"
+//#include "CAPreferencesFile.h"
+#include "CAPreferences.h"
 #include "FullPath.h"
 
 // ===========================================================================
@@ -66,9 +67,11 @@
 
 const CommandT	cmd_RecentItems				= 'RItm';
 const ResIDT	kRecentItemsSubMenu			= 200;
-const ResType	kRecentItemsPrefsType		= 'RItm';
-const ResIDT	kRecentItemsPrefsID			= 1000;
+//const ResType	kRecentItemsPrefsType		= 'RItm';
+//const ResIDT	kRecentItemsPrefsID			= 1000;
 const SInt16	kMaxNumberOfRecentItems		= 10;
+
+const CFStringRef	prefs_RecentItems		CFSTR("CARecentItemsList");
 
 
 TArray<SRecentItem>	CAMacOSTarget::sRecentItems(sizeof(SRecentItem), NULL, true);
@@ -285,6 +288,7 @@ CAMacOSTarget::LoadRecentItems()
 	sRecentItems.SetComparator(SRecentItemComparator::GetComparator(), false);
 	sRecentItems.RemoveItemsAt(sRecentItems.GetCount(), LArray::index_First);
 
+/*
 	StPreferencesContext prefsContext;
 	if (prefsContext.IsValid())
 	{
@@ -319,6 +323,33 @@ CAMacOSTarget::LoadRecentItems()
 			}
 		}
 	}
+/*/
+	if (CAPreferences::IsDefined(prefs_RecentItems)) {
+		try {
+			StHandleBlock	recentItemsR(CAPreferences::CopyValueAsHandle(prefs_RecentItems));
+			LHandleStream	recentItemsStream(recentItemsR);
+			recentItemsStream.SetNativeEndian(true);
+			while (recentItemsStream.GetMarker() < recentItemsStream.GetLength()) {
+				SRecentItem	recentItem;
+				SInt32		bytesToRead;
+				
+				recentItemsStream >> recentItem.lastOpened;
+				recentItemsStream >> bytesToRead;
+				StHandleBlock	aliasH(bytesToRead, false, true);
+				recentItemsStream.ReadBlock(*aliasH, bytesToRead);
+				status = ::ResolveAliasWithMountFlags(nil, (AliasHandle) aliasH.Get(),
+					&recentItem.file, &wasChanged, kResolveAliasFileNoUI);
+				if (status == noErr) {
+					sRecentItems.AddItem(recentItem);
+					Assert_(sRecentItems.GetCount() <= kMaxNumberOfRecentItems);
+				}
+			}
+			recentItemsStream.DetachDataHandle();
+		} catch (...) {
+			sRecentItems.RemoveItemsAt(sRecentItems.GetCount(), LArray::index_First);
+		}
+	}
+/**/
 }
 
 // ---------------------------------------------------------------------------
@@ -330,7 +361,7 @@ CAMacOSTarget::SaveRecentItems()
 {
 	OSStatus	status;
 	AliasHandle	alias;
-
+/*
 	StPreferencesContext prefsContext;
 	if (prefsContext.IsValid())
 	{
@@ -369,6 +400,32 @@ CAMacOSTarget::SaveRecentItems()
 			}
 		}
 	}
+/*/
+	StUpdatePreferences	prefsCtx;
+	LHandleStream		recentItemsStream;
+	recentItemsStream.SetNativeEndian(true);
+	SRecentItem			recentItem;
+	SInt32				bytesToWrite;
+	Assert_(sRecentItems.GetCount() <= kMaxNumberOfRecentItems);
+	
+	try {
+		TArrayIterator<SRecentItem>	iter(sRecentItems);
+		while (iter.Next(recentItem)) {
+			status = ::NewAlias(nil, &recentItem.file, &alias);
+			if (status == noErr && alias != nil) {
+				StHandleLocker	lock((Handle) alias);
+				recentItemsStream << recentItem.lastOpened;
+				bytesToWrite = ::GetHandleSize((Handle) alias);
+				recentItemsStream << bytesToWrite;
+				recentItemsStream.WriteBlock(*alias, bytesToWrite);
+				lock.Release();
+				::DisposeHandle((Handle) alias);
+			}
+		}
+		recentItemsStream.SetLength(recentItemsStream.GetMarker());
+		CAPreferences::SetValueAsHandle(prefs_RecentItems, recentItemsStream.GetDataHandle());
+	} catch (...) {}
+/**/
 }
 
 

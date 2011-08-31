@@ -28,6 +28,7 @@ LStream::LStream()
 {
 	mMarker = 0;
 	mLength = 0;
+	mNativeEndian = false;
 }
 
 
@@ -40,6 +41,7 @@ LStream::LStream(
 {
 	mMarker = inOriginal.mMarker;
 	mLength = inOriginal.mLength;
+	mNativeEndian = inOriginal.IsNativeEndian();
 }
 
 
@@ -54,6 +56,7 @@ LStream::operator = (
 	if (this != &inOriginal) {
 		mMarker = inOriginal.mMarker;
 		mLength = inOriginal.mLength;
+		mNativeEndian = inOriginal.IsNativeEndian();
 	}
 
 	return *this;
@@ -491,8 +494,12 @@ LStream::operator << (double inNum)
 	// if necessary and write.
 	 
 	Assert_(sizeof(inNum) == 8);
-	CFSwappedFloat64 swappedDouble = CFConvertDoubleHostToSwapped(inNum);
-	WriteBlock(&swappedDouble, sizeof(swappedDouble));
+	if (mNativeEndian) {
+		WriteBlock(&inNum, sizeof(inNum));
+	} else {
+		CFSwappedFloat64 swappedDouble = CFConvertDoubleHostToSwapped(inNum);
+		WriteBlock(&swappedDouble, sizeof(swappedDouble));
+	}
 
 #elif TARGET_CPU_68K
 
@@ -536,9 +543,13 @@ LStream::operator >> (double& outNum)
 	// and swap if necessary.
 	 
 	Assert_(sizeof(outNum) == 8); 
-	CFSwappedFloat64 swappedDouble;
-	ReadBlock(&swappedDouble, sizeof(swappedDouble));
-	outNum = CFConvertDoubleSwappedToHost(swappedDouble);
+	if (mNativeEndian) {
+		ReadBlock(&outNum, sizeof(outNum));
+	} else {
+		CFSwappedFloat64 swappedDouble;
+		ReadBlock(&swappedDouble, sizeof(swappedDouble));
+		outNum = CFConvertDoubleSwappedToHost(swappedDouble);
+	}
 
 #elif TARGET_CPU_68K
 
