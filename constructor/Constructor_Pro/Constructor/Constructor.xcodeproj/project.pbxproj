@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6941DCEA13BD019700983E51 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6941DCE913BD019700983E51 /* CoreServices.framework */; };
+		6941DDE513BD33B400983E51 /* ConstructorApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6941DDE213BD33B400983E51 /* ConstructorApp.icns */; };
+		6941DDE613BD33B400983E51 /* ConstructorDoc.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6941DDE313BD33B400983E51 /* ConstructorDoc.icns */; };
+		6941DDE713BD33B400983E51 /* ConstructorPrefs.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6941DDE413BD33B400983E51 /* ConstructorPrefs.icns */; };
+		6986620F14056AC000C3BCB8 /* CAPreferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6986620E14056AC000C3BCB8 /* CAPreferences.cpp */; };
 		722EF5CF09ECB03800A837BC /* CAGenericTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF24809ECB03600A837BC /* CAGenericTarget.cpp */; };
 		722EF5D009ECB03800A837BC /* CAPreferencesFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF24A09ECB03600A837BC /* CAPreferencesFile.cpp */; };
 		722EF5D109ECB03800A837BC /* Constructor.PPob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF24C09ECB03600A837BC /* Constructor.PPob.cpp */; };
@@ -321,65 +326,6 @@
 		722EF77809ECB03800A837BC /* LGAWindowHeader.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF5AC09ECB03800A837BC /* LGAWindowHeader.cp */; };
 		722EF77909ECB03800A837BC /* LGAIconMixin.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF5AF09ECB03800A837BC /* LGAIconMixin.cp */; };
 		722EF77C09ECB03800A837BC /* MoreFilesExtras.c in Sources */ = {isa = PBXBuildFile; fileRef = 722EF5BB09ECB03800A837BC /* MoreFilesExtras.c */; };
-		722EFAD209ECB05300A837BC /* LHeaderField.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF78209ECB05200A837BC /* LHeaderField.cp */; };
-		722EFAD309ECB05300A837BC /* LHeaderFieldList.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF78409ECB05200A837BC /* LHeaderFieldList.cp */; };
-		722EFAD409ECB05300A837BC /* LHTTPMessage.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF78609ECB05200A837BC /* LHTTPMessage.cp */; };
-		722EFAD509ECB05300A837BC /* LInternetMessage.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF78809ECB05200A837BC /* LInternetMessage.cp */; };
-		722EFAD609ECB05300A837BC /* LInternetMessageList.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF78A09ECB05200A837BC /* LInternetMessageList.cp */; };
-		722EFAD709ECB05300A837BC /* LMailMessage.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF78C09ECB05200A837BC /* LMailMessage.cp */; };
-		722EFAD809ECB05300A837BC /* LMIMEMessage.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF78E09ECB05200A837BC /* LMIMEMessage.cp */; };
-		722EFAD909ECB05300A837BC /* LFingerConnection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF79209ECB05200A837BC /* LFingerConnection.cp */; };
-		722EFADA09ECB05300A837BC /* LFingerResponse.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF79409ECB05200A837BC /* LFingerResponse.cp */; };
-		722EFADB09ECB05300A837BC /* LFTPConnection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF79609ECB05200A837BC /* LFTPConnection.cp */; };
-		722EFADC09ECB05300A837BC /* LFTPDataConnection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF79809ECB05200A837BC /* LFTPDataConnection.cp */; };
-		722EFADD09ECB05300A837BC /* LFTPResponse.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF79A09ECB05200A837BC /* LFTPResponse.cp */; };
-		722EFADE09ECB05300A837BC /* LHTTPConnection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF79C09ECB05200A837BC /* LHTTPConnection.cp */; };
-		722EFADF09ECB05300A837BC /* LHTTPResponse.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF79E09ECB05200A837BC /* LHTTPResponse.cp */; };
-		722EFAE009ECB05300A837BC /* LInternetAsyncSendQueue.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7A009ECB05200A837BC /* LInternetAsyncSendQueue.cp */; };
-		722EFAE109ECB05300A837BC /* LInternetProtocol.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7A209ECB05200A837BC /* LInternetProtocol.cp */; };
-		722EFAE209ECB05300A837BC /* LInternetProtocolAsync.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7A409ECB05200A837BC /* LInternetProtocolAsync.cp */; };
-		722EFAE309ECB05300A837BC /* LInternetResponse.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7A609ECB05200A837BC /* LInternetResponse.cp */; };
-		722EFAE409ECB05300A837BC /* LIRCConnection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7A809ECB05200A837BC /* LIRCConnection.cp */; };
-		722EFAE509ECB05300A837BC /* LIRCResponse.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7AA09ECB05200A837BC /* LIRCResponse.cp */; };
-		722EFAE609ECB05300A837BC /* LNetworkTimeConnection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7AC09ECB05200A837BC /* LNetworkTimeConnection.cp */; };
-		722EFAE709ECB05300A837BC /* LPOP3Connection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7AE09ECB05200A837BC /* LPOP3Connection.cp */; };
-		722EFAE809ECB05300A837BC /* LPOP3Response.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7B009ECB05200A837BC /* LPOP3Response.cp */; };
-		722EFAE909ECB05300A837BC /* LSMTPConnection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7B209ECB05200A837BC /* LSMTPConnection.cp */; };
-		722EFAEA09ECB05300A837BC /* LSMTPResponse.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7B409ECB05200A837BC /* LSMTPResponse.cp */; };
-		722EFAEB09ECB05300A837BC /* LTimeConnection.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7B609ECB05200A837BC /* LTimeConnection.cp */; };
-		722EFAEC09ECB05300A837BC /* LDynamicBuffer.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7B909ECB05200A837BC /* LDynamicBuffer.cp */; };
-		722EFAED09ECB05300A837BC /* LMacBinaryFile.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7BB09ECB05200A837BC /* LMacBinaryFile.cp */; };
-		722EFAEE09ECB05300A837BC /* LURL.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7BD09ECB05200A837BC /* LURL.cp */; };
-		722EFAEF09ECB05300A837BC /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7BF09ECB05200A837BC /* md5.c */; };
-		722EFAF009ECB05300A837BC /* UInternet.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7C109ECB05200A837BC /* UInternet.cp */; };
-		722EFAF109ECB05300A837BC /* UInternetConfig.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7C309ECB05200A837BC /* UInternetConfig.cp */; };
-		722EFAF209ECB05300A837BC /* uucode.c in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7C509ECB05200A837BC /* uucode.c */; };
-		722EFAF309ECB05300A837BC /* LTemporaryFileStream.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7C709ECB05200A837BC /* LTemporaryFileStream.cp */; };
-		722EFAF409ECB05300A837BC /* LSimpleFTPThread.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7CA09ECB05200A837BC /* LSimpleFTPThread.cp */; };
-		722EFAF509ECB05300A837BC /* LSimpleHTTPThread.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7CC09ECB05200A837BC /* LSimpleHTTPThread.cp */; };
-		722EFAF609ECB05300A837BC /* LSimpleInternetThread.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7CE09ECB05200A837BC /* LSimpleInternetThread.cp */; };
-		722EFAF709ECB05300A837BC /* LSimpleSMTPThread.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7D009ECB05200A837BC /* LSimpleSMTPThread.cp */; };
-		722EFAF809ECB05300A837BC /* UInternetProtocol.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7D209ECB05200A837BC /* UInternetProtocol.cp */; };
-		722EFAF909ECB05300A837BC /* LInternetAddress.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7D609ECB05200A837BC /* LInternetAddress.cp */; };
-		722EFAFA09ECB05300A837BC /* LTCPEndpoint.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7D809ECB05200A837BC /* LTCPEndpoint.cp */; };
-		722EFAFB09ECB05300A837BC /* LUDPEndpoint.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7DA09ECB05200A837BC /* LUDPEndpoint.cp */; };
-		722EFAFC09ECB05300A837BC /* UNetworkFactory.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7DC09ECB05200A837BC /* UNetworkFactory.cp */; };
-		722EFAFD09ECB05300A837BC /* LCleanupTask.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7DF09ECB05200A837BC /* LCleanupTask.cp */; };
-		722EFAFE09ECB05300A837BC /* LEndpoint.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7E109ECB05200A837BC /* LEndpoint.cp */; };
-		722EFAFF09ECB05300A837BC /* LInternetMapper.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7E309ECB05200A837BC /* LInternetMapper.cp */; };
-		722EFB0009ECB05300A837BC /* LInterruptSafeList.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7E509ECB05200A837BC /* LInterruptSafeList.cp */; };
-		722EFB0109ECB05300A837BC /* LNetMessageQueue.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7E709ECB05200A837BC /* LNetMessageQueue.cp */; };
-		722EFB0209ECB05300A837BC /* LReentrantMemoryPool.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7E909ECB05200A837BC /* LReentrantMemoryPool.cp */; };
-		722EFB0309ECB05300A837BC /* LSendQueue.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7EB09ECB05200A837BC /* LSendQueue.cp */; };
-		722EFB0409ECB05300A837BC /* LSharedMemoryPool.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7ED09ECB05200A837BC /* LSharedMemoryPool.cp */; };
-		722EFB0509ECB05300A837BC /* UCallbackUtils.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7EF09ECB05200A837BC /* UCallbackUtils.cp */; };
-		722EFB0609ECB05300A837BC /* UDNSCache.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7F109ECB05200A837BC /* UDNSCache.cp */; };
-		722EFB0709ECB05300A837BC /* UNetworking.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7F309ECB05200A837BC /* UNetworking.cp */; };
-		722EFB0809ECB05300A837BC /* UNetworkMessages.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7F509ECB05200A837BC /* UNetworkMessages.cp */; };
-		722EFB0909ECB05300A837BC /* LOpenTptInetMapper.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7F809ECB05200A837BC /* LOpenTptInetMapper.cp */; };
-		722EFB0A09ECB05300A837BC /* LOpenTptTCPEndpoint.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7FA09ECB05200A837BC /* LOpenTptTCPEndpoint.cp */; };
-		722EFB0B09ECB05300A837BC /* LOpenTptUDPEndpoint.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7FC09ECB05200A837BC /* LOpenTptUDPEndpoint.cp */; };
-		722EFB0C09ECB05300A837BC /* UOpenTptSupport.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF7FE09ECB05200A837BC /* UOpenTptSupport.cp */; };
 		722EFB0E09ECB05300A837BC /* LEventSemaphore.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF80409ECB05200A837BC /* LEventSemaphore.cp */; };
 		722EFB0F09ECB05300A837BC /* LLink.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF80609ECB05200A837BC /* LLink.cp */; };
 		722EFB1009ECB05300A837BC /* LMutexSemaphore.cp in Sources */ = {isa = PBXBuildFile; fileRef = 722EF80809ECB05200A837BC /* LMutexSemaphore.cp */; };
@@ -758,15 +704,20 @@
 		722EFFE509ECC96500A837BC /* Text traits.r in Rez */ = {isa = PBXBuildFile; fileRef = 722EFFE409ECC96500A837BC /* Text traits.r */; };
 		722EFFE709ECC98A00A837BC /* PP view editor.r in Rez */ = {isa = PBXBuildFile; fileRef = 722EFFE609ECC98A00A837BC /* PP view editor.r */; };
 		8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
-		8D0C4E8E0486CD37000505A6 /* main.nib in Resources */ = {isa = PBXBuildFile; fileRef = 02345980000FD03B11CA0E72 /* main.nib */; };
 		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0867D6ABFE840B52C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1870340FFE93FCAF11CA0CD7 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/main.nib; sourceTree = "<group>"; };
 		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		32DBCF6D0370B57F00C91783 /* Constructor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constructor_Prefix.pch; sourceTree = "<group>"; };
+		6941DCE913BD019700983E51 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		6941DDE213BD33B400983E51 /* ConstructorApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ConstructorApp.icns; sourceTree = "<group>"; };
+		6941DDE313BD33B400983E51 /* ConstructorDoc.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ConstructorDoc.icns; sourceTree = "<group>"; };
+		6941DDE413BD33B400983E51 /* ConstructorPrefs.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ConstructorPrefs.icns; sourceTree = "<group>"; };
+		6986620E14056AC000C3BCB8 /* CAPreferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAPreferences.cpp; sourceTree = "<group>"; };
+		6986621014056B6300C3BCB8 /* TCAPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCAPreferences.h; sourceTree = "<group>"; };
+		699BF4A614045EB600477C33 /* CAPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPreferences.h; sourceTree = "<group>"; };
 		722EF21209ECB03600A837BC /* 00- Source.README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = "00- Source.README"; path = "Source files/00- Source.README"; sourceTree = "<group>"; };
 		722EF23D09ECB03600A837BC /* Constructor classes CPPb.tmpl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Constructor classes CPPb.tmpl"; sourceTree = "<group>"; };
 		722EF23E09ECB03600A837BC /* Constructor classes.tmpl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Constructor classes.tmpl"; sourceTree = "<group>"; };
@@ -1437,126 +1388,6 @@
 		722EF5B009ECB03800A837BC /* LGAIconMixin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LGAIconMixin.h; sourceTree = "<group>"; };
 		722EF5BB09ECB03800A837BC /* MoreFilesExtras.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreFilesExtras.c; sourceTree = "<group>"; };
 		722EF77E09ECB05200A837BC /* !PP_Notes_225.doc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "!PP_Notes_225.doc"; sourceTree = "<group>"; };
-		722EF78209ECB05200A837BC /* LHeaderField.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LHeaderField.cp; sourceTree = "<group>"; };
-		722EF78309ECB05200A837BC /* LHeaderField.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LHeaderField.h; sourceTree = "<group>"; };
-		722EF78409ECB05200A837BC /* LHeaderFieldList.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LHeaderFieldList.cp; sourceTree = "<group>"; };
-		722EF78509ECB05200A837BC /* LHeaderFieldList.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LHeaderFieldList.h; sourceTree = "<group>"; };
-		722EF78609ECB05200A837BC /* LHTTPMessage.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LHTTPMessage.cp; sourceTree = "<group>"; };
-		722EF78709ECB05200A837BC /* LHTTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LHTTPMessage.h; sourceTree = "<group>"; };
-		722EF78809ECB05200A837BC /* LInternetMessage.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInternetMessage.cp; sourceTree = "<group>"; };
-		722EF78909ECB05200A837BC /* LInternetMessage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInternetMessage.h; sourceTree = "<group>"; };
-		722EF78A09ECB05200A837BC /* LInternetMessageList.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInternetMessageList.cp; sourceTree = "<group>"; };
-		722EF78B09ECB05200A837BC /* LInternetMessageList.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInternetMessageList.h; sourceTree = "<group>"; };
-		722EF78C09ECB05200A837BC /* LMailMessage.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LMailMessage.cp; sourceTree = "<group>"; };
-		722EF78D09ECB05200A837BC /* LMailMessage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LMailMessage.h; sourceTree = "<group>"; };
-		722EF78E09ECB05200A837BC /* LMIMEMessage.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LMIMEMessage.cp; sourceTree = "<group>"; };
-		722EF78F09ECB05200A837BC /* LMIMEMessage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LMIMEMessage.h; sourceTree = "<group>"; };
-		722EF79109ECB05200A837BC /* IRC_Constants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = IRC_Constants.h; sourceTree = "<group>"; };
-		722EF79209ECB05200A837BC /* LFingerConnection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LFingerConnection.cp; sourceTree = "<group>"; };
-		722EF79309ECB05200A837BC /* LFingerConnection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LFingerConnection.h; sourceTree = "<group>"; };
-		722EF79409ECB05200A837BC /* LFingerResponse.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LFingerResponse.cp; sourceTree = "<group>"; };
-		722EF79509ECB05200A837BC /* LFingerResponse.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LFingerResponse.h; sourceTree = "<group>"; };
-		722EF79609ECB05200A837BC /* LFTPConnection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LFTPConnection.cp; sourceTree = "<group>"; };
-		722EF79709ECB05200A837BC /* LFTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LFTPConnection.h; sourceTree = "<group>"; };
-		722EF79809ECB05200A837BC /* LFTPDataConnection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LFTPDataConnection.cp; sourceTree = "<group>"; };
-		722EF79909ECB05200A837BC /* LFTPDataConnection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LFTPDataConnection.h; sourceTree = "<group>"; };
-		722EF79A09ECB05200A837BC /* LFTPResponse.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LFTPResponse.cp; sourceTree = "<group>"; };
-		722EF79B09ECB05200A837BC /* LFTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LFTPResponse.h; sourceTree = "<group>"; };
-		722EF79C09ECB05200A837BC /* LHTTPConnection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LHTTPConnection.cp; sourceTree = "<group>"; };
-		722EF79D09ECB05200A837BC /* LHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LHTTPConnection.h; sourceTree = "<group>"; };
-		722EF79E09ECB05200A837BC /* LHTTPResponse.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LHTTPResponse.cp; sourceTree = "<group>"; };
-		722EF79F09ECB05200A837BC /* LHTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LHTTPResponse.h; sourceTree = "<group>"; };
-		722EF7A009ECB05200A837BC /* LInternetAsyncSendQueue.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInternetAsyncSendQueue.cp; sourceTree = "<group>"; };
-		722EF7A109ECB05200A837BC /* LInternetAsyncSendQueue.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInternetAsyncSendQueue.h; sourceTree = "<group>"; };
-		722EF7A209ECB05200A837BC /* LInternetProtocol.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInternetProtocol.cp; sourceTree = "<group>"; };
-		722EF7A309ECB05200A837BC /* LInternetProtocol.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInternetProtocol.h; sourceTree = "<group>"; };
-		722EF7A409ECB05200A837BC /* LInternetProtocolAsync.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInternetProtocolAsync.cp; sourceTree = "<group>"; };
-		722EF7A509ECB05200A837BC /* LInternetProtocolAsync.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInternetProtocolAsync.h; sourceTree = "<group>"; };
-		722EF7A609ECB05200A837BC /* LInternetResponse.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInternetResponse.cp; sourceTree = "<group>"; };
-		722EF7A709ECB05200A837BC /* LInternetResponse.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInternetResponse.h; sourceTree = "<group>"; };
-		722EF7A809ECB05200A837BC /* LIRCConnection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LIRCConnection.cp; sourceTree = "<group>"; };
-		722EF7A909ECB05200A837BC /* LIRCConnection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LIRCConnection.h; sourceTree = "<group>"; };
-		722EF7AA09ECB05200A837BC /* LIRCResponse.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LIRCResponse.cp; sourceTree = "<group>"; };
-		722EF7AB09ECB05200A837BC /* LIRCResponse.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LIRCResponse.h; sourceTree = "<group>"; };
-		722EF7AC09ECB05200A837BC /* LNetworkTimeConnection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LNetworkTimeConnection.cp; sourceTree = "<group>"; };
-		722EF7AD09ECB05200A837BC /* LNetworkTimeConnection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LNetworkTimeConnection.h; sourceTree = "<group>"; };
-		722EF7AE09ECB05200A837BC /* LPOP3Connection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LPOP3Connection.cp; sourceTree = "<group>"; };
-		722EF7AF09ECB05200A837BC /* LPOP3Connection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LPOP3Connection.h; sourceTree = "<group>"; };
-		722EF7B009ECB05200A837BC /* LPOP3Response.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LPOP3Response.cp; sourceTree = "<group>"; };
-		722EF7B109ECB05200A837BC /* LPOP3Response.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LPOP3Response.h; sourceTree = "<group>"; };
-		722EF7B209ECB05200A837BC /* LSMTPConnection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LSMTPConnection.cp; sourceTree = "<group>"; };
-		722EF7B309ECB05200A837BC /* LSMTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LSMTPConnection.h; sourceTree = "<group>"; };
-		722EF7B409ECB05200A837BC /* LSMTPResponse.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LSMTPResponse.cp; sourceTree = "<group>"; };
-		722EF7B509ECB05200A837BC /* LSMTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LSMTPResponse.h; sourceTree = "<group>"; };
-		722EF7B609ECB05200A837BC /* LTimeConnection.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LTimeConnection.cp; sourceTree = "<group>"; };
-		722EF7B709ECB05200A837BC /* LTimeConnection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LTimeConnection.h; sourceTree = "<group>"; };
-		722EF7B909ECB05200A837BC /* LDynamicBuffer.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LDynamicBuffer.cp; sourceTree = "<group>"; };
-		722EF7BA09ECB05200A837BC /* LDynamicBuffer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LDynamicBuffer.h; sourceTree = "<group>"; };
-		722EF7BB09ECB05200A837BC /* LMacBinaryFile.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LMacBinaryFile.cp; sourceTree = "<group>"; };
-		722EF7BC09ECB05200A837BC /* LMacBinaryFile.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LMacBinaryFile.h; sourceTree = "<group>"; };
-		722EF7BD09ECB05200A837BC /* LURL.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LURL.cp; sourceTree = "<group>"; };
-		722EF7BE09ECB05200A837BC /* LURL.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LURL.h; sourceTree = "<group>"; };
-		722EF7BF09ECB05200A837BC /* md5.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
-		722EF7C009ECB05200A837BC /* md5.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		722EF7C109ECB05200A837BC /* UInternet.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UInternet.cp; sourceTree = "<group>"; };
-		722EF7C209ECB05200A837BC /* UInternet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UInternet.h; sourceTree = "<group>"; };
-		722EF7C309ECB05200A837BC /* UInternetConfig.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UInternetConfig.cp; sourceTree = "<group>"; };
-		722EF7C409ECB05200A837BC /* UInternetConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UInternetConfig.h; sourceTree = "<group>"; };
-		722EF7C509ECB05200A837BC /* uucode.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = uucode.c; sourceTree = "<group>"; };
-		722EF7C609ECB05200A837BC /* uucode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = uucode.h; sourceTree = "<group>"; };
-		722EF7C709ECB05200A837BC /* LTemporaryFileStream.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LTemporaryFileStream.cp; sourceTree = "<group>"; };
-		722EF7C809ECB05200A837BC /* LTemporaryFileStream.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LTemporaryFileStream.h; sourceTree = "<group>"; };
-		722EF7CA09ECB05200A837BC /* LSimpleFTPThread.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LSimpleFTPThread.cp; sourceTree = "<group>"; };
-		722EF7CB09ECB05200A837BC /* LSimpleFTPThread.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LSimpleFTPThread.h; sourceTree = "<group>"; };
-		722EF7CC09ECB05200A837BC /* LSimpleHTTPThread.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LSimpleHTTPThread.cp; sourceTree = "<group>"; };
-		722EF7CD09ECB05200A837BC /* LSimpleHTTPThread.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LSimpleHTTPThread.h; sourceTree = "<group>"; };
-		722EF7CE09ECB05200A837BC /* LSimpleInternetThread.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LSimpleInternetThread.cp; sourceTree = "<group>"; };
-		722EF7CF09ECB05200A837BC /* LSimpleInternetThread.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LSimpleInternetThread.h; sourceTree = "<group>"; };
-		722EF7D009ECB05200A837BC /* LSimpleSMTPThread.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LSimpleSMTPThread.cp; sourceTree = "<group>"; };
-		722EF7D109ECB05200A837BC /* LSimpleSMTPThread.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LSimpleSMTPThread.h; sourceTree = "<group>"; };
-		722EF7D209ECB05200A837BC /* UInternetProtocol.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UInternetProtocol.cp; sourceTree = "<group>"; };
-		722EF7D309ECB05200A837BC /* UInternetProtocol.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UInternetProtocol.h; sourceTree = "<group>"; };
-		722EF7D609ECB05200A837BC /* LInternetAddress.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInternetAddress.cp; sourceTree = "<group>"; };
-		722EF7D709ECB05200A837BC /* LInternetAddress.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInternetAddress.h; sourceTree = "<group>"; };
-		722EF7D809ECB05200A837BC /* LTCPEndpoint.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LTCPEndpoint.cp; sourceTree = "<group>"; };
-		722EF7D909ECB05200A837BC /* LTCPEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LTCPEndpoint.h; sourceTree = "<group>"; };
-		722EF7DA09ECB05200A837BC /* LUDPEndpoint.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LUDPEndpoint.cp; sourceTree = "<group>"; };
-		722EF7DB09ECB05200A837BC /* LUDPEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LUDPEndpoint.h; sourceTree = "<group>"; };
-		722EF7DC09ECB05200A837BC /* UNetworkFactory.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UNetworkFactory.cp; sourceTree = "<group>"; };
-		722EF7DD09ECB05200A837BC /* UNetworkFactory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UNetworkFactory.h; sourceTree = "<group>"; };
-		722EF7DF09ECB05200A837BC /* LCleanupTask.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LCleanupTask.cp; sourceTree = "<group>"; };
-		722EF7E009ECB05200A837BC /* LCleanupTask.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LCleanupTask.h; sourceTree = "<group>"; };
-		722EF7E109ECB05200A837BC /* LEndpoint.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LEndpoint.cp; sourceTree = "<group>"; };
-		722EF7E209ECB05200A837BC /* LEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LEndpoint.h; sourceTree = "<group>"; };
-		722EF7E309ECB05200A837BC /* LInternetMapper.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInternetMapper.cp; sourceTree = "<group>"; };
-		722EF7E409ECB05200A837BC /* LInternetMapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInternetMapper.h; sourceTree = "<group>"; };
-		722EF7E509ECB05200A837BC /* LInterruptSafeList.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LInterruptSafeList.cp; sourceTree = "<group>"; };
-		722EF7E609ECB05200A837BC /* LInterruptSafeList.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LInterruptSafeList.h; sourceTree = "<group>"; };
-		722EF7E709ECB05200A837BC /* LNetMessageQueue.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LNetMessageQueue.cp; sourceTree = "<group>"; };
-		722EF7E809ECB05200A837BC /* LNetMessageQueue.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LNetMessageQueue.h; sourceTree = "<group>"; };
-		722EF7E909ECB05200A837BC /* LReentrantMemoryPool.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LReentrantMemoryPool.cp; sourceTree = "<group>"; };
-		722EF7EA09ECB05200A837BC /* LReentrantMemoryPool.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LReentrantMemoryPool.h; sourceTree = "<group>"; };
-		722EF7EB09ECB05200A837BC /* LSendQueue.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LSendQueue.cp; sourceTree = "<group>"; };
-		722EF7EC09ECB05200A837BC /* LSendQueue.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LSendQueue.h; sourceTree = "<group>"; };
-		722EF7ED09ECB05200A837BC /* LSharedMemoryPool.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LSharedMemoryPool.cp; sourceTree = "<group>"; };
-		722EF7EE09ECB05200A837BC /* LSharedMemoryPool.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LSharedMemoryPool.h; sourceTree = "<group>"; };
-		722EF7EF09ECB05200A837BC /* UCallbackUtils.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UCallbackUtils.cp; sourceTree = "<group>"; };
-		722EF7F009ECB05200A837BC /* UCallbackUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UCallbackUtils.h; sourceTree = "<group>"; };
-		722EF7F109ECB05200A837BC /* UDNSCache.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UDNSCache.cp; sourceTree = "<group>"; };
-		722EF7F209ECB05200A837BC /* UDNSCache.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UDNSCache.h; sourceTree = "<group>"; };
-		722EF7F309ECB05200A837BC /* UNetworking.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UNetworking.cp; sourceTree = "<group>"; };
-		722EF7F409ECB05200A837BC /* UNetworking.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UNetworking.h; sourceTree = "<group>"; };
-		722EF7F509ECB05200A837BC /* UNetworkMessages.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UNetworkMessages.cp; sourceTree = "<group>"; };
-		722EF7F609ECB05200A837BC /* UNetworkMessages.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UNetworkMessages.h; sourceTree = "<group>"; };
-		722EF7F809ECB05200A837BC /* LOpenTptInetMapper.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LOpenTptInetMapper.cp; sourceTree = "<group>"; };
-		722EF7F909ECB05200A837BC /* LOpenTptInetMapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LOpenTptInetMapper.h; sourceTree = "<group>"; };
-		722EF7FA09ECB05200A837BC /* LOpenTptTCPEndpoint.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LOpenTptTCPEndpoint.cp; sourceTree = "<group>"; };
-		722EF7FB09ECB05200A837BC /* LOpenTptTCPEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LOpenTptTCPEndpoint.h; sourceTree = "<group>"; };
-		722EF7FC09ECB05200A837BC /* LOpenTptUDPEndpoint.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LOpenTptUDPEndpoint.cp; sourceTree = "<group>"; };
-		722EF7FD09ECB05200A837BC /* LOpenTptUDPEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LOpenTptUDPEndpoint.h; sourceTree = "<group>"; };
-		722EF7FE09ECB05200A837BC /* UOpenTptSupport.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UOpenTptSupport.cp; sourceTree = "<group>"; };
-		722EF7FF09ECB05200A837BC /* UOpenTptSupport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UOpenTptSupport.h; sourceTree = "<group>"; };
-		722EF80009ECB05200A837BC /* PP_Networking.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PP_Networking.h; sourceTree = "<group>"; };
 		722EF80409ECB05200A837BC /* LEventSemaphore.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LEventSemaphore.cp; sourceTree = "<group>"; };
 		722EF80509ECB05200A837BC /* LEventSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LEventSemaphore.h; sourceTree = "<group>"; };
 		722EF80609ECB05200A837BC /* LLink.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LLink.cp; sourceTree = "<group>"; };
@@ -1649,7 +1480,7 @@
 		722EF86509ECB05300A837BC /* PP_Debug.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PP_Debug.h; sourceTree = "<group>"; };
 		722EF86609ECB05300A837BC /* PP_DebugConstants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PP_DebugConstants.h; sourceTree = "<group>"; };
 		722EF86709ECB05300A837BC /* PP_DebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PP_DebugMacros.h; sourceTree = "<group>"; };
-		722EF86909ECB05300A837BC /* DebugTrees.CTYP */ = {isa = PBXFileReference; lastKnownFileType = file; path = DebugTrees.CTYP; sourceTree = "<group>"; };
+		722EF86909ECB05300A837BC /* DebugTrees.CTYP */ = {isa = PBXFileReference; lastKnownFileType = text; path = DebugTrees.CTYP; sourceTree = "<group>"; };
 		722EF86A09ECB05300A837BC /* PP Debug Support.ppob */ = {isa = PBXFileReference; lastKnownFileType = archive.ppob; path = "PP Debug Support.ppob"; sourceTree = "<group>"; };
 		722EF86B09ECB05300A837BC /* PP Debug Support.rsrc */ = {isa = PBXFileReference; lastKnownFileType = archive.rsrc; path = "PP Debug Support.rsrc"; sourceTree = "<group>"; };
 		722EF86D09ECB05300A837BC /* LDebugStream.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LDebugStream.cp; sourceTree = "<group>"; };
@@ -1687,7 +1518,7 @@
 		722EF89309ECB05300A837BC /* UAppearanceMenus.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UAppearanceMenus.cp; sourceTree = "<group>"; };
 		722EF89409ECB05300A837BC /* UAppearanceMenus.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UAppearanceMenus.h; sourceTree = "<group>"; };
 		722EF89909ECB05300A837BC /* UMenus.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UMenus.h; sourceTree = "<group>"; };
-		722EF89A09ECB05300A837BC /* UMenus.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.interfacer; path = UMenus.i; sourceTree = "<group>"; };
+		722EF89A09ECB05300A837BC /* UMenus.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c.preprocessed; path = UMenus.i; sourceTree = "<group>"; };
 		722EF89C09ECB05300A837BC /* LPageArrow.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LPageArrow.cp; sourceTree = "<group>"; };
 		722EF89D09ECB05300A837BC /* LPageArrow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LPageArrow.h; sourceTree = "<group>"; };
 		722EF89E09ECB05300A837BC /* LPageButton.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LPageButton.cp; sourceTree = "<group>"; };
@@ -2078,8 +1909,8 @@
 		722EFA4809ECB05300A837BC /* PP Copy & Customize.rsrc */ = {isa = PBXFileReference; lastKnownFileType = archive.rsrc; path = "PP Copy & Customize.rsrc"; sourceTree = "<group>"; };
 		722EFA4909ECB05300A837BC /* PP Cursors.rsrc */ = {isa = PBXFileReference; lastKnownFileType = archive.rsrc; path = "PP Cursors.rsrc"; sourceTree = "<group>"; };
 		722EFA4B09ECB05300A837BC /* PP Document Alerts.rsrc */ = {isa = PBXFileReference; lastKnownFileType = archive.rsrc; path = "PP Document Alerts.rsrc"; sourceTree = "<group>"; };
-		722EFA6309ECB05300A837BC /* LFileChooser.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.interfacer; path = LFileChooser.i; sourceTree = "<group>"; };
-		722EFA6409ECB05300A837BC /* LFileDesignator.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.interfacer; path = LFileDesignator.i; sourceTree = "<group>"; };
+		722EFA6309ECB05300A837BC /* LFileChooser.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c.preprocessed; path = LFileChooser.i; sourceTree = "<group>"; };
+		722EFA6409ECB05300A837BC /* LFileDesignator.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c.preprocessed; path = LFileDesignator.i; sourceTree = "<group>"; };
 		722EFA6509ECB05300A837BC /* LFileTypeList.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LFileTypeList.cp; sourceTree = "<group>"; };
 		722EFA6609ECB05300A837BC /* LFileTypeList.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LFileTypeList.h; sourceTree = "<group>"; };
 		722EFA6B09ECB05300A837BC /* UModalDialogs.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UModalDialogs.cp; sourceTree = "<group>"; };
@@ -2087,7 +1918,7 @@
 		722EFA6D09ECB05300A837BC /* UNavServicesDialogs.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = UNavServicesDialogs.cp; sourceTree = "<group>"; };
 		722EFA6E09ECB05300A837BC /* UNavServicesDialogs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UNavServicesDialogs.h; sourceTree = "<group>"; };
 		722EFA6F09ECB05300A837BC /* UStandardDialogs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = UStandardDialogs.h; sourceTree = "<group>"; };
-		722EFA7009ECB05300A837BC /* UStandardDialogs.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.interfacer; path = UStandardDialogs.i; sourceTree = "<group>"; };
+		722EFA7009ECB05300A837BC /* UStandardDialogs.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c.preprocessed; path = UStandardDialogs.i; sourceTree = "<group>"; };
 		722EFA7409ECB05300A837BC /* LClipboard.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LClipboard.cp; sourceTree = "<group>"; };
 		722EFA7509ECB05300A837BC /* LClipboard.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LClipboard.h; sourceTree = "<group>"; };
 		722EFA7609ECB05300A837BC /* LException.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LException.cp; sourceTree = "<group>"; };
@@ -2254,26 +2085,26 @@
 		722EFD0E09ECB37A00A837BC /* VPLTabsControl.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = VPLTabsControl.h; sourceTree = "<group>"; };
 		722EFD0F09ECB37A00A837BC /* VPLTextGroupBox.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = VPLTextGroupBox.h; sourceTree = "<group>"; };
 		722EFD1009ECB37A00A837BC /* VPLWindowHeader.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = VPLWindowHeader.h; sourceTree = "<group>"; };
-		722EFD3A09ECB41E00A837BC /* DirectoryCopy.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DirectoryCopy.h; path = /Users/local/Desktop/MoreFiles/CHeaders/DirectoryCopy.h; sourceTree = "<absolute>"; };
-		722EFD3B09ECB41E00A837BC /* FileCopy.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileCopy.h; path = /Users/local/Desktop/MoreFiles/CHeaders/FileCopy.h; sourceTree = "<absolute>"; };
-		722EFD3C09ECB41E00A837BC /* FSpCompat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FSpCompat.h; path = /Users/local/Desktop/MoreFiles/CHeaders/FSpCompat.h; sourceTree = "<absolute>"; };
-		722EFD3D09ECB41E00A837BC /* FullPath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FullPath.h; path = /Users/local/Desktop/MoreFiles/CHeaders/FullPath.h; sourceTree = "<absolute>"; };
-		722EFD3E09ECB41E00A837BC /* IterateDirectory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IterateDirectory.h; path = /Users/local/Desktop/MoreFiles/CHeaders/IterateDirectory.h; sourceTree = "<absolute>"; };
-		722EFD3F09ECB41E00A837BC /* MoreDesktopMgr.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MoreDesktopMgr.h; path = /Users/local/Desktop/MoreFiles/CHeaders/MoreDesktopMgr.h; sourceTree = "<absolute>"; };
-		722EFD4009ECB41E00A837BC /* MoreFiles.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MoreFiles.h; path = /Users/local/Desktop/MoreFiles/CHeaders/MoreFiles.h; sourceTree = "<absolute>"; };
-		722EFD4109ECB41E00A837BC /* MoreFilesExtras.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MoreFilesExtras.h; path = /Users/local/Desktop/MoreFiles/CHeaders/MoreFilesExtras.h; sourceTree = "<absolute>"; };
-		722EFD4209ECB41E00A837BC /* Search.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Search.h; path = /Users/local/Desktop/MoreFiles/CHeaders/Search.h; sourceTree = "<absolute>"; };
-		722EFD4309ECB41E00A837BC /* MoreFilesReadMe */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = MoreFilesReadMe; path = /Users/local/Desktop/MoreFiles/MoreFilesReadMe; sourceTree = "<absolute>"; };
-		722EFD4F09ECB41E00A837BC /* DirectoryCopy.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = DirectoryCopy.c; path = /Users/local/Desktop/MoreFiles/Sources/DirectoryCopy.c; sourceTree = "<absolute>"; };
-		722EFD5009ECB41E00A837BC /* FileCopy.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = FileCopy.c; path = /Users/local/Desktop/MoreFiles/Sources/FileCopy.c; sourceTree = "<absolute>"; };
-		722EFD5109ECB41E00A837BC /* FSpCompat.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = FSpCompat.c; path = /Users/local/Desktop/MoreFiles/Sources/FSpCompat.c; sourceTree = "<absolute>"; };
-		722EFD5209ECB41E00A837BC /* FullPath.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = FullPath.c; path = /Users/local/Desktop/MoreFiles/Sources/FullPath.c; sourceTree = "<absolute>"; };
-		722EFD5309ECB41E00A837BC /* IterateDirectory.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = IterateDirectory.c; path = /Users/local/Desktop/MoreFiles/Sources/IterateDirectory.c; sourceTree = "<absolute>"; };
-		722EFD5409ECB41E00A837BC /* MoreDesktopMgr.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = MoreDesktopMgr.c; path = /Users/local/Desktop/MoreFiles/Sources/MoreDesktopMgr.c; sourceTree = "<absolute>"; };
-		722EFD5509ECB41E00A837BC /* MoreFiles.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = MoreFiles.c; path = /Users/local/Desktop/MoreFiles/Sources/MoreFiles.c; sourceTree = "<absolute>"; };
-		722EFD5709ECB41E00A837BC /* Optimization.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Optimization.h; path = /Users/local/Desktop/MoreFiles/Sources/Optimization.h; sourceTree = "<absolute>"; };
-		722EFD5809ECB41E00A837BC /* OptimizationEnd.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OptimizationEnd.h; path = /Users/local/Desktop/MoreFiles/Sources/OptimizationEnd.h; sourceTree = "<absolute>"; };
-		722EFD5909ECB41E00A837BC /* Search.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = Search.c; path = /Users/local/Desktop/MoreFiles/Sources/Search.c; sourceTree = "<absolute>"; };
+		722EFD3A09ECB41E00A837BC /* DirectoryCopy.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DirectoryCopy.h; sourceTree = "<group>"; };
+		722EFD3B09ECB41E00A837BC /* FileCopy.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FileCopy.h; sourceTree = "<group>"; };
+		722EFD3C09ECB41E00A837BC /* FSpCompat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FSpCompat.h; sourceTree = "<group>"; };
+		722EFD3D09ECB41E00A837BC /* FullPath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FullPath.h; sourceTree = "<group>"; };
+		722EFD3E09ECB41E00A837BC /* IterateDirectory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = IterateDirectory.h; sourceTree = "<group>"; };
+		722EFD3F09ECB41E00A837BC /* MoreDesktopMgr.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreDesktopMgr.h; sourceTree = "<group>"; };
+		722EFD4009ECB41E00A837BC /* MoreFiles.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreFiles.h; sourceTree = "<group>"; };
+		722EFD4109ECB41E00A837BC /* MoreFilesExtras.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreFilesExtras.h; sourceTree = "<group>"; };
+		722EFD4209ECB41E00A837BC /* Search.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
+		722EFD4309ECB41E00A837BC /* MoreFilesReadMe */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = MoreFilesReadMe; sourceTree = "<group>"; };
+		722EFD4F09ECB41E00A837BC /* DirectoryCopy.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = DirectoryCopy.c; sourceTree = "<group>"; };
+		722EFD5009ECB41E00A837BC /* FileCopy.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = FileCopy.c; sourceTree = "<group>"; };
+		722EFD5109ECB41E00A837BC /* FSpCompat.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = FSpCompat.c; sourceTree = "<group>"; };
+		722EFD5209ECB41E00A837BC /* FullPath.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = FullPath.c; sourceTree = "<group>"; };
+		722EFD5309ECB41E00A837BC /* IterateDirectory.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = IterateDirectory.c; sourceTree = "<group>"; };
+		722EFD5409ECB41E00A837BC /* MoreDesktopMgr.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreDesktopMgr.c; sourceTree = "<group>"; };
+		722EFD5509ECB41E00A837BC /* MoreFiles.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreFiles.c; sourceTree = "<group>"; };
+		722EFD5709ECB41E00A837BC /* Optimization.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Optimization.h; sourceTree = "<group>"; };
+		722EFD5809ECB41E00A837BC /* OptimizationEnd.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = OptimizationEnd.h; sourceTree = "<group>"; };
+		722EFD5909ECB41E00A837BC /* Search.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = Search.c; sourceTree = "<group>"; };
 		722EFD8709ECB53900A837BC /* 00- Property inspector.README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "00- Property inspector.README"; sourceTree = "<group>"; };
 		722EFD8809ECB53900A837BC /* PIAttributeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PIAttributeItem.cpp; sourceTree = "<group>"; };
 		722EFD8909ECB53900A837BC /* PIAttributeItem.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIAttributeItem.h; sourceTree = "<group>"; };
@@ -2362,6 +2193,7 @@
 			files = (
 				8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */,
 				722EFF8409ECC09200A837BC /* QuickTime.framework in Frameworks */,
+				6941DCEA13BD019700983E51 /* CoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2408,9 +2240,11 @@
 		20286C2CFDCF999611CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6941DDE213BD33B400983E51 /* ConstructorApp.icns */,
+				6941DDE313BD33B400983E51 /* ConstructorDoc.icns */,
+				6941DDE413BD33B400983E51 /* ConstructorPrefs.icns */,
 				8D0C4E960486CD37000505A6 /* Info.plist */,
 				0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */,
-				02345980000FD03B11CA0E72 /* main.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2420,6 +2254,7 @@
 			children = (
 				20286C33FDCF999611CA2CEA /* Carbon.framework */,
 				722EFF8309ECC09200A837BC /* QuickTime.framework */,
+				6941DCE913BD019700983E51 /* CoreServices.framework */,
 			);
 			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -2471,10 +2306,13 @@
 				722EF24709ECB03600A837BC /* 00- Application.README */,
 				722EF24809ECB03600A837BC /* CAGenericTarget.cpp */,
 				722EF24909ECB03600A837BC /* CAGenericTarget.h */,
+				6986620E14056AC000C3BCB8 /* CAPreferences.cpp */,
+				699BF4A614045EB600477C33 /* CAPreferences.h */,
 				722EF24A09ECB03600A837BC /* CAPreferencesFile.cpp */,
 				722EF24B09ECB03600A837BC /* CAPreferencesFile.h */,
 				722EF24C09ECB03600A837BC /* Constructor.PPob.cpp */,
 				722EF24D09ECB03600A837BC /* Constructor.PPob.h */,
+				6986621014056B6300C3BCB8 /* TCAPreferences.h */,
 				722EF24E09ECB03600A837BC /* Resources */,
 			);
 			path = Application;
@@ -3756,207 +3594,15 @@
 				722EFA9D09ECB05300A837BC /* Utility Classes */,
 			);
 			name = PowerPlant;
-			path = ../../../PowerPlant;
+			path = "../../Open-PowerPlant/PowerPlant";
 			sourceTree = SOURCE_ROOT;
 		};
 		722EF77F09ECB05200A837BC /* _Advanced Classes */ = {
 			isa = PBXGroup;
 			children = (
-				722EF78009ECB05200A837BC /* Internet Classes */,
-				722EF7D409ECB05200A837BC /* Networking Classes */,
 				722EF80109ECB05200A837BC /* Threads Classes */,
 			);
 			path = "_Advanced Classes";
-			sourceTree = "<group>";
-		};
-		722EF78009ECB05200A837BC /* Internet Classes */ = {
-			isa = PBXGroup;
-			children = (
-				722EF78109ECB05200A837BC /* Internet Message Class */,
-				722EF79009ECB05200A837BC /* Internet Protocols */,
-				722EF7B809ECB05200A837BC /* Internet Utilities */,
-				722EF7C709ECB05200A837BC /* LTemporaryFileStream.cp */,
-				722EF7C809ECB05200A837BC /* LTemporaryFileStream.h */,
-				722EF7C909ECB05200A837BC /* Simple Protocol Threads */,
-			);
-			path = "Internet Classes";
-			sourceTree = "<group>";
-		};
-		722EF78109ECB05200A837BC /* Internet Message Class */ = {
-			isa = PBXGroup;
-			children = (
-				722EF78209ECB05200A837BC /* LHeaderField.cp */,
-				722EF78309ECB05200A837BC /* LHeaderField.h */,
-				722EF78409ECB05200A837BC /* LHeaderFieldList.cp */,
-				722EF78509ECB05200A837BC /* LHeaderFieldList.h */,
-				722EF78609ECB05200A837BC /* LHTTPMessage.cp */,
-				722EF78709ECB05200A837BC /* LHTTPMessage.h */,
-				722EF78809ECB05200A837BC /* LInternetMessage.cp */,
-				722EF78909ECB05200A837BC /* LInternetMessage.h */,
-				722EF78A09ECB05200A837BC /* LInternetMessageList.cp */,
-				722EF78B09ECB05200A837BC /* LInternetMessageList.h */,
-				722EF78C09ECB05200A837BC /* LMailMessage.cp */,
-				722EF78D09ECB05200A837BC /* LMailMessage.h */,
-				722EF78E09ECB05200A837BC /* LMIMEMessage.cp */,
-				722EF78F09ECB05200A837BC /* LMIMEMessage.h */,
-			);
-			path = "Internet Message Class";
-			sourceTree = "<group>";
-		};
-		722EF79009ECB05200A837BC /* Internet Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				722EF79109ECB05200A837BC /* IRC_Constants.h */,
-				722EF79209ECB05200A837BC /* LFingerConnection.cp */,
-				722EF79309ECB05200A837BC /* LFingerConnection.h */,
-				722EF79409ECB05200A837BC /* LFingerResponse.cp */,
-				722EF79509ECB05200A837BC /* LFingerResponse.h */,
-				722EF79609ECB05200A837BC /* LFTPConnection.cp */,
-				722EF79709ECB05200A837BC /* LFTPConnection.h */,
-				722EF79809ECB05200A837BC /* LFTPDataConnection.cp */,
-				722EF79909ECB05200A837BC /* LFTPDataConnection.h */,
-				722EF79A09ECB05200A837BC /* LFTPResponse.cp */,
-				722EF79B09ECB05200A837BC /* LFTPResponse.h */,
-				722EF79C09ECB05200A837BC /* LHTTPConnection.cp */,
-				722EF79D09ECB05200A837BC /* LHTTPConnection.h */,
-				722EF79E09ECB05200A837BC /* LHTTPResponse.cp */,
-				722EF79F09ECB05200A837BC /* LHTTPResponse.h */,
-				722EF7A009ECB05200A837BC /* LInternetAsyncSendQueue.cp */,
-				722EF7A109ECB05200A837BC /* LInternetAsyncSendQueue.h */,
-				722EF7A209ECB05200A837BC /* LInternetProtocol.cp */,
-				722EF7A309ECB05200A837BC /* LInternetProtocol.h */,
-				722EF7A409ECB05200A837BC /* LInternetProtocolAsync.cp */,
-				722EF7A509ECB05200A837BC /* LInternetProtocolAsync.h */,
-				722EF7A609ECB05200A837BC /* LInternetResponse.cp */,
-				722EF7A709ECB05200A837BC /* LInternetResponse.h */,
-				722EF7A809ECB05200A837BC /* LIRCConnection.cp */,
-				722EF7A909ECB05200A837BC /* LIRCConnection.h */,
-				722EF7AA09ECB05200A837BC /* LIRCResponse.cp */,
-				722EF7AB09ECB05200A837BC /* LIRCResponse.h */,
-				722EF7AC09ECB05200A837BC /* LNetworkTimeConnection.cp */,
-				722EF7AD09ECB05200A837BC /* LNetworkTimeConnection.h */,
-				722EF7AE09ECB05200A837BC /* LPOP3Connection.cp */,
-				722EF7AF09ECB05200A837BC /* LPOP3Connection.h */,
-				722EF7B009ECB05200A837BC /* LPOP3Response.cp */,
-				722EF7B109ECB05200A837BC /* LPOP3Response.h */,
-				722EF7B209ECB05200A837BC /* LSMTPConnection.cp */,
-				722EF7B309ECB05200A837BC /* LSMTPConnection.h */,
-				722EF7B409ECB05200A837BC /* LSMTPResponse.cp */,
-				722EF7B509ECB05200A837BC /* LSMTPResponse.h */,
-				722EF7B609ECB05200A837BC /* LTimeConnection.cp */,
-				722EF7B709ECB05200A837BC /* LTimeConnection.h */,
-			);
-			path = "Internet Protocols";
-			sourceTree = "<group>";
-		};
-		722EF7B809ECB05200A837BC /* Internet Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				722EF7B909ECB05200A837BC /* LDynamicBuffer.cp */,
-				722EF7BA09ECB05200A837BC /* LDynamicBuffer.h */,
-				722EF7BB09ECB05200A837BC /* LMacBinaryFile.cp */,
-				722EF7BC09ECB05200A837BC /* LMacBinaryFile.h */,
-				722EF7BD09ECB05200A837BC /* LURL.cp */,
-				722EF7BE09ECB05200A837BC /* LURL.h */,
-				722EF7BF09ECB05200A837BC /* md5.c */,
-				722EF7C009ECB05200A837BC /* md5.h */,
-				722EF7C109ECB05200A837BC /* UInternet.cp */,
-				722EF7C209ECB05200A837BC /* UInternet.h */,
-				722EF7C309ECB05200A837BC /* UInternetConfig.cp */,
-				722EF7C409ECB05200A837BC /* UInternetConfig.h */,
-				722EF7C509ECB05200A837BC /* uucode.c */,
-				722EF7C609ECB05200A837BC /* uucode.h */,
-			);
-			path = "Internet Utilities";
-			sourceTree = "<group>";
-		};
-		722EF7C909ECB05200A837BC /* Simple Protocol Threads */ = {
-			isa = PBXGroup;
-			children = (
-				722EF7CA09ECB05200A837BC /* LSimpleFTPThread.cp */,
-				722EF7CB09ECB05200A837BC /* LSimpleFTPThread.h */,
-				722EF7CC09ECB05200A837BC /* LSimpleHTTPThread.cp */,
-				722EF7CD09ECB05200A837BC /* LSimpleHTTPThread.h */,
-				722EF7CE09ECB05200A837BC /* LSimpleInternetThread.cp */,
-				722EF7CF09ECB05200A837BC /* LSimpleInternetThread.h */,
-				722EF7D009ECB05200A837BC /* LSimpleSMTPThread.cp */,
-				722EF7D109ECB05200A837BC /* LSimpleSMTPThread.h */,
-				722EF7D209ECB05200A837BC /* UInternetProtocol.cp */,
-				722EF7D309ECB05200A837BC /* UInternetProtocol.h */,
-			);
-			path = "Simple Protocol Threads";
-			sourceTree = "<group>";
-		};
-		722EF7D409ECB05200A837BC /* Networking Classes */ = {
-			isa = PBXGroup;
-			children = (
-				722EF7D509ECB05200A837BC /* Generic Network Interface */,
-				722EF7DE09ECB05200A837BC /* Internal Implementation */,
-				722EF7F709ECB05200A837BC /* OpenTransport Implementation */,
-				722EF80009ECB05200A837BC /* PP_Networking.h */,
-			);
-			path = "Networking Classes";
-			sourceTree = "<group>";
-		};
-		722EF7D509ECB05200A837BC /* Generic Network Interface */ = {
-			isa = PBXGroup;
-			children = (
-				722EF7D609ECB05200A837BC /* LInternetAddress.cp */,
-				722EF7D709ECB05200A837BC /* LInternetAddress.h */,
-				722EF7D809ECB05200A837BC /* LTCPEndpoint.cp */,
-				722EF7D909ECB05200A837BC /* LTCPEndpoint.h */,
-				722EF7DA09ECB05200A837BC /* LUDPEndpoint.cp */,
-				722EF7DB09ECB05200A837BC /* LUDPEndpoint.h */,
-				722EF7DC09ECB05200A837BC /* UNetworkFactory.cp */,
-				722EF7DD09ECB05200A837BC /* UNetworkFactory.h */,
-			);
-			path = "Generic Network Interface";
-			sourceTree = "<group>";
-		};
-		722EF7DE09ECB05200A837BC /* Internal Implementation */ = {
-			isa = PBXGroup;
-			children = (
-				722EF7DF09ECB05200A837BC /* LCleanupTask.cp */,
-				722EF7E009ECB05200A837BC /* LCleanupTask.h */,
-				722EF7E109ECB05200A837BC /* LEndpoint.cp */,
-				722EF7E209ECB05200A837BC /* LEndpoint.h */,
-				722EF7E309ECB05200A837BC /* LInternetMapper.cp */,
-				722EF7E409ECB05200A837BC /* LInternetMapper.h */,
-				722EF7E509ECB05200A837BC /* LInterruptSafeList.cp */,
-				722EF7E609ECB05200A837BC /* LInterruptSafeList.h */,
-				722EF7E709ECB05200A837BC /* LNetMessageQueue.cp */,
-				722EF7E809ECB05200A837BC /* LNetMessageQueue.h */,
-				722EF7E909ECB05200A837BC /* LReentrantMemoryPool.cp */,
-				722EF7EA09ECB05200A837BC /* LReentrantMemoryPool.h */,
-				722EF7EB09ECB05200A837BC /* LSendQueue.cp */,
-				722EF7EC09ECB05200A837BC /* LSendQueue.h */,
-				722EF7ED09ECB05200A837BC /* LSharedMemoryPool.cp */,
-				722EF7EE09ECB05200A837BC /* LSharedMemoryPool.h */,
-				722EF7EF09ECB05200A837BC /* UCallbackUtils.cp */,
-				722EF7F009ECB05200A837BC /* UCallbackUtils.h */,
-				722EF7F109ECB05200A837BC /* UDNSCache.cp */,
-				722EF7F209ECB05200A837BC /* UDNSCache.h */,
-				722EF7F309ECB05200A837BC /* UNetworking.cp */,
-				722EF7F409ECB05200A837BC /* UNetworking.h */,
-				722EF7F509ECB05200A837BC /* UNetworkMessages.cp */,
-				722EF7F609ECB05200A837BC /* UNetworkMessages.h */,
-			);
-			path = "Internal Implementation";
-			sourceTree = "<group>";
-		};
-		722EF7F709ECB05200A837BC /* OpenTransport Implementation */ = {
-			isa = PBXGroup;
-			children = (
-				722EF7F809ECB05200A837BC /* LOpenTptInetMapper.cp */,
-				722EF7F909ECB05200A837BC /* LOpenTptInetMapper.h */,
-				722EF7FA09ECB05200A837BC /* LOpenTptTCPEndpoint.cp */,
-				722EF7FB09ECB05200A837BC /* LOpenTptTCPEndpoint.h */,
-				722EF7FC09ECB05200A837BC /* LOpenTptUDPEndpoint.cp */,
-				722EF7FD09ECB05200A837BC /* LOpenTptUDPEndpoint.h */,
-				722EF7FE09ECB05200A837BC /* UOpenTptSupport.cp */,
-				722EF7FF09ECB05200A837BC /* UOpenTptSupport.h */,
-			);
-			path = "OpenTransport Implementation";
 			sourceTree = "<group>";
 		};
 		722EF80109ECB05200A837BC /* Threads Classes */ = {
@@ -5055,7 +4701,7 @@
 				722EFD4E09ECB41E00A837BC /* Sources */,
 			);
 			name = MoreFiles;
-			path = /Users/local/Desktop/MoreFiles;
+			path = /Working/XcProjects/Vendors/Macintosh/MoreFiles;
 			sourceTree = "<absolute>";
 		};
 		722EFD3909ECB41E00A837BC /* CHeaders */ = {
@@ -5071,9 +4717,8 @@
 				722EFD4109ECB41E00A837BC /* MoreFilesExtras.h */,
 				722EFD4209ECB41E00A837BC /* Search.h */,
 			);
-			name = CHeaders;
-			path = /Users/local/Desktop/MoreFiles/CHeaders;
-			sourceTree = "<absolute>";
+			path = CHeaders;
+			sourceTree = "<group>";
 		};
 		722EFD4E09ECB41E00A837BC /* Sources */ = {
 			isa = PBXGroup;
@@ -5089,9 +4734,8 @@
 				722EFD5809ECB41E00A837BC /* OptimizationEnd.h */,
 				722EFD5909ECB41E00A837BC /* Search.c */,
 			);
-			name = Sources;
-			path = /Users/local/Desktop/MoreFiles/Sources;
-			sourceTree = "<absolute>";
+			path = Sources;
+			sourceTree = "<group>";
 		};
 		722EFD8609ECB53900A837BC /* Property inspector */ = {
 			isa = PBXGroup;
@@ -5242,10 +4886,15 @@
 /* Begin PBXProject section */
 		20286C28FDCF999611CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Aurbach & Associates, Inc.";
+			};
 			buildConfigurationList = C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "Constructor" */;
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			mainGroup = 20286C29FDCF999611CA2CEA /* Constructor */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D0C4E890486CD37000505A6 /* Constructor */,
 			);
@@ -5258,7 +4907,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */,
-				8D0C4E8E0486CD37000505A6 /* main.nib in Resources */,
+				6941DDE513BD33B400983E51 /* ConstructorApp.icns in Resources */,
+				6941DDE613BD33B400983E51 /* ConstructorDoc.icns in Resources */,
+				6941DDE713BD33B400983E51 /* ConstructorPrefs.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5627,65 +5278,6 @@
 				722EF77809ECB03800A837BC /* LGAWindowHeader.cp in Sources */,
 				722EF77909ECB03800A837BC /* LGAIconMixin.cp in Sources */,
 				722EF77C09ECB03800A837BC /* MoreFilesExtras.c in Sources */,
-				722EFAD209ECB05300A837BC /* LHeaderField.cp in Sources */,
-				722EFAD309ECB05300A837BC /* LHeaderFieldList.cp in Sources */,
-				722EFAD409ECB05300A837BC /* LHTTPMessage.cp in Sources */,
-				722EFAD509ECB05300A837BC /* LInternetMessage.cp in Sources */,
-				722EFAD609ECB05300A837BC /* LInternetMessageList.cp in Sources */,
-				722EFAD709ECB05300A837BC /* LMailMessage.cp in Sources */,
-				722EFAD809ECB05300A837BC /* LMIMEMessage.cp in Sources */,
-				722EFAD909ECB05300A837BC /* LFingerConnection.cp in Sources */,
-				722EFADA09ECB05300A837BC /* LFingerResponse.cp in Sources */,
-				722EFADB09ECB05300A837BC /* LFTPConnection.cp in Sources */,
-				722EFADC09ECB05300A837BC /* LFTPDataConnection.cp in Sources */,
-				722EFADD09ECB05300A837BC /* LFTPResponse.cp in Sources */,
-				722EFADE09ECB05300A837BC /* LHTTPConnection.cp in Sources */,
-				722EFADF09ECB05300A837BC /* LHTTPResponse.cp in Sources */,
-				722EFAE009ECB05300A837BC /* LInternetAsyncSendQueue.cp in Sources */,
-				722EFAE109ECB05300A837BC /* LInternetProtocol.cp in Sources */,
-				722EFAE209ECB05300A837BC /* LInternetProtocolAsync.cp in Sources */,
-				722EFAE309ECB05300A837BC /* LInternetResponse.cp in Sources */,
-				722EFAE409ECB05300A837BC /* LIRCConnection.cp in Sources */,
-				722EFAE509ECB05300A837BC /* LIRCResponse.cp in Sources */,
-				722EFAE609ECB05300A837BC /* LNetworkTimeConnection.cp in Sources */,
-				722EFAE709ECB05300A837BC /* LPOP3Connection.cp in Sources */,
-				722EFAE809ECB05300A837BC /* LPOP3Response.cp in Sources */,
-				722EFAE909ECB05300A837BC /* LSMTPConnection.cp in Sources */,
-				722EFAEA09ECB05300A837BC /* LSMTPResponse.cp in Sources */,
-				722EFAEB09ECB05300A837BC /* LTimeConnection.cp in Sources */,
-				722EFAEC09ECB05300A837BC /* LDynamicBuffer.cp in Sources */,
-				722EFAED09ECB05300A837BC /* LMacBinaryFile.cp in Sources */,
-				722EFAEE09ECB05300A837BC /* LURL.cp in Sources */,
-				722EFAEF09ECB05300A837BC /* md5.c in Sources */,
-				722EFAF009ECB05300A837BC /* UInternet.cp in Sources */,
-				722EFAF109ECB05300A837BC /* UInternetConfig.cp in Sources */,
-				722EFAF209ECB05300A837BC /* uucode.c in Sources */,
-				722EFAF309ECB05300A837BC /* LTemporaryFileStream.cp in Sources */,
-				722EFAF409ECB05300A837BC /* LSimpleFTPThread.cp in Sources */,
-				722EFAF509ECB05300A837BC /* LSimpleHTTPThread.cp in Sources */,
-				722EFAF609ECB05300A837BC /* LSimpleInternetThread.cp in Sources */,
-				722EFAF709ECB05300A837BC /* LSimpleSMTPThread.cp in Sources */,
-				722EFAF809ECB05300A837BC /* UInternetProtocol.cp in Sources */,
-				722EFAF909ECB05300A837BC /* LInternetAddress.cp in Sources */,
-				722EFAFA09ECB05300A837BC /* LTCPEndpoint.cp in Sources */,
-				722EFAFB09ECB05300A837BC /* LUDPEndpoint.cp in Sources */,
-				722EFAFC09ECB05300A837BC /* UNetworkFactory.cp in Sources */,
-				722EFAFD09ECB05300A837BC /* LCleanupTask.cp in Sources */,
-				722EFAFE09ECB05300A837BC /* LEndpoint.cp in Sources */,
-				722EFAFF09ECB05300A837BC /* LInternetMapper.cp in Sources */,
-				722EFB0009ECB05300A837BC /* LInterruptSafeList.cp in Sources */,
-				722EFB0109ECB05300A837BC /* LNetMessageQueue.cp in Sources */,
-				722EFB0209ECB05300A837BC /* LReentrantMemoryPool.cp in Sources */,
-				722EFB0309ECB05300A837BC /* LSendQueue.cp in Sources */,
-				722EFB0409ECB05300A837BC /* LSharedMemoryPool.cp in Sources */,
-				722EFB0509ECB05300A837BC /* UCallbackUtils.cp in Sources */,
-				722EFB0609ECB05300A837BC /* UDNSCache.cp in Sources */,
-				722EFB0709ECB05300A837BC /* UNetworking.cp in Sources */,
-				722EFB0809ECB05300A837BC /* UNetworkMessages.cp in Sources */,
-				722EFB0909ECB05300A837BC /* LOpenTptInetMapper.cp in Sources */,
-				722EFB0A09ECB05300A837BC /* LOpenTptTCPEndpoint.cp in Sources */,
-				722EFB0B09ECB05300A837BC /* LOpenTptUDPEndpoint.cp in Sources */,
-				722EFB0C09ECB05300A837BC /* UOpenTptSupport.cp in Sources */,
 				722EFB0E09ECB05300A837BC /* LEventSemaphore.cp in Sources */,
 				722EFB0F09ECB05300A837BC /* LLink.cp in Sources */,
 				722EFB1009ECB05300A837BC /* LMutexSemaphore.cp in Sources */,
@@ -6028,20 +5620,13 @@
 				722EFDF709ECB54C00A837BC /* LIconTextTable.cp in Sources */,
 				722EFDF809ECB54C00A837BC /* LModeControl.cp in Sources */,
 				722EFDF909ECB54C00A837BC /* LPattern.cp in Sources */,
+				6986620F14056AC000C3BCB8 /* CAPreferences.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		02345980000FD03B11CA0E72 /* main.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1870340FFE93FCAF11CA0CD7 /* English */,
-			);
-			name = main.nib;
-			sourceTree = "<group>";
-		};
 		0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -6082,14 +5667,17 @@
 		C0E91ACA08A95435008D54AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -6102,11 +5690,12 @@
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
