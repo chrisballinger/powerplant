@@ -82,8 +82,8 @@ data 'wctb' (25010, "Low memory") {
 };
 
 data 'STR#' (24000, "Save Flat File Strings", purgeable) {
-	$"0001 1F53 6176 6520 6173 2066 6C61 7474"            /* ...Save as flatt */
-	$"656E 6564 2072 6573 6F75 7263 6520 6669"            /* ened resource fi */
+	$"0001 1F53 6176 6520 6173 2064 6174 612D"            /* ...Save as data- */
+	$"666F 726B 2072 6573 6F75 7263 6520 6669"            /* fork resource fi */
 	$"6C65"                                               /* le */
 };
 
