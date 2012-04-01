@@ -1386,7 +1386,7 @@
 		722EF5AD09ECB03800A837BC /* LGAWindowHeader.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LGAWindowHeader.h; sourceTree = "<group>"; };
 		722EF5AF09ECB03800A837BC /* LGAIconMixin.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LGAIconMixin.cp; sourceTree = "<group>"; };
 		722EF5B009ECB03800A837BC /* LGAIconMixin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LGAIconMixin.h; sourceTree = "<group>"; };
-		722EF5BB09ECB03800A837BC /* MoreFilesExtras.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreFilesExtras.c; sourceTree = "<group>"; };
+		722EF5BB09ECB03800A837BC /* MoreFilesExtras.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = MoreFilesExtras.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/MoreFilesExtras.c"; sourceTree = SOURCE_ROOT; };
 		722EF77E09ECB05200A837BC /* !PP_Notes_225.doc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "!PP_Notes_225.doc"; sourceTree = "<group>"; };
 		722EF80409ECB05200A837BC /* LEventSemaphore.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LEventSemaphore.cp; sourceTree = "<group>"; };
 		722EF80509ECB05200A837BC /* LEventSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LEventSemaphore.h; sourceTree = "<group>"; };
@@ -2095,16 +2095,16 @@
 		722EFD4109ECB41E00A837BC /* MoreFilesExtras.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MoreFilesExtras.h; sourceTree = "<group>"; };
 		722EFD4209ECB41E00A837BC /* Search.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
 		722EFD4309ECB41E00A837BC /* MoreFilesReadMe */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = MoreFilesReadMe; sourceTree = "<group>"; };
-		722EFD4F09ECB41E00A837BC /* DirectoryCopy.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = DirectoryCopy.c; sourceTree = "<group>"; };
-		722EFD5009ECB41E00A837BC /* FileCopy.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = FileCopy.c; sourceTree = "<group>"; };
-		722EFD5109ECB41E00A837BC /* FSpCompat.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = FSpCompat.c; sourceTree = "<group>"; };
-		722EFD5209ECB41E00A837BC /* FullPath.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = FullPath.c; sourceTree = "<group>"; };
-		722EFD5309ECB41E00A837BC /* IterateDirectory.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = IterateDirectory.c; sourceTree = "<group>"; };
-		722EFD5409ECB41E00A837BC /* MoreDesktopMgr.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreDesktopMgr.c; sourceTree = "<group>"; };
-		722EFD5509ECB41E00A837BC /* MoreFiles.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = MoreFiles.c; sourceTree = "<group>"; };
+		722EFD4F09ECB41E00A837BC /* DirectoryCopy.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = DirectoryCopy.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/DirectoryCopy.c"; sourceTree = SOURCE_ROOT; };
+		722EFD5009ECB41E00A837BC /* FileCopy.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = FileCopy.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/FileCopy.c"; sourceTree = SOURCE_ROOT; };
+		722EFD5109ECB41E00A837BC /* FSpCompat.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = FSpCompat.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/FSpCompat.c"; sourceTree = SOURCE_ROOT; };
+		722EFD5209ECB41E00A837BC /* FullPath.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = FullPath.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/FullPath.c"; sourceTree = SOURCE_ROOT; };
+		722EFD5309ECB41E00A837BC /* IterateDirectory.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = IterateDirectory.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/IterateDirectory.c"; sourceTree = SOURCE_ROOT; };
+		722EFD5409ECB41E00A837BC /* MoreDesktopMgr.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = MoreDesktopMgr.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/MoreDesktopMgr.c"; sourceTree = SOURCE_ROOT; };
+		722EFD5509ECB41E00A837BC /* MoreFiles.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = MoreFiles.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/MoreFiles.c"; sourceTree = SOURCE_ROOT; };
 		722EFD5709ECB41E00A837BC /* Optimization.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Optimization.h; sourceTree = "<group>"; };
 		722EFD5809ECB41E00A837BC /* OptimizationEnd.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = OptimizationEnd.h; sourceTree = "<group>"; };
-		722EFD5909ECB41E00A837BC /* Search.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = Search.c; sourceTree = "<group>"; };
+		722EFD5909ECB41E00A837BC /* Search.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = Search.c; path = "Source files/ZZ- Libraries/MoreFiles/Sources/Search.c"; sourceTree = SOURCE_ROOT; };
 		722EFD8709ECB53900A837BC /* 00- Property inspector.README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = "00- Property inspector.README"; sourceTree = "<group>"; };
 		722EFD8809ECB53900A837BC /* PIAttributeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PIAttributeItem.cpp; sourceTree = "<group>"; };
 		722EFD8909ECB53900A837BC /* PIAttributeItem.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIAttributeItem.h; sourceTree = "<group>"; };
@@ -3560,8 +3560,9 @@
 			children = (
 				722EF5BA09ECB03800A837BC /* Sources */,
 			);
-			path = MoreFiles;
-			sourceTree = "<group>";
+			name = MoreFiles;
+			path = "Source files/ZZ- Libraries/MoreFiles";
+			sourceTree = SOURCE_ROOT;
 		};
 		722EF5BA09ECB03800A837BC /* Sources */ = {
 			isa = PBXGroup;
@@ -3594,7 +3595,7 @@
 				722EFA9D09ECB05300A837BC /* Utility Classes */,
 			);
 			name = PowerPlant;
-			path = "../../Open-PowerPlant/PowerPlant";
+			path = ../../../PowerPlant;
 			sourceTree = SOURCE_ROOT;
 		};
 		722EF77F09ECB05200A837BC /* _Advanced Classes */ = {
@@ -4891,7 +4892,14 @@
 			};
 			buildConfigurationList = C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "Constructor" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 20286C29FDCF999611CA2CEA /* Constructor */;
 			projectDirPath = "";
 			projectRoot = "";
